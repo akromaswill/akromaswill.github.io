@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Enter Heaven</title>
+
+<style>
+/* 🟣 TRUE FULLSCREEN BACKGROUND (NO WHITE EVER) */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  font-family: "Courier New", monospace;
+  background: #4a1a52;
+}
+
+/* 🔥 HARD LOCK BACKGROUND */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #4a1a52, #6a2a72);
+  z-index: -10;
+}
+
+.hidden { display: none; }
+
+.landing-wrap {
+  padding-top: 110px;
+}
+
+.section { margin: 40px 20px; }
+
+img {
+  max-width: 90%;
+  border-radius: 6px;
+}
+
+/* 💗 ENTER HEAVEN */
+.blink {
+  font-size: 1.6em;
+  color: #ff9ae6;
+  text-decoration: underline;
+  cursor: pointer;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; }
+  50% { opacity: 1; text-shadow: 0 0 30px #ff66cc, 0 0 50px #ffb3ec; }
+  100% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; }
+}
+
+/* 🌟 portal */
+.portal {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #fff 0%, #ffe6ff 30%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  transition: opacity 0.7s ease;
+}
+
+.portal.active { opacity: 1; }
+
+/* ⭐ cursor */
+.cursor-star {
+  position: fixed;
+  font-size: 18px;
+  color: #ff9ae6;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  text-shadow: 0 0 12px #ff66cc, 0 0 30px #ffb3ec;
+}
+
+/* ✨ trail */
+.trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #ffb3ec;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.8;
+  animation: fadeTrail 0.8s forwards;
+}
+
+@keyframes fadeTrail {
+  to { opacity: 0; transform: scale(0.2); }
+}
+
+/* 🌌 TITLE */
+h1 {
+  font-size: 1.3em;
+  font-weight: 800;
+  color: #000;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* 🧿 SYMBOL */
+.symbol {
+  font-size: 1.5em;
+  color: #ff9ae6;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 1.2s;
+}
+
+.symbol.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🌟 PERFECT INFINITE STAR SYSTEM */
+.stars {
+  position: fixed;
+  top: 0;
+  width: 40px;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* wrapper */
+.star-wrap {
+  position: absolute;
+  width: 100%;
+}
+
+/* two layers */
+.star-layer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* stars */
+.star-layer span {
+  font-size: 22px;
+  line-height: 28px;
+  color: #ff9ae6;
+  text-align: center;
+}
+
+/* ⭐ smooth infinite motion */
+.star-wrap {
+  animation: scrollStars 8s linear infinite;
+}
+
+@keyframes scrollStars {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.left { left: 4px; }
+.right { right: 4px; }
+
+</style>
+</head>
+
+<body>
+
+<div id="portal" class="portal"></div>
+<div id="cursor" class="cursor-star">★</div>
+
+<!-- ⭐ LEFT -->
+<div id="starsLeft" class="stars left hidden">
+  <div class="star-wrap">
+
+    <div class="star-layer">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+
+    <div class="star-layer">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ⭐ RIGHT -->
+<div id="starsRight" class="stars right hidden">
+  <div class="star-wrap">
+
+    <div class="star-layer">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+
+    <div class="star-layer">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- 🌌 LANDING -->
+<div id="landing" class="landing-wrap">
+  <div class="section">
+    <img src="IMG_7113.png">
+  </div>
+
+  <div class="section">
+    <div class="blink" onclick="enterHeaven()">enter heaven</div>
+  </div>
+</div>
+
+<!-- 🌐 MAIN -->
+<div id="main" class="hidden">
+  <h1>Jerome Rafael</h1>
+  <div id="symbol" class="symbol">ॐ</div>
+
+  <div class="section">
+    <p>Visual artist exploring color, nature, and spirituality.</p>
+  </div>
+</div>
+
+<script>
+function enterHeaven() {
+  const portal = document.getElementById("portal");
+  portal.classList.add("active");
+
+  setTimeout(() => {
+    landing.style.display = "none";
+    main.style.display = "block";
+    starsLeft.classList.remove("hidden");
+    starsRight.classList.remove("hidden");
+
+    setTimeout(() => symbol.classList.add("show"), 200);
+  }, 700);
+
+  setTimeout(() => portal.classList.remove("active"), 1400);
+}
+
+/* cursor */
+const cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+  const t = document.createElement("div");
+  t.className = "trail";
+  t.style.left = e.clientX + "px";
+  t.style.top = e.clientY + "px";
+  document.body.appendChild(t);
+
+  setTimeout(() => t.remove(), 800);
+});
+</script>
+
+</body>
+</html>
