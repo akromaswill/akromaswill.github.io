@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <title>Enter Heaven</title>
 
@@ -10,27 +10,29 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      background: linear-gradient(#2a0a2f, #4a1b4f);
+      min-height: 100%;
+      width: 100%;
       font-family: "Courier New", monospace;
-      color: #f5f5f5;
       text-align: center;
+      color: #f5f5f5;
       overflow-x: hidden;
+
+      background: linear-gradient(180deg, #3a0f3f, #5a2360);
     }
 
-    /* removes weird white bars on mobile */
     body {
       min-height: 100vh;
       background-attachment: fixed;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     .hidden {
       display: none;
     }
 
-    /* 🌌 landing positioning (moves content down ~1.5cm) */
     .landing-wrap {
-      padding-top: 60px;
+      padding-top: 90px;
     }
 
     .section {
@@ -42,40 +44,64 @@
       border-radius: 6px;
     }
 
-    /* ✨ blinking enter text */
+    /* 💗 ENTER HEAVEN glow pulse */
     .blink {
       font-size: 1.6em;
-      color: #ff7ad9;
+      color: #ff9ae6;
       text-decoration: underline;
       cursor: pointer;
-      animation: blinkAnim 1s infinite;
+
+      animation: pulseGlow 2s infinite ease-in-out;
     }
 
-    @keyframes blinkAnim {
-      50% { opacity: 0; }
+    @keyframes pulseGlow {
+      0% {
+        opacity: 0.6;
+        text-shadow: 0 0 5px #ff66cc;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        text-shadow: 0 0 20px #ff66cc, 0 0 40px #ffb3ec;
+        transform: scale(1.05);
+      }
+      100% {
+        opacity: 0.6;
+        text-shadow: 0 0 5px #ff66cc;
+        transform: scale(1);
+      }
     }
 
     .symbol {
-      color: #ff7ad9;
+      color: #ff9ae6;
       font-size: 1.5em;
       margin: 20px;
+
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
     }
 
-    /* 🌟 HEAVEN FLASH EFFECT */
-    .flash {
+    .symbol.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 🌟 portal light */
+    .portal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: white;
+      background: radial-gradient(circle, #ffffff 0%, #ffe6ff 30%, transparent 70%);
       opacity: 0;
       pointer-events: none;
       z-index: 999;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.7s ease-in-out;
     }
 
-    .flash.active {
+    .portal.active {
       opacity: 1;
     }
   </style>
@@ -83,8 +109,7 @@
 
 <body>
 
-<!-- 🌟 flash overlay -->
-<div id="flash" class="flash"></div>
+<div id="portal" class="portal"></div>
 
 <!-- 🌌 LANDING -->
 <div id="landing" class="landing-wrap">
@@ -106,7 +131,7 @@
 
   <h1>Your Artist Name</h1>
 
-  <div class="symbol">★ ॐ ★</div>
+  <div id="symbol" class="symbol">★ ॐ ★</div>
 
   <div class="section">
     <p>Visual artist exploring color, nature, and spirituality.</p>
@@ -125,19 +150,25 @@
 <script>
   function enterHeaven() {
 
-    // 🌟 flash ON
-    const flash = document.getElementById("flash");
-    flash.classList.add("active");
+    const portal = document.getElementById("portal");
 
-    setTimeout(() => {
-      flash.classList.remove("active");
-    }, 1200);
+    // 🌟 light transition
+    portal.classList.add("active");
 
-    // ⏳ switch page after flash
     setTimeout(() => {
       document.getElementById("landing").style.display = "none";
       document.getElementById("main").style.display = "block";
-    }, 1200);
+
+      // 🧿 reveal symbols AFTER entry
+      setTimeout(() => {
+        document.getElementById("symbol").classList.add("show");
+      }, 200);
+
+    }, 700);
+
+    setTimeout(() => {
+      portal.classList.remove("active");
+    }, 1400);
   }
 </script>
 
