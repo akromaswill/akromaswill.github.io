@@ -209,17 +209,22 @@ function enter() {
 
   flash.classList.add("active");
 
+setTimeout(() => {
+  // switch while screen is still bright
+  landing.style.display = "none";
+  main.style.display = "block";
+  stars.style.display = "block";
+
+  // fade in main content
   setTimeout(() => {
-    landing.style.display = "none";
-    main.style.display = "block";
-    stars.style.display = "block";
+    main.style.opacity = "1";
+  }, 50);
 
-    // trigger fade-in
-    setTimeout(() => {
-      main.style.opacity = "1";
-    }, 50);
+}, 400); // 👈 happens early during flash
 
-    flash.classList.remove("active");
-  }, 1200);
+// let flash finish naturally
+setTimeout(() => {
+  flash.classList.remove("active");
+}, 1400);
 }
 </script>
