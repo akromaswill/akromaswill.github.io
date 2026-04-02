@@ -74,12 +74,15 @@ img {
 .stars {
   position: fixed;
   top: 0;
-  width: 40px;
+  width: 50px;              /* slightly wider = visual balance */
   height: 100vh;
+  display: flex;
+  justify-content: center;  /* ⭐ centers stars inside column */
   overflow: hidden;
 }
 
 .stars div {
+  text-align: center;  /* ⭐ ensures perfect alignment */
   font-size: 26px;
   line-height: 32px;
   animation: move 6s linear infinite;
@@ -90,7 +93,7 @@ img {
   to { transform: translateY(-50%); }
 }
 
-.left { left: 10px; }
+.left  { left: 10px; }
 .right { right: 10px; }
 
 /* 🌌 TITLE */
