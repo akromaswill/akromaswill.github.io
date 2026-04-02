@@ -8,6 +8,11 @@
 /* =========================
    🟣 FULL BACKGROUND (SAFE)
 ========================= */
+html {
+  height: 100%;
+  background: #3a0f40;
+}
+   
 html, body {
   margin: 0;
   padding: 0;
@@ -20,11 +25,18 @@ html, body {
 
 /* 🔥 iOS FULLSCREEN FIX (this is the key) */
 body {
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
   min-height: 100dvh;
-  min-height: -webkit-fill-available;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  background: linear-gradient(180deg, #3a0f40, #6a2a72, #8a3a9a);
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  position: fixed;
+  width: 100%;
 }
    
 /* 🔥 force background to cover any 1–2px gaps */
