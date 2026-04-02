@@ -7,22 +7,37 @@
   <title>Enter Heaven</title>
 
   <style>
+    /* 🟣 FULL SCREEN FIX (REAL iOS SAFE FIX) */
     html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       min-height: 100%;
+      min-height: 100dvh;
+      background: #4a1a52;
+      overflow-x: hidden;
+      overscroll-behavior: none;
+    }
+
+    body {
       font-family: "Courier New", monospace;
       text-align: center;
       color: #f5f5f5;
-      overflow-x: hidden;
-      background: linear-gradient(180deg, #3a0f3f, #5a2360);
-      overscroll-behavior: none;
+      background: linear-gradient(180deg, #4a1a52, #6a2a72);
+    }
+
+    /* 🟣 extra safety layer (fixes iOS white bars 100%) */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, #4a1a52, #6a2a72);
+      z-index: -1;
     }
 
     .hidden { display: none; }
 
     .landing-wrap { padding-top: 90px; }
-
     .section { margin: 40px 20px; }
 
     img { max-width: 90%; border-radius: 6px; }
@@ -45,10 +60,7 @@
     /* 🌟 portal */
     .portal {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: radial-gradient(circle, #ffffff 0%, #ffe6ff 30%, transparent 70%);
       opacity: 0;
       pointer-events: none;
@@ -89,7 +101,7 @@
       }
     }
 
-    /* 🌌 MAIN TITLE */
+    /* 🌌 TITLE */
     h1 {
       font-size: 1.6em;
       margin-top: 20px;
@@ -112,27 +124,29 @@
       transform: translateY(0);
     }
 
-    /* 🌟 INFINITE STAR COLUMNS */
+    /* 🌟 INFINITE STAR SYSTEM (TRUE LOOP) */
     .stars {
       position: fixed;
       top: 0;
-      width: 40px;
-      height: 200vh; /* key for endless feel */
+      width: 60px;
+      height: 200vh;
       overflow: hidden;
       z-index: 5;
-      opacity: 0.75;
       pointer-events: none;
+      opacity: 0.75;
     }
 
-    .stars div {
-      font-size: 20px; /* ⭐ DOUBLE SIZE */
-      line-height: 24px;
+    .stars-inner {
+      display: flex;
+      flex-direction: column;
+      font-size: 22px; /* ⭐ bigger stars */
+      line-height: 26px;
       color: #ff9ae6;
-      animation: floatStars 12s linear infinite;
-      white-space: pre;
+
+      animation: moveStars 10s linear infinite;
     }
 
-    @keyframes floatStars {
+    @keyframes moveStars {
       0% { transform: translateY(0); }
       100% { transform: translateY(-50%); }
     }
@@ -150,18 +164,20 @@
 <!-- ⭐ cursor -->
 <div id="cursor" class="cursor-star">★</div>
 
-<!-- 🌟 INFINITE STAR COLUMNS (ONLY MAIN PAGE) -->
+<!-- 🌟 INFINITE STAR COLUMNS (TRUE LOOP) -->
 <div id="starsLeft" class="stars left hidden">
-  <div>
-★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★
+  <div class="stars-inner">
+    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
   </div>
 </div>
 
 <div id="starsRight" class="stars right hidden">
-  <div>
-★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★
+  <div class="stars-inner">
+    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
   </div>
 </div>
 
@@ -194,14 +210,12 @@
 <script>
   function enterHeaven() {
     const portal = document.getElementById("portal");
-
     portal.classList.add("active");
 
     setTimeout(() => {
       document.getElementById("landing").style.display = "none";
       document.getElementById("main").style.display = "block";
 
-      // ⭐ show stars ONLY after entry
       document.getElementById("starsLeft").classList.remove("hidden");
       document.getElementById("starsRight").classList.remove("hidden");
 
