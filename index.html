@@ -11,6 +11,7 @@
 html {
   height: 100%;
   background: #3a0f40;
+  overscroll-behavior: none;
 }
    
 html, body {
@@ -31,21 +32,17 @@ body {
   min-height: 100dvh;
   background: linear-gradient(180deg, #3a0f40, #6a2a72, #8a3a9a);
   overflow-x: hidden;
-  overscroll-behavior: none;
-}
-
-body {
-  position: fixed;
-  width: 100%;
+  overscroll-behavior-y: none;
 }
    
 /* 🔥 force background to cover any 1–2px gaps */
 body::before {
   content: "";
   position: fixed;
-  inset: -2px;
+  inset: 0;
   background: linear-gradient(180deg, #3a0f40, #6a2a72, #8a3a9a);
   z-index: -1;
+  pointer-events: none;
 }
 
 /* =========================
