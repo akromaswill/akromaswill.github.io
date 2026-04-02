@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 <style>
+
 /* =========================
-   FULL BACKGROUND
+   🟣 FULL BACKGROUND (SAFE)
 ========================= */
 html, body {
   margin: 0;
@@ -15,12 +17,14 @@ html, body {
   overflow-x: hidden;
 }
 
+/* 🔥 iOS FULLSCREEN FIX (this is the key) */
 body {
   min-height: 100vh;
   min-height: 100dvh;
   min-height: -webkit-fill-available; /* iOS Safari fullscreen fix */
 }
 
+/* 🔥 force background to cover any 1–2px gaps */
 body::before {
   content: "";
   position: fixed;
@@ -30,7 +34,7 @@ body::before {
 }
 
 /* =========================
-   FLASH
+   ⚡ FLASH
 ========================= */
 #flash {
   position: fixed;
@@ -40,7 +44,6 @@ body::before {
   pointer-events: none;
   z-index: 999;
   filter: blur(8px);
-  will-change: opacity;
 }
 
 #flash.active {
@@ -48,22 +51,32 @@ body::before {
 }
 
 @keyframes flashAnim {
-  0% { opacity: 0; }
-  15% { opacity: 1; }
-  40% { opacity: 0.95; }
-  70% { opacity: 0.6; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* =========================
-   LAYOUT
+   🧱 LAYOUT
 ========================= */
 .center {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 100); /* full visible viewport height */
   text-align: center;
   padding: 20px;
 }
@@ -76,31 +89,29 @@ body::before {
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 1.2s ease, transform 1.2s ease;
-  display: none;
 }
 
 /* =========================
-   IMAGE
+   🌌 IMAGE
 ========================= */
 img {
-  width: clamp(200px, 50%, 400px);
+  width: 80%;
+  max-width: 400px;
   margin-bottom: 20px;
 }
 
 /* =========================
-   ENTER BUTTON
+   💗 ENTER
 ========================= */
 .enter {
-  font-size: clamp(18px, 2vw, 22px);
+  font-size: 22px;
   color: #ff9ae6;
   text-decoration: underline;
   cursor: pointer;
   animation: glow 2s infinite;
-  border: none;
-  background: none;
 }
 
-.enter:hover {
+   .enter:hover {
   transform: scale(1.1);
 }
 
@@ -111,7 +122,7 @@ img {
 }
 
 /* =========================
-   STARS
+   ⭐ STARS
 ========================= */
 .stars {
   position: fixed;
@@ -121,15 +132,13 @@ img {
   overflow: hidden;
   font-size: 26px;
   line-height: 32px;
-  pointer-events: none;
-  display: none;
 }
 
 .left { left: 0; }
 .right { right: 0; }
 
 /* =========================
-   TEXT
+   🧿 TEXT
 ========================= */
 h1 {
   color: black;
@@ -138,7 +147,7 @@ h1 {
 }
 
 .symbol {
-  font-size: clamp(20px, 3vw, 24px);
+  font-size: 24px;
   color: #ff9ae6;
   margin: 20px 0;
 }
@@ -147,14 +156,17 @@ p {
   text-align: center;
   line-height: 1.6;
 }
+
 </style>
 </head>
 
 <body>
+
+<!-- ⚡ FLASH -->
 <div id="flash"></div>
 
-<!-- Stars -->
-<div id="stars" class="stars-container">
+<!-- ⭐ STARS -->
+<div id="stars" style="display:none;">
   <div class="stars left">
     ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
     ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
@@ -168,17 +180,23 @@ p {
   </div>
 </div>
 
-<!-- Landing -->
+<!-- 🌌 ENTRY -->
 <div id="landing" class="center">
-  <img src="IMG_7113.png" alt="Heavenly illustration">
-  <button class="enter" onclick="enter()">enter heaven</button>
+  <img src="IMG_7113.png">
+  <div class="enter" onclick="enter()">enter heaven</div>
 </div>
 
-<!-- Main content -->
-<div id="main" class="home">
+<!-- 🌐 HOME -->
+<div id="main" class="home" style="display:none;">
   <h1>Jerome Rafael</h1>
   <div class="symbol">ॐ</div>
-  <p>KEEP CALM<br>AND<br>THE LIGHT<br>WILL PREVAIL</p>
+
+  <p>
+    KEEP CALM<br>
+    AND<br>
+    THE LIGHT<br>
+    WILL PREVAIL
+  </p>
 </div>
 
 <script>
@@ -190,30 +208,35 @@ function enter() {
 
   flash.classList.add("active");
 
-  setTimeout(() => {
-    landing.style.display = "none";
-    main.style.display = "block";
-    stars.style.display = "block";
+setTimeout(() => {
+  // switch while screen is still bright
+  landing.style.display = "none";
+  main.style.display = "block";
+  stars.style.display = "block";
 
-    setTimeout(() => {
-      main.style.opacity = "1";
-      main.style.transform = "scale(1)";
-    }, 50);
-  }, 400);
-
+  // fade in main content
   setTimeout(() => {
-    flash.classList.remove("active");
-  }, 1400);
+    main.style.opacity = "1";
+main.style.transform = "scale(1)";
+  }, 50);
+
+}, 400); // 👈 happens early during flash
+
+// let flash finish naturally
+setTimeout(() => {
+  flash.classList.remove("active");
+}, 1400);
 }
-
-// Mobile full screen height fix for iOS
+   // Mobile full screen height fix for iOS
 function setFullHeight() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
+// Run once
 setFullHeight();
+
+// Update on resize/orientation change
 window.addEventListener('resize', setFullHeight);
+   
 </script>
-</body>
-</html>
