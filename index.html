@@ -1,26 +1,188 @@
-html {
-  height: 100%;
-  background: #4a1a52;
-}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-body {
+<style>
+
+/* =========================
+   🟣 FULL BACKGROUND (SAFE)
+========================= */
+html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
-  min-height: 100svh;
+  height: 100%;
+  background: linear-gradient(#4a1a52, #6a2a72);
   font-family: "Courier New", monospace;
   color: white;
-
-  /* KEY FIX */
-  background: linear-gradient(#4a1a52, #6a2a72);
+  overflow-x: hidden;
 }
 
-/* 🔥 FORCE FULL SCREEN LAYER (kills white bars) */
-body::before {
-  content: "";
+/* iPhone safe height fix */
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* =========================
+   ⚡ FLASH
+========================= */
+#flash {
   position: fixed;
-  inset: -2px; /* IMPORTANT: overscan removes iOS edge gaps */
-  background: linear-gradient(#4a1a52, #6a2a72);
-  z-index: -1;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
 }
+
+#flash.active {
+  animation: flashAnim 1s ease;
+}
+
+@keyframes flashAnim {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  60% { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+
+/* =========================
+   🧱 LAYOUT
+========================= */
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.home {
+  padding-top: 70px;
+  text-align: center;
+}
+
+/* =========================
+   🌌 IMAGE
+========================= */
+img {
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   💗 ENTER
+========================= */
+.enter {
+  font-size: 22px;
+  color: #ff9ae6;
+  text-decoration: underline;
+  cursor: pointer;
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; text-shadow: 0 0 20px #ff66cc; }
+  100% { opacity: 0.6; }
+}
+
+/* =========================
+   ⭐ STARS
+========================= */
+.stars {
+  position: fixed;
+  top: 0;
+  width: 40px;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 26px;
+  line-height: 32px;
+}
+
+.left { left: 0; }
+.right { right: 0; }
+
+/* =========================
+   🧿 TEXT
+========================= */
+h1 {
+  color: black;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.symbol {
+  font-size: 24px;
+  color: #ff9ae6;
+  margin: 20px 0;
+}
+
+p {
+  text-align: center;
+  line-height: 1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ⚡ FLASH -->
+<div id="flash"></div>
+
+<!-- ⭐ STARS -->
+<div id="stars" style="display:none;">
+  <div class="stars left">
+    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+  </div>
+
+  <div class="stars right">
+    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+  </div>
+</div>
+
+<!-- 🌌 ENTRY -->
+<div id="landing" class="center">
+  <img src="IMG_7113.png">
+  <div class="enter" onclick="enter()">enter heaven</div>
+</div>
+
+<!-- 🌐 HOME -->
+<div id="main" class="home" style="display:none;">
+  <h1>Jerome Rafael</h1>
+  <div class="symbol">ॐ</div>
+
+  <p>
+    KEEP CALM<br>
+    AND<br>
+    THE LIGHT<br>
+    WILL PREVAIL
+  </p>
+</div>
+
+<script>
+function enter() {
+  const flash = document.getElementById("flash");
+
+  flash.classList.add("active");
+
+  setTimeout(() => {
+    document.getElementById("landing").style.display = "none";
+    document.getElementById("main").style.display = "block";
+    document.getElementById("stars").style.display = "block";
+
+    flash.classList.remove("active");
+  }, 700);
+}
+</script>
+
+</body>
+</html>
