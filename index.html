@@ -18,7 +18,7 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   min-height: 100dvh;
   background: linear-gradient(180deg, #3a0f40, #6a2a72, #8a3a9a);
   overflow-x: hidden;
@@ -88,13 +88,13 @@ body::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(var(--vh, 1vh) * 100); /* full visible viewport height */
+  min-height: 100dvh; /* full visible viewport height */
   text-align: center;
   padding: 20px;
 }
 
 .home {
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: 100dvh;
 }
    
 #main {
@@ -102,7 +102,7 @@ body::before {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: 100dvh;
   text-align: center;
   width: 100%;
   opacity: 0;
@@ -270,16 +270,5 @@ setTimeout(() => {
   flash.classList.remove("active");
 }, 1400);
 }
-   // Mobile full screen height fix for iOS
-function setFullHeight() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
 
-// Run once
-setFullHeight();
-
-// Update on resize/orientation change
-window.addEventListener('resize', setFullHeight);
-   
 </script>
