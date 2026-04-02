@@ -5,7 +5,7 @@
 
 <style>
 
-/* 🟣 FORCE FULLSCREEN BACKGROUND */
+/* 🟣 FULL BACKGROUND */
 html {
   background: #4a1a52;
 }
@@ -20,7 +20,7 @@ body {
   background: linear-gradient(#4a1a52, #6a2a72);
 }
 
-/* 🔥 ABSOLUTE BACKGROUND LAYER (kills white bars) */
+/* 🔥 FIX WHITE BARS */
 body::before {
   content: "";
   position: fixed;
@@ -29,17 +29,29 @@ body::before {
   z-index: -1;
 }
 
-/* 🧱 CENTER ENTRY */
+/* ⚡ FLASH OVERLAY */
+#flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+  z-index: 999;
+}
+
+#flash.active {
+  opacity: 1;
+}
+
+/* 🧱 ENTRY CENTER */
 .center {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  /* 🔥 critical fix */
   min-height: 100vh;
   min-height: 100dvh;
-
   text-align: center;
 }
 
@@ -56,12 +68,13 @@ img {
   margin-bottom: 25px;
 }
 
-/* 💗 ENTER */
+/* 💗 ENTER HEAVEN */
 .enter {
   font-size: 22px;
   color: #ff9ae6;
   text-decoration: underline;
   animation: glow 2s infinite;
+  cursor: pointer;
 }
 
 @keyframes glow {
@@ -82,36 +95,15 @@ img {
 }
 
 /* perfect edge placement */
-.left  { left: 0px; }
+.left { left: 0px; }
 .right { right: 0px; }
 
-.track {
-  font-size: 26px;
-  line-height: 32px;
-  white-space: pre;
-  animation: scroll 6s linear infinite;
-}
-
-/* ⭐ KEY FIX: seamless loop */
-@keyframes scroll {
-  from { transform: translateY(0); }
-  to { transform: translateY(-50%); }
-}
-
+/* star alignment */
 .stars div {
-  text-align: center;  /* ⭐ ensures perfect alignment */
+  text-align: center;
   font-size: 26px;
   line-height: 32px;
-  animation: move 6s linear infinite;
 }
-
-@keyframes move {
-  from { transform: translateY(0); }
-  to { transform: translateY(-50%); }
-}
-
-.left  { left: 0px; }
-.right { right: 0px; }
 
 /* 🌌 TITLE */
 h1 {
@@ -130,6 +122,9 @@ h1 {
 </head>
 
 <body>
+
+<!-- ⚡ FLASH -->
+<div id="flash"></div>
 
 <!-- ⭐ STARS -->
 <div id="stars" style="display:none;">
@@ -158,18 +153,30 @@ h1 {
 <div id="main" class="home" style="display:none;">
   <h1>Jerome Rafael</h1>
   <div class="symbol">ॐ</div>
- <p style="text-align:center; line-height:1.6;">
-KEEP CALM<br>
-AND<br>
-THE LIGHT<br>
-WILL PREVAIL
-</p>
+
+  <p style="text-align:center; line-height:1.6;">
+    KEEP CALM<br>
+    AND<br>
+    THE LIGHT<br>
+    WILL PREVAIL
+  </p>
+</div>
 
 <script>
 function enter() {
-  document.getElementById("landing").style.display = "none";
-  document.getElementById("main").style.display = "block";
-  document.getElementById("stars").style.display = "block";
+  const flash = document.getElementById("flash");
+
+  // start flash
+  flash.classList.add("active");
+
+  setTimeout(() => {
+    document.getElementById("landing").style.display = "none";
+    document.getElementById("main").style.display = "block";
+    document.getElementById("stars").style.display = "block";
+
+    // fade flash out
+    flash.classList.remove("active");
+  }, 600);
 }
 </script>
 
