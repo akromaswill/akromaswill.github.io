@@ -7,21 +7,14 @@
   <title>Enter Heaven</title>
 
   <style>
-    html {
-      height: 100%;
-      background: #3a0f3f;
-    }
-
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
-      min-height: 100dvh;
+      min-height: 100%;
       font-family: "Courier New", monospace;
       text-align: center;
       color: #f5f5f5;
       overflow-x: hidden;
-
       background: linear-gradient(180deg, #3a0f3f, #5a2360);
       overscroll-behavior: none;
     }
@@ -47,21 +40,6 @@
       0% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; transform: scale(1); }
       50% { opacity: 1; text-shadow: 0 0 20px #ff66cc, 0 0 40px #ffb3ec; transform: scale(1.05); }
       100% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; transform: scale(1); }
-    }
-
-    /* 🧿 symbol */
-    .symbol {
-      color: #ff9ae6;
-      font-size: 1.5em;
-      margin: 20px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: 1.2s;
-    }
-
-    .symbol.show {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* 🌟 portal */
@@ -91,7 +69,7 @@
       text-shadow: 0 0 10px #ff66cc, 0 0 25px #ffb3ec;
     }
 
-    /* ✨ trail particles */
+    /* ✨ trail */
     .trail {
       position: fixed;
       width: 6px;
@@ -111,31 +89,56 @@
       }
     }
 
-    /* 🌟 side star columns */
-    .side {
-      position: fixed;
-      top: 0;
-      width: 20px;
-      height: 100vh;
-      overflow: hidden;
-      z-index: 5;
-      color: #ff9ae6;
-      opacity: 0.7;
-      font-size: 10px;
-      line-height: 18px;
-      white-space: pre;
-    }
-
-    .left { left: 3px; }
-    .right { right: 3px; }
-
-    /* 🌐 main title */
+    /* 🌌 MAIN TITLE */
     h1 {
       font-size: 1.6em;
       margin-top: 20px;
       font-weight: normal;
       letter-spacing: 2px;
     }
+
+    /* 🧿 symbol */
+    .symbol {
+      color: #ff9ae6;
+      font-size: 1.5em;
+      margin: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: 1.2s;
+    }
+
+    .symbol.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 🌟 INFINITE STAR COLUMNS */
+    .stars {
+      position: fixed;
+      top: 0;
+      width: 40px;
+      height: 200vh; /* key for endless feel */
+      overflow: hidden;
+      z-index: 5;
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .stars div {
+      font-size: 20px; /* ⭐ DOUBLE SIZE */
+      line-height: 24px;
+      color: #ff9ae6;
+      animation: floatStars 12s linear infinite;
+      white-space: pre;
+    }
+
+    @keyframes floatStars {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    .left { left: 4px; }
+    .right { right: 4px; }
   </style>
 </head>
 
@@ -144,12 +147,23 @@
 <!-- 🌟 portal -->
 <div id="portal" class="portal"></div>
 
-<!-- ⭐ cursor star -->
+<!-- ⭐ cursor -->
 <div id="cursor" class="cursor-star">★</div>
 
-<!-- 🌟 side star columns -->
-<div class="side left">★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★</div>
-<div class="side right">★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★</div>
+<!-- 🌟 INFINITE STAR COLUMNS (ONLY MAIN PAGE) -->
+<div id="starsLeft" class="stars left hidden">
+  <div>
+★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★
+  </div>
+</div>
+
+<div id="starsRight" class="stars right hidden">
+  <div>
+★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★
+  </div>
+</div>
 
 <!-- 🌌 LANDING -->
 <div id="landing" class="landing-wrap">
@@ -159,9 +173,7 @@
   </div>
 
   <div class="section">
-    <div class="blink" onclick="enterHeaven()">
-      enter heaven
-    </div>
+    <div class="blink" onclick="enterHeaven()">enter heaven</div>
   </div>
 
 </div>
@@ -180,14 +192,18 @@
 </div>
 
 <script>
-  /* 🌟 portal transition */
   function enterHeaven() {
     const portal = document.getElementById("portal");
+
     portal.classList.add("active");
 
     setTimeout(() => {
       document.getElementById("landing").style.display = "none";
       document.getElementById("main").style.display = "block";
+
+      // ⭐ show stars ONLY after entry
+      document.getElementById("starsLeft").classList.remove("hidden");
+      document.getElementById("starsRight").classList.remove("hidden");
 
       setTimeout(() => {
         document.getElementById("symbol").classList.add("show");
@@ -200,19 +216,17 @@
     }, 1400);
   }
 
-  /* ⭐ cursor + trail system */
+  /* ⭐ cursor + trail */
   const cursor = document.getElementById("cursor");
-
-  let lastTrailTime = 0;
+  let lastTrail = 0;
 
   document.addEventListener("mousemove", (e) => {
     cursor.style.left = e.clientX + "px";
     cursor.style.top = e.clientY + "px";
 
-    // limit trail spawn speed
     const now = Date.now();
-    if (now - lastTrailTime > 40) {
-      lastTrailTime = now;
+    if (now - lastTrail > 40) {
+      lastTrail = now;
 
       const trail = document.createElement("div");
       trail.className = "trail";
