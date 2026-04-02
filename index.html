@@ -6,27 +6,36 @@
 <style>
 
 /* 🟣 FULL BACKGROUND */
-html {
-  background: #4a1a52;
-}
-
-body {
+html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100%;
+  min-height: 100%;
+  background: linear-gradient(#4a1a52, #6a2a72);
   font-family: "Courier New", monospace;
   color: white;
-  background: linear-gradient(#4a1a52, #6a2a72);
 }
 
-/* 🔥 FIX WHITE BARS */
+/* 🚨 iOS SAFE AREA FIX */
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+}
+
+/* 🔥 force background everywhere */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background: linear-gradient(#4a1a52, #6a2a72);
   z-index: -1;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 
 /* ⚡ FLASH OVERLAY */
@@ -124,7 +133,25 @@ h1 {
 <body>
 
 <!-- ⚡ FLASH -->
-<div id="flash"></div>
+#flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#flash.active {
+  animation: flashPulse 1.2s ease;
+}
+
+@keyframes flashPulse {
+  0%   { opacity: 0; }
+  25%  { opacity: 1; }
+  60%  { opacity: 0.6; }
+  100% { opacity: 0; }
+}
 
 <!-- ⭐ STARS -->
 <div id="stars" style="display:none;">
@@ -166,7 +193,6 @@ h1 {
 function enter() {
   const flash = document.getElementById("flash");
 
-  // start flash
   flash.classList.add("active");
 
   setTimeout(() => {
@@ -174,9 +200,8 @@ function enter() {
     document.getElementById("main").style.display = "block";
     document.getElementById("stars").style.display = "block";
 
-    // fade flash out
     flash.classList.remove("active");
-  }, 600);
+  }, 900);
 }
 </script>
 
