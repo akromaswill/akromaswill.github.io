@@ -7,19 +7,21 @@
   <title>Enter Heaven</title>
 
   <style>
+    /* 🟣 TRUE FULLSCREEN FIX (iOS SAFE) */
     html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
       height: 100%;
       min-height: 100dvh;
       overflow-x: hidden;
       overscroll-behavior: none;
-      background: linear-gradient(180deg, #4a1a52, #6a2a72);
       font-family: "Courier New", monospace;
       text-align: center;
-      color: #f5f5f5;
+      color: #fff;
     }
 
+    /* 🟣 locked background layer (FIXS WHITE BARS) */
     body::before {
       content: "";
       position: fixed;
@@ -33,7 +35,10 @@
     .landing-wrap { padding-top: 90px; }
     .section { margin: 40px 20px; }
 
-    img { max-width: 90%; border-radius: 6px; }
+    img {
+      max-width: 90%;
+      border-radius: 6px;
+    }
 
     /* 💗 ENTER HEAVEN */
     .blink {
@@ -45,9 +50,9 @@
     }
 
     @keyframes pulseGlow {
-      0% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; transform: scale(1); }
-      50% { opacity: 1; text-shadow: 0 0 20px #ff66cc, 0 0 40px #ffb3ec; transform: scale(1.05); }
-      100% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; transform: scale(1); }
+      0% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; }
+      50% { opacity: 1; text-shadow: 0 0 25px #ff66cc, 0 0 40px #ffb3ec; }
+      100% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; }
     }
 
     /* 🌟 portal */
@@ -58,7 +63,7 @@
       opacity: 0;
       pointer-events: none;
       z-index: 999;
-      transition: opacity 0.7s ease-in-out;
+      transition: opacity 0.7s ease;
     }
 
     .portal.active { opacity: 1; }
@@ -71,7 +76,7 @@
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 1000;
-      text-shadow: 0 0 10px #ff66cc, 0 0 25px #ffb3ec;
+      text-shadow: 0 0 12px #ff66cc, 0 0 30px #ffb3ec;
     }
 
     /* ✨ trail */
@@ -88,23 +93,22 @@
     }
 
     @keyframes fadeTrail {
-      to { opacity: 0; transform: scale(0.3); }
+      to { opacity: 0; transform: scale(0.2); }
     }
 
-    /* 🌌 TITLE (BOLDER FIX) */
+    /* 🌌 TITLE */
     h1 {
-      font-size: 1.3em;
-      margin-top: 20px;
-      font-weight: 700;   /* 🔥 stronger */
-      letter-spacing: 2px;
+      font-size: 1.25em;
+      font-weight: 800;
       color: #000;
+      margin-top: 20px;
+      letter-spacing: 2px;
     }
 
     /* 🧿 SYMBOL */
     .symbol {
-      color: #ff9ae6;
       font-size: 1.5em;
-      margin: 20px;
+      color: #ff9ae6;
       opacity: 0;
       transform: translateY(10px);
       transition: 1.2s;
@@ -115,37 +119,41 @@
       transform: translateY(0);
     }
 
-    /* 🌟 PERFECT INFINITE STAR SYSTEM (NO GLITCH) */
+    /* 🌟 FIXED INFINITE STAR COLUMNS (REAL GRID - NO DUPLICATION BUG) */
     .stars {
       position: fixed;
       top: 0;
-      width: 60px;
+      width: 40px;
       height: 100vh;
       overflow: hidden;
       z-index: 5;
       pointer-events: none;
-      opacity: 0.75;
     }
 
-    .stars-track {
+    .star-col {
+      position: absolute;
+      top: 0;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      font-size: 22px;
-      line-height: 26px;
-      color: #ff9ae6;
-      will-change: transform;
-
-      animation: scrollStars 8s linear infinite;
+      animation: moveStars 6s linear infinite;
     }
 
-    /* ⭐ KEY FIX: seamless duplicate scroll */
-    @keyframes scrollStars {
+    .star-col span {
+      font-size: 22px;
+      line-height: 28px;
+      color: #ff9ae6;
+      text-align: center;
+    }
+
+    @keyframes moveStars {
       0% { transform: translateY(0); }
       100% { transform: translateY(-50%); }
     }
 
     .left { left: 4px; }
     .right { right: 4px; }
+
   </style>
 </head>
 
@@ -157,26 +165,29 @@
 <!-- ⭐ cursor -->
 <div id="cursor" class="cursor-star">★</div>
 
-<!-- 🌟 STAR COLUMNS -->
+<!-- 🌟 LEFT STARS -->
 <div id="starsLeft" class="stars left hidden">
-  <div class="stars-track">
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+  <div class="star-col">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 
-    <!-- duplicate (key for no glitch) -->
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+    <!-- duplicate for infinite loop -->
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
   </div>
 </div>
 
+<!-- 🌟 RIGHT STARS -->
 <div id="starsRight" class="stars right hidden">
-  <div class="stars-track">
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+  <div class="star-col">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 
     <!-- duplicate -->
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
-    ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
   </div>
 </div>
 
@@ -229,27 +240,20 @@
     }, 1400);
   }
 
-  /* ⭐ cursor + trail */
+  /* ⭐ cursor */
   const cursor = document.getElementById("cursor");
-  let lastTrail = 0;
 
   document.addEventListener("mousemove", (e) => {
     cursor.style.left = e.clientX + "px";
     cursor.style.top = e.clientY + "px";
 
-    const now = Date.now();
-    if (now - lastTrail > 40) {
-      lastTrail = now;
+    const trail = document.createElement("div");
+    trail.className = "trail";
+    trail.style.left = e.clientX + "px";
+    trail.style.top = e.clientY + "px";
+    document.body.appendChild(trail);
 
-      const trail = document.createElement("div");
-      trail.className = "trail";
-      trail.style.left = e.clientX + "px";
-      trail.style.top = e.clientY + "px";
-
-      document.body.appendChild(trail);
-
-      setTimeout(() => trail.remove(), 800);
-    }
+    setTimeout(() => trail.remove(), 800);
   });
 </script>
 
