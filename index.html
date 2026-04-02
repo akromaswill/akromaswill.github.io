@@ -3,31 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jerome Rafael</title>
+
+  <title>Your Artist Name</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 40px;
+      letter-spacing: 2px;
+    }
+
+    .symbol {
+      font-size: 2em;
+      margin: 10px;
+      color: #ff4da6;
+    }
+
+    .section {
+      margin: 60px 20px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 280px;
+      margin: 10px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    a {
+      color: #ff4da6;
+      text-decoration: none;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: #333;
+      margin: 40px 0;
+    }
+  </style>
 </head>
 
-<body style="font-family: Arial; text-align:center; margin:40px;">
+<body>
 
-  <h1>Jerome Rafael</h1>
-  <p></p>
+  <h1>Your Artist Name</h1>
 
-  <hr style="margin:40px 0;">
+  <div class="symbol">★ ॐ ★</div>
 
-  <h2>Selected Work</h2>
+  <div class="section">
+    <p>
+      Visual artist exploring color, nature, and spirituality.
+    </p>
+  </div>
 
-  <img src="https://via.placeholder.com/300" style="margin:10px;">
-  <img src="https://via.placeholder.com/300" style="margin:10px;">
-  <img src="https://via.placeholder.com/300" style="margin:10px;">
+  <hr>
 
-  <hr style="margin:40px 0;">
+  <div class="section">
+    <h2>Selected Work</h2>
 
-  <h2>About</h2>
-  <p>
-   KEEP CALM AND THE LIGHT WILL PREVAIL
-  </p>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300">
+      <img src="https://via.placeholder.com/300">
+      <img src="https://via.placeholder.com/300">
+    </div>
+  </div>
 
-  <h2>Contact</h2>
-  <p>@jerome.rafael/p>
+  <hr>
+
+  <div class="section">
+    <h2>About</h2>
+    <p>
+      Based in Switzerland. My work blends playful color with darker organic and spiritual themes.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>
+      <a href="mailto:your@email.com">your@email.com</a><br>
+      <a href="#">Instagram</a>
+    </p>
+  </div>
 
 </body>
 </html>
