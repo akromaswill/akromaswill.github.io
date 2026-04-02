@@ -44,17 +44,29 @@ body::before {
   opacity: 0;
   pointer-events: none;
   z-index: 999;
+  filter: blur(8px);
 }
 
 #flash.active {
-  animation: flashAnim 1s ease;
+  animation: flashAnim 1.8s ease-out;
 }
 
 @keyframes flashAnim {
-  0% { opacity: 0; }
-  25% { opacity: 1; }
-  60% { opacity: 0.4; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* =========================
@@ -208,6 +220,6 @@ function enter() {
     }, 50);
 
     flash.classList.remove("active");
-  }, 700);
+  }, 1200);
 }
 </script>
