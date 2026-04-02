@@ -4,71 +4,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* 🟣 BACKGROUND */
-body {
+/* 🟣 FULL BACKGROUND (NO WHITE EVER) */
+html, body {
   margin: 0;
-  font-family: monospace;
+  padding: 0;
+  height: 100%;
   background: linear-gradient(#4a1a52, #6a2a72);
+  font-family: "Courier New", monospace;
   color: white;
-  text-align: center;
 }
 
-/* 🧱 CENTER */
+/* 🔒 force background everywhere */
+body {
+  min-height: 100vh;
+}
+
+/* 🧱 ENTRY CENTER */
 .center {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
+}
+
+/* ⬆️ HOME POSITION (higher) */
+.home {
+  padding-top: 80px;
+  text-align: center;
 }
 
 /* 🌌 IMAGE */
 img {
   width: 80%;
   max-width: 400px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-/* 💗 BUTTON */
-button {
-  font-size: 20px;
-  background: none;
-  border: none;
+/* 💗 ENTER HEAVEN (original style) */
+.enter {
+  font-size: 22px;
   color: #ff9ae6;
   text-decoration: underline;
+  cursor: pointer;
+  animation: glow 2s infinite;
 }
 
-/* 🌟 STARS */
+@keyframes glow {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; text-shadow: 0 0 20px #ff66cc; }
+  100% { opacity: 0.6; }
+}
+
+/* ⭐ STARS (bigger) */
 .stars {
   position: fixed;
   top: 0;
-  width: 30px;
+  width: 40px;
   height: 100vh;
   overflow: hidden;
 }
 
 .stars div {
-  animation: move 5s linear infinite;
+  font-size: 26px;
+  line-height: 32px;
+  animation: move 6s linear infinite;
 }
 
+/* ⭐ smooth loop */
 @keyframes move {
   from { transform: translateY(0); }
   to { transform: translateY(-50%); }
 }
 
-.left { left: 0; }
-.right { right: 0; }
+.left { left: 4px; }
+.right { right: 4px; }
 
 /* 🌌 TITLE */
 h1 {
   color: black;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* 🧿 SYMBOL */
 .symbol {
   font-size: 24px;
   color: #ff9ae6;
+  margin: 20px 0;
 }
+
 </style>
 </head>
 
@@ -77,21 +102,28 @@ h1 {
 <!-- ⭐ STARS -->
 <div id="stars" style="display:none;">
   <div class="stars left">
-    <div>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★</div>
+    <div>
+      ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+      ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★
+    </div>
   </div>
+
   <div class="stars right">
-    <div>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★</div>
+    <div>
+      ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
+      ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★
+    </div>
   </div>
 </div>
 
 <!-- 🌌 ENTRY -->
 <div id="landing" class="center">
   <img src="IMG_7113.png">
-  <button onclick="enter()">enter heaven</button>
+  <div class="enter" onclick="enter()">enter heaven</div>
 </div>
 
 <!-- 🌐 HOME -->
-<div id="main" class="center" style="display:none;">
+<div id="main" class="home" style="display:none;">
   <h1>Jerome Rafael</h1>
   <div class="symbol">ॐ</div>
   <p>Visual artist exploring color, nature, spirituality.</p>
@@ -100,7 +132,7 @@ h1 {
 <script>
 function enter() {
   document.getElementById("landing").style.display = "none";
-  document.getElementById("main").style.display = "flex";
+  document.getElementById("main").style.display = "block";
   document.getElementById("stars").style.display = "block";
 }
 </script>
