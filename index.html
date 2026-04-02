@@ -7,7 +7,6 @@
   <title>Enter Heaven</title>
 
   <style>
-    /* 🟣 FULLSCREEN FIX (iOS SAFE) */
     html, body {
       margin: 0;
       padding: 0;
@@ -15,7 +14,7 @@
       min-height: 100dvh;
       overflow-x: hidden;
       overscroll-behavior: none;
-      background: #4a1a52;
+      background: linear-gradient(180deg, #4a1a52, #6a2a72);
       font-family: "Courier New", monospace;
       text-align: center;
       color: #f5f5f5;
@@ -34,10 +33,7 @@
     .landing-wrap { padding-top: 90px; }
     .section { margin: 40px 20px; }
 
-    img {
-      max-width: 90%;
-      border-radius: 6px;
-    }
+    img { max-width: 90%; border-radius: 6px; }
 
     /* 💗 ENTER HEAVEN */
     .blink {
@@ -54,7 +50,7 @@
       100% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; transform: scale(1); }
     }
 
-    /* 🌟 portal flash */
+    /* 🌟 portal */
     .portal {
       position: fixed;
       inset: 0;
@@ -95,11 +91,11 @@
       to { opacity: 0; transform: scale(0.3); }
     }
 
-    /* 🌌 TITLE */
+    /* 🌌 TITLE (BOLDER FIX) */
     h1 {
-      font-size: 1.25em;
+      font-size: 1.3em;
       margin-top: 20px;
-      font-weight: normal;
+      font-weight: 700;   /* 🔥 stronger */
       letter-spacing: 2px;
       color: #000;
     }
@@ -119,7 +115,7 @@
       transform: translateY(0);
     }
 
-    /* 🌟 STAR COLUMNS (FIXED INFINITE) */
+    /* 🌟 PERFECT INFINITE STAR SYSTEM (NO GLITCH) */
     .stars {
       position: fixed;
       top: 0;
@@ -137,10 +133,13 @@
       font-size: 22px;
       line-height: 26px;
       color: #ff9ae6;
-      animation: starFlow 6s linear infinite;
+      will-change: transform;
+
+      animation: scrollStars 8s linear infinite;
     }
 
-    @keyframes starFlow {
+    /* ⭐ KEY FIX: seamless duplicate scroll */
+    @keyframes scrollStars {
       0% { transform: translateY(0); }
       100% { transform: translateY(-50%); }
     }
@@ -158,11 +157,13 @@
 <!-- ⭐ cursor -->
 <div id="cursor" class="cursor-star">★</div>
 
-<!-- 🌟 STAR COLUMNS (hidden until entry) -->
+<!-- 🌟 STAR COLUMNS -->
 <div id="starsLeft" class="stars left hidden">
   <div class="stars-track">
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+
+    <!-- duplicate (key for no glitch) -->
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
   </div>
@@ -172,6 +173,8 @@
   <div class="stars-track">
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
+
+    <!-- duplicate -->
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
     ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★
   </div>
@@ -185,9 +188,7 @@
   </div>
 
   <div class="section">
-    <div class="blink" onclick="enterHeaven()">
-      enter heaven
-    </div>
+    <div class="blink" onclick="enterHeaven()">enter heaven</div>
   </div>
 
 </div>
