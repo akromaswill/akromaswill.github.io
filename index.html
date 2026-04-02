@@ -86,6 +86,11 @@ body::before {
 }
    
 #main {
+  display: flex;               /* make it a flex container */
+  flex-direction: column;      /* stack items vertically */
+  justify-content: center;     /* vertical centering */
+  align-items: center;         /* horizontal centering */
+  min-height: calc(var(--vh, 1vh) * 100); /* full viewport height */
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 1.2s ease, transform 1.2s ease;
