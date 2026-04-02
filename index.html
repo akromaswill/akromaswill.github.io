@@ -86,14 +86,23 @@ body::before {
 }
    
 #main {
-  display: flex;               /* make it a flex container */
-  flex-direction: column;      /* stack items vertically */
-  justify-content: center;     /* vertical centering */
-  align-items: center;         /* horizontal centering */
-  min-height: calc(var(--vh, 1vh) * 100); /* full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(var(--vh, 1vh) * 100);
+  text-align: center;
+  width: 100%;
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+   #main img {
+  display: block;
+  margin: 0 auto 20px auto;
+}
+   
 }
 
 /* =========================
