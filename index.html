@@ -227,4 +227,16 @@ setTimeout(() => {
   flash.classList.remove("active");
 }, 1400);
 }
+   // Mobile full screen height fix for iOS
+function setFullHeight() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Run once
+setFullHeight();
+
+// Update on resize/orientation change
+window.addEventListener('resize', setFullHeight);
+   
 </script>
