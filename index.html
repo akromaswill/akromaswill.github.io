@@ -7,7 +7,6 @@
   <title>Enter Heaven</title>
 
   <style>
-    /* 🟣 FULLSCREEN FIX (this removes white bars completely) */
     html {
       height: 100%;
       background: #3a0f3f;
@@ -17,37 +16,25 @@
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      min-height: 100dvh; /* modern mobile fix */
-      width: 100%;
+      min-height: 100dvh;
       font-family: "Courier New", monospace;
       text-align: center;
       color: #f5f5f5;
       overflow-x: hidden;
 
       background: linear-gradient(180deg, #3a0f3f, #5a2360);
-
-      /* IMPORTANT: prevents white overscroll bars */
       overscroll-behavior: none;
     }
 
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
 
-    .landing-wrap {
-      padding-top: 90px;
-    }
+    .landing-wrap { padding-top: 90px; }
 
-    .section {
-      margin: 40px 20px;
-    }
+    .section { margin: 40px 20px; }
 
-    img {
-      max-width: 90%;
-      border-radius: 6px;
-    }
+    img { max-width: 90%; border-radius: 6px; }
 
-    /* 💗 glowing enter */
+    /* 💗 ENTER HEAVEN */
     .blink {
       font-size: 1.6em;
       color: #ff9ae6;
@@ -62,15 +49,14 @@
       100% { opacity: 0.6; text-shadow: 0 0 5px #ff66cc; transform: scale(1); }
     }
 
-    /* 🧿 symbols reveal */
+    /* 🧿 symbol */
     .symbol {
       color: #ff9ae6;
       font-size: 1.5em;
       margin: 20px;
-
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 1.2s ease, transform 1.2s ease;
+      transition: 1.2s;
     }
 
     .symbol.show {
@@ -92,43 +78,78 @@
       transition: opacity 0.7s ease-in-out;
     }
 
-    .portal.active {
-      opacity: 1;
-    }
+    .portal.active { opacity: 1; }
 
-    /* 🔘 CURSOR DOT (desktop only) */
-    .cursor-dot {
+    /* ⭐ CURSOR STAR */
+    .cursor-star {
       position: fixed;
-      width: 14px;
-      height: 14px;
-      background: #ff9ae6;
-      border-radius: 50%;
+      font-size: 18px;
+      color: #ff9ae6;
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 1000;
-
-      box-shadow:
-        0 0 10px #ff66cc,
-        0 0 25px #ffb3ec;
-
-      mix-blend-mode: screen;
+      text-shadow: 0 0 10px #ff66cc, 0 0 25px #ffb3ec;
     }
 
-    /* hide cursor on desktop (optional aesthetic) */
-    @media (pointer: fine) {
-      body {
-        cursor: none;
+    /* ✨ trail particles */
+    .trail {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: #ffb3ec;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.8;
+      animation: fadeTrail 0.8s forwards;
+    }
+
+    @keyframes fadeTrail {
+      to {
+        opacity: 0;
+        transform: scale(0.3);
       }
+    }
+
+    /* 🌟 side star columns */
+    .side {
+      position: fixed;
+      top: 0;
+      width: 20px;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 5;
+      color: #ff9ae6;
+      opacity: 0.7;
+      font-size: 10px;
+      line-height: 18px;
+      white-space: pre;
+    }
+
+    .left { left: 3px; }
+    .right { right: 3px; }
+
+    /* 🌐 main title */
+    h1 {
+      font-size: 1.6em;
+      margin-top: 20px;
+      font-weight: normal;
+      letter-spacing: 2px;
     }
   </style>
 </head>
 
 <body>
 
+<!-- 🌟 portal -->
 <div id="portal" class="portal"></div>
 
-<!-- 🔘 glowing cursor -->
-<div id="cursor" class="cursor-dot"></div>
+<!-- ⭐ cursor star -->
+<div id="cursor" class="cursor-star">★</div>
+
+<!-- 🌟 side star columns -->
+<div class="side left">★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★</div>
+<div class="side right">★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★</div>
 
 <!-- 🌌 LANDING -->
 <div id="landing" class="landing-wrap">
@@ -148,9 +169,9 @@
 <!-- 🌐 MAIN -->
 <div id="main" class="hidden">
 
-  <h1>Your Artist Name</h1>
+  <h1>Jerome Rafael</h1>
 
-  <div id="symbol" class="symbol">★ ॐ ★</div>
+  <div id="symbol" class="symbol">ॐ</div>
 
   <div class="section">
     <p>Visual artist exploring color, nature, and spirituality.</p>
@@ -159,10 +180,9 @@
 </div>
 
 <script>
+  /* 🌟 portal transition */
   function enterHeaven() {
-
     const portal = document.getElementById("portal");
-
     portal.classList.add("active");
 
     setTimeout(() => {
@@ -180,12 +200,29 @@
     }, 1400);
   }
 
-  /* 🔘 cursor follow effect */
+  /* ⭐ cursor + trail system */
   const cursor = document.getElementById("cursor");
+
+  let lastTrailTime = 0;
 
   document.addEventListener("mousemove", (e) => {
     cursor.style.left = e.clientX + "px";
     cursor.style.top = e.clientY + "px";
+
+    // limit trail spawn speed
+    const now = Date.now();
+    if (now - lastTrailTime > 40) {
+      lastTrailTime = now;
+
+      const trail = document.createElement("div");
+      trail.className = "trail";
+      trail.style.left = e.clientX + "px";
+      trail.style.top = e.clientY + "px";
+
+      document.body.appendChild(trail);
+
+      setTimeout(() => trail.remove(), 800);
+    }
   });
 </script>
 
