@@ -141,15 +141,23 @@ body::before {
 .stars {
   position: fixed;
   top: 0;
-  width: 40px;
-  height: 100vh;
-  overflow: hidden;
+  bottom: 0;
+  width: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   font-size: 26px;
-  line-height: 32px;
+  line-height: 1;
+  pointer-events: none;
 }
 
-.left { left: 0; }
-.right { right: 0; }
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
 
 /* =========================
    🧿 TEXT
@@ -180,7 +188,7 @@ p {
 <div id="flash"></div>
 
 <!-- ⭐ STARS -->
-<div id="stars" style="display:none;">
+<div id="stars">
   <div class="stars left">
     ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
     ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
