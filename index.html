@@ -12,7 +12,8 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(180deg, #3a0f40, #6a2a72, #8a3a9a);
   overflow-x: hidden;
 }
@@ -21,9 +22,11 @@ html, body {
 body {
   min-height: 100vh;
   min-height: 100dvh;
-  min-height: -webkit-fill-available; /* iOS Safari fullscreen fix */
+  min-height: -webkit-fill-available;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
-
+   
 /* 🔥 force background to cover any 1–2px gaps */
 body::before {
   content: "";
