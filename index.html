@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, height=device-height">
 
 <style>
 
@@ -14,31 +14,20 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  background: transparent;
+  background: linear-gradient(180deg, #3a0f40, #6a2a72, #8a3a9a);
 }
 
-/* 🔥 iOS FULLSCREEN FIX (this is the key) */
+/* FORCE FULL SCREEN ON iOS */
 body {
-  margin: 0;
-  padding: 0;
   min-height: 100vh;
-  min-height: 100dvh;
-  overflow-x: hidden;
-  overscroll-behavior-y: none;
+  min-height: 100svh; /* this is the key */
 }
-   
-/* 🔥 force background to cover any 1–2px gaps */
-body::before {
-  content: "";
-  position: fixed;
-  top: -100vh;
-  left: 0;
-  width: 100%;
-  height: 300vh;
-  background: linear-gradient(180deg, #3a0f40, #6a2a72, #8a3a9a);
-  z-index: -999;
-  pointer-events: none;
+
+/* ENSURE ALL MAIN SECTIONS FILL SCREEN */
+#landing,
+#main {
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 /* =========================
