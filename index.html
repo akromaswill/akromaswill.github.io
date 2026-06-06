@@ -228,18 +228,18 @@ function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
 
-function enter() {
-  const landing = document.getElementById("landing");
-  const main = document.getElementById("main");
-
+  // IMPORTANT: switch pages
   landing.style.display = "none";
   main.style.display = "flex";
 
-  main.style.opacity = "1";
-  main.style.transform = "scale(1)";
-} // 👈 happens early during flash
+  // force background to stay purple on iOS transition glitch
+  document.documentElement.style.background = "#6a2a72";
+  document.body.style.background = "#6a2a72";
 
-// let flash finish naturally
+  // fade-in effect (optional but nice)
+  setTimeout(() => {
+    main.style.opacity = "1";
+    main.style.transform = "scale(1)";
+  }, 50);
 }
-
 </script>
