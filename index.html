@@ -93,7 +93,7 @@ body {
 }
 
 .home {
-  min-height: 100vh;
+  min-height: 100%;
 }
    
 #main {
@@ -101,12 +101,23 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   text-align: center;
   width: 100%;
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 1.2s ease, transform 1.2s ease;
+}
+   
+#landing,
+#main {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+#main {
+  position: fixed;
+  inset: 0;
 }
    
    #main img {
