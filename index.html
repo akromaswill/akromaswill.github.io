@@ -8,10 +8,7 @@
 /* =========================
    🟣 FULL BACKGROUND (SAFE)
 ========================= */
-#bg {
-  display: none;
-}
-   
+
 html, body {
   margin: 0;
   padding: 0;
@@ -30,20 +27,13 @@ html, body {
 /* FORCE FULL SCREEN ON iOS */
 body {
   min-height: 100vh;
-  min-height: 100svh; /* this is the key */
 }
 
 body {
   padding-top: constant(safe-area-inset-top);
-  padding-top: env(safe-area-inset-top);
 }
 
 /* ENSURE ALL MAIN SECTIONS FILL SCREEN */
-#landing,
-#main {
-  min-height: 100vh;
-  min-height: 100svh;
-}
 
 /* =========================
    ⚡ FLASH
