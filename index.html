@@ -29,6 +29,10 @@ body {
   min-height: 100dvh;
 }
 
+   body.flash {
+  animation: flashAnim 1.2s ease-out;
+}
+
    #landing,
 #main {
   background: transparent;
@@ -221,31 +225,21 @@ p {
 
 <script>
 function enter() {
-  const flash = document.getElementById("flash");
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
 
-  flash.classList.add("active");
+function enter() {
+  const landing = document.getElementById("landing");
+  const main = document.getElementById("main");
 
-setTimeout(() => {
-  // switch while screen is still bright
-landing.style.display = "none";
-document.body.style.background = "#6a2a72";
-main.style.display = "flex";
-main.style.opacity = "1";
+  landing.style.display = "none";
+  main.style.display = "flex";
 
-  // fade in main content
-  setTimeout(() => {
-    main.style.opacity = "1";
-main.style.transform = "scale(1)";
-  }, 50);
-
-}, 400); // 👈 happens early during flash
+  main.style.opacity = "1";
+  main.style.transform = "scale(1)";
+} // 👈 happens early during flash
 
 // let flash finish naturally
-setTimeout(() => {
-  flash.classList.remove("active");
-}, 1400);
 }
 
 </script>
