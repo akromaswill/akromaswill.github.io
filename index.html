@@ -221,21 +221,6 @@ p {
 <!-- ⚡ FLASH -->
 <div id="flash"></div>
 
-<!-- ⭐ STARS -->
-<div id="stars">
-  <div class="stars left">
-    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-  </div>
-
-  <div class="stars right">
-    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-    ★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>★<br>
-  </div>
-</div>
-
 <!-- 🌌 ENTRY -->
 <div id="landing" class="center" style="position: relative; z-index: 2;">
   <img src="IMG_7113.png">
@@ -260,7 +245,6 @@ function enter() {
   const flash = document.getElementById("flash");
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
-  const stars = document.getElementById("stars");
 
   flash.classList.add("active");
 
@@ -273,7 +257,6 @@ main.style.opacity = "1";
 setTimeout(() => {
   landing.style.pointerEvents = "none";
 }, 800);
-  stars.style.display = "block";
 
   // fade in main content
   setTimeout(() => {
