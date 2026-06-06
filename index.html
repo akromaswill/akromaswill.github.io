@@ -1,40 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, height=device-height">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <style>
 
 /* =========================
-   🟣 FULL BACKGROUND (SAFE)
+   🟣 BASE BACKGROUND (iPhone-safe)
 ========================= */
-html {
+html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: -webkit-fill-available;
-  background: #6a2a72 !important;
-  background-color: #6a2a72 !important;
+  height: 100%;
+  overflow: hidden;
+  background: #6a2a72;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  background: #6a2a72 !important;
-  background-color: #6a2a72 !important;
-}
-   body {
-  min-height: 100dvh;
+/* FIXED BACKGROUND LAYER */
+#bg {
+  position: fixed;
+  inset: 0;
+  background: #6a2a72;
+  z-index: -1;
 }
 
-   body.flash {
-  animation: flashAnim 1.2s ease-out;
+/* =========================
+   🌌 SCREEN SYSTEM
+========================= */
+.screen {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 1s ease, transform 1s ease;
+
+  pointer-events: none;
 }
 
-   #landing,
-#main {
+.screen.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* =========================
+   💗 ENTER BUTTON
+========================= */
+.enter {
+  font-size: 22px;
+  color: #ff9ae6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* =========================
+   🧿 TEXT
+========================= */
+h1 {
+  color: black;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.symbol {
+  font-size: 24px;
+  color: #ff9ae6;
+  margin: 20px 0;
+}
+
+p {
+  text-align: center;
+  line-height: 1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FIXED BACKGROUND -->
+<div id="bg"></div>
+
+<!-- ENTRY SCREEN -->
+<div id="landing" class="screen active">
+  <img src="IMG_7113.png">
+  <div class="enter" onclick="enter()">enter heaven</div>
+</div>
+
+<!-- HOME SCREEN -->
+<div id="main" class="screen">
+  <h1>Jerome Rafael</h1>
+  <div class="symbol">ॐ</div>
+
+  <p>
+    KEEP CALM<br>
+    AND<br>
+    THE LIGHT<br>
+    WILL PREVAIL
+  </p>
+</div>
+
+<script>
+function enter() {
+  const landing = document.getElementById("landing");
+  const main = document.getElementById("main");
+
+  // fade out entry
+  landing.classList.remove("active");
+
+  // fade in home
+  setTimeout(() => {
+    main.classList.add("active");
+  }, 150);
+}
+</script>
+
+</body>
+</html>#main {
   background: transparent;
 }
 
