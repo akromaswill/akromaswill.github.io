@@ -49,42 +49,46 @@ body {
   transform: scale(1.08);
 }
 
-/* ENSURE ALL MAIN SECTIONS FILL SCREEN */
-
-/* =========================
-   ⚡ FLASH
-========================= */
-#flash {
+#heavenGlow {
   position: fixed;
-  inset: 0;
-  background: #6a2a72;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+
+  background: white;
   opacity: 0;
+
+  filter: blur(50px);
+
   pointer-events: none;
-  z-index: 999;
-  filter: blur(8px);
+  z-index: 100;
 }
 
-#flash.active {
-  animation: flashAnim 1.8s ease-out;
+#heavenGlow.active {
+  animation: heavenGlow 1.8s ease-out;
 }
 
-@keyframes flashAnim {
+@keyframes heavenGlow {
   0% {
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
   }
-  15% {
-    opacity: 1;
-  }
+
   40% {
-    opacity: 0.95;
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(3);
   }
-  70% {
-    opacity: 0.6;
-  }
+
   100% {
     opacity: 0;
+    transform: translate(-50%, -50%) scale(5);
   }
 }
+/* ENSURE ALL MAIN SECTIONS FILL SCREEN */
 
 /* =========================
    🧱 LAYOUT
@@ -210,10 +214,9 @@ p {
 
 <body>
 
+<div id="heavenGlow"></div>
+   
 <div id="bg"></div>
-
-<!-- ⚡ FLASH -->
-<div id="flash"></div>
 
 <!-- 🌌 ENTRY -->
 <div id="landing" class="center" style="position: relative; z-index: 2;">
@@ -238,10 +241,13 @@ p {
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
+  const glow = document.getElementById("heavenGlow");
 
   document.documentElement.style.background = "#6a2a72";
   document.body.style.background = "#6a2a72";
-
+   
+  glow.classList.add("active");
+   
   landing.classList.add("fade-out");
 
   setTimeout(() => {
@@ -254,6 +260,6 @@ function enter() {
       main.style.transform = "scale(1)";
     }, 50);
 
-}, 1800);
+}, 1000);
 }
 </script>
