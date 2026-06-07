@@ -46,15 +46,15 @@ body {
 
 .fade-out {
   opacity: 0;
-  transform: scale(1.08);
+  transform: scale(1.15);
 }
 
 #heavenGlow {
   position: fixed;
   left: 50%;
   top: 50%;
-  width: 120px;
-  height: 120px;
+  width: 220px;
+  height: 220px;
 
   transform: translate(-50%, -50%);
   border-radius: 50%;
@@ -62,16 +62,16 @@ body {
   background: white;
   opacity: 0;
 
-  filter: blur(50px);
+  filter: blur(90px);
 
   pointer-events: none;
   z-index: 100;
 }
 
 #heavenGlow.active {
-  animation: heavenGlow 1.8s ease-out;
+  animation: heavenGlow 2.5s ease-out;
 }
-
+   
 @keyframes heavenGlow {
   0% {
     opacity: 0;
@@ -112,11 +112,17 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+
+  min-height: 100vh;
+
   width: 100%;
+
   opacity: 0;
   transform: scale(1.05);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
 }
    
    #main img {
