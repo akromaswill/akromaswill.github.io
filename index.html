@@ -38,12 +38,15 @@ body {
   background: transparent;
 }
 
-   #landing {
-  transition: opacity 0.8s ease;
+#landing {
+  transition:
+    opacity 1.8s ease,
+    transform 1.8s ease;
 }
 
 .fade-out {
   opacity: 0;
+  transform: scale(1.08);
 }
 
 /* ENSURE ALL MAIN SECTIONS FILL SCREEN */
@@ -251,6 +254,6 @@ function enter() {
       main.style.transform = "scale(1)";
     }, 50);
 
-  }, 800);
+}, 1800);
 }
 </script>
