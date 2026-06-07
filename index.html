@@ -38,6 +38,14 @@ body {
   background: transparent;
 }
 
+   #landing {
+  transition: opacity 0.8s ease;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
 /* ENSURE ALL MAIN SECTIONS FILL SCREEN */
 
 /* =========================
@@ -228,18 +236,21 @@ function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
 
-  // IMPORTANT: switch pages
-  landing.style.display = "none";
-  main.style.display = "flex";
-
-  // force background to stay purple on iOS transition glitch
   document.documentElement.style.background = "#6a2a72";
   document.body.style.background = "#6a2a72";
 
-  // fade-in effect (optional but nice)
+  landing.classList.add("fade-out");
+
   setTimeout(() => {
-    main.style.opacity = "1";
-    main.style.transform = "scale(1)";
-  }, 50);
+    landing.style.display = "none";
+
+    main.style.display = "flex";
+
+    setTimeout(() => {
+      main.style.opacity = "1";
+      main.style.transform = "scale(1)";
+    }, 50);
+
+  }, 800);
 }
 </script>
