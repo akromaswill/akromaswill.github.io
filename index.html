@@ -169,7 +169,24 @@ body {
   50% { opacity: 1; text-shadow: 0 0 20px #ff66cc; }
   100% { opacity: 0.6; }
 }
+   
+.menu {
+  margin-top: 15px;
 
+  display: flex;
+  gap: 35px;
+
+  font-size: 22px;
+}
+
+.menu span {
+  color: #ff9ae6;
+  cursor: pointer;
+}
+
+.menu-active {
+  animation: glow 2s infinite;
+}
 /* =========================
    ⭐ STARS
 ========================= */
@@ -242,6 +259,12 @@ p {
 <div id="main" class="home" style="display:none;">
 
   <img src="title jerome rafael.png" class="title-image">
+
+  <div class="menu">
+    <span>about</span>
+    <span class="menu-active">gallery</span>
+    <span>contact</span>
+  </div>
 
 </div>
 
