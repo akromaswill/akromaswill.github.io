@@ -189,6 +189,20 @@ body {
 .menu-active {
   animation: glow 2s infinite;
 }
+
+.content-section {
+  width: 90%;
+  max-width: 500px;
+
+  margin-top: 40px;
+
+  text-align: center;
+
+  color: #ff9ae6;
+
+  font-size: 18px;
+  line-height: 1.6;
+}
 /* =========================
    ⭐ STARS
 ========================= */
@@ -262,15 +276,58 @@ p {
 
   <img src="title jerome rafael.png" class="title-image">
 
-  <div class="menu">
-    <span>about</span>
-    <span class="menu-active">gallery</span>
-    <span>contact</span>
-  </div>
+ <div class="menu">
+  <span id="about-btn" onclick="showSection('about')">about</span>
 
+  <span id="gallery-btn"
+        class="menu-active"
+        onclick="showSection('gallery')">
+        gallery
+  </span>
+
+  <span id="contact-btn"
+        onclick="showSection('contact')">
+        contact
+  </span>
 </div>
 
+
+<div id="gallery-content" class="content-section">
+  <p>Gallery coming soon...</p>
+</div>
+
+<div id="about-content" class="content-section" style="display:none;">
+  <p>
+    Jerome Rafael is an artist working across
+    photography, publishing, installation and
+    digital media.
+  </p>
+</div>
+<div id="contact-content" class="content-section" style="display:none;">
+  <p>
+    Instagram:<br>
+    @yourinstagram
+  </p>
+</div>
+
+</div> <!-- END #main -->
+
 <script>
+
+   function showSection(section) {
+
+  document.getElementById("gallery-content").style.display = "none";
+  document.getElementById("about-content").style.display = "none";
+  document.getElementById("contact-content").style.display = "none";
+
+  document.getElementById("gallery-btn").classList.remove("menu-active");
+  document.getElementById("about-btn").classList.remove("menu-active");
+  document.getElementById("contact-btn").classList.remove("menu-active");
+
+  document.getElementById(section + "-content").style.display = "block";
+  document.getElementById(section + "-btn").classList.add("menu-active");
+}
+   
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
