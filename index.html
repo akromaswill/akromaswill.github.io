@@ -239,6 +239,15 @@ a:hover {
 
   font-size: 18px;
 }
+   
+#project-page {
+  width: 100%;
+  min-height: 100vh;
+
+  text-align: center;
+
+  color: #ff9ae6;
+}
 /* =========================
    ⭐ STARS
 ========================= */
@@ -330,15 +339,19 @@ p {
 
 <div id="gallery-content" class="content-section">
 
-  <img src="bookofom.cover.png" class="project-image">
+  <div onclick="openProject()">
 
-<div class="project-title">
-  the book of om
-</div>
+    <img src="bookofom.cover.png" class="project-image">
 
-<div class="project-year">
-  (2026)
-</div>
+    <div class="project-title">
+      the book of om
+    </div>
+
+    <div class="project-year">
+      (2026)
+    </div>
+
+  </div>
 
 </div>
 
@@ -360,7 +373,20 @@ p {
 
   </p>
 </div>
+<div id="project-page" style="display:none;">
 
+  <img src="bookofom.cover.png" class="project-image">
+
+  <div class="project-title">
+    the book of om
+  </div>
+
+  <div class="project-year">
+    (2026)
+  </div>
+
+</div>
+   
 </div> <!-- END #main -->
 
 <script>
@@ -378,7 +404,12 @@ p {
   document.getElementById(section + "-content").style.display = "block";
   document.getElementById(section + "-btn").classList.add("menu-active");
 }
-   
+   function openProject() {
+
+  document.getElementById("gallery-content").style.display = "none";
+  document.getElementById("project-page").style.display = "block";
+
+}
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
