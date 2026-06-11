@@ -393,6 +393,8 @@ p {
 
    function showSection(section) {
 
+  document.getElementById("project-page").style.display = "none";
+
   document.getElementById("gallery-content").style.display = "none";
   document.getElementById("about-content").style.display = "none";
   document.getElementById("contact-content").style.display = "none";
@@ -404,12 +406,17 @@ p {
   document.getElementById(section + "-content").style.display = "block";
   document.getElementById(section + "-btn").classList.add("menu-active");
 }
-   function openProject() {
+   
+function openProject() {
 
   document.getElementById("gallery-content").style.display = "none";
+  document.getElementById("about-content").style.display = "none";
+  document.getElementById("contact-content").style.display = "none";
+
   document.getElementById("project-page").style.display = "block";
 
 }
+   
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
