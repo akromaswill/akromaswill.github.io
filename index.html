@@ -239,6 +239,51 @@ a:hover {
 
   font-size: 18px;
 }
+
+   .project-home {
+  margin-top: 20px;
+
+  color: #ff9ae6;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.project-heading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  color: #ff9ae6;
+
+  font-size: 18px;
+}
+
+.project-slide {
+  width: 95vw;
+  max-width: 1200px;
+
+  height: auto;
+
+  display: block;
+  margin: 0 auto;
+}
+
+.slide-nav {
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+
+  color: #ff9ae6;
+
+  font-size: 18px;
+}
+
+.slide-nav span {
+  cursor: pointer;
+}
    
 #project-page {
   display: flex;
@@ -385,11 +430,46 @@ p {
 
 <div id="project-page" style="display:none;">
 
+  <div class="project-home" onclick="goHome()">
+    home
+  </div>
+
+  <div class="project-heading">
+    the book of om (2026)
+  </div>
+
+  <img
+    id="slide-image"
+    src="bookofom-01.jpg"
+    class="project-slide">
+
+  <div class="slide-nav">
+
+    <span onclick="prevSlide()">
+      previous
+    </span>
+
+    <span id="slide-number">
+      1 / 26
+    </span>
+
+    <span onclick="nextSlide()">
+      next
+    </span>
+
+  </div>
+
 </div>
 
 <script>
 
-   function showSection(section) {
+   <script>
+
+let currentSlide = 1;
+
+const totalSlides = 26;
+
+function showSection(section) {
 
   document.getElementById("project-page").style.display = "none";
 
@@ -412,7 +492,50 @@ function openProject() {
   document.getElementById("project-page").style.display = "block";
 
 }
-   
+
+function goHome() {
+
+  document.getElementById("project-page").style.display = "none";
+
+  document.getElementById("main").style.display = "flex";
+
+  showSection("gallery");
+
+}
+
+function nextSlide() {
+
+  if (currentSlide < totalSlides) {
+    currentSlide++;
+  }
+
+  updateSlide();
+
+}
+
+function prevSlide() {
+
+  if (currentSlide > 1) {
+    currentSlide--;
+  }
+
+  updateSlide();
+
+}
+
+function updateSlide() {
+
+  const number =
+    String(currentSlide).padStart(2, "0");
+
+  document.getElementById("slide-image").src =
+    "bookofom-" + number + ".jpg";
+
+  document.getElementById("slide-number").innerText =
+    currentSlide + " / " + totalSlides;
+
+}
+
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
