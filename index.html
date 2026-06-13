@@ -499,10 +499,10 @@ function showSection(section) {
 }
    
 function openProject() {
-
   document.getElementById("main").style.display = "none";
+  document.getElementById("project-page").style.display = "flex";
 
-  document.getElementById("project-page").style.display = "block";
+  setupSwipe();
 
 }
 
@@ -548,7 +548,7 @@ function updateSlide() {
     currentSlide + " / " + totalSlides;
 
 }
-
+   
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
@@ -556,51 +556,57 @@ function enter() {
 
   document.documentElement.style.background = "#6a2a72";
   document.body.style.background = "#6a2a72";
-   
-glow.classList.add("active");
-   
+
+  glow.classList.add("active");
+
   landing.classList.add("fade-out");
 
   setTimeout(() => {
     landing.style.display = "none";
-
     main.style.display = "flex";
 
     setTimeout(() => {
       main.style.opacity = "1";
       main.style.transform = "scale(1)";
+
     }, 50);
 
-}, 1000);
+  }, 1000);
+}
+   
 let startX = 0;
 let startY = 0;
 
-document.getElementById("slide-image").addEventListener("touchstart", function (e) {
-  if (e.touches.length > 1) return; // ignore zoom gestures
+function setupSwipe() {
+  const img = document.getElementById("slide-image");
+  if (!img) return;
 
-  startX = e.touches[0].clientX;
-  startY = e.touches[0].clientY;
-});
+  let startX = 0;
+  let startY = 0;
 
-document.getElementById("slide-image").addEventListener("touchend", function (e) {
-  if (e.changedTouches.length > 1) return;
+  img.ontouchstart = null;
+  img.ontouchend = null;
 
-  let endX = e.changedTouches[0].clientX;
-  let endY = e.changedTouches[0].clientY;
+  img.addEventListener("touchstart", function (e) {
+    if (e.touches.length > 1) return;
 
-  let diffX = startX - endX;
-  let diffY = startY - endY;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
 
-  // IMPORTANT: only trigger swipe if horizontal movement is stronger than vertical
-  if (Math.abs(diffX) > Math.abs(diffY)) {
+  img.addEventListener("touchend", function (e) {
+    if (e.changedTouches.length > 1) return;
 
-    if (diffX > 50) {
-      nextSlide();
+    let endX = e.changedTouches[0].clientX;
+    let endY = e.changedTouches[0].clientY;
+
+    let diffX = startX - endX;
+    let diffY = startY - endY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 50) nextSlide();
+      if (diffX < -50) prevSlide();
     }
-
-    if (diffX < -50) {
-      prevSlide();
-    }
-  }
-});
+  });
+}
 </script>
