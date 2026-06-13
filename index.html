@@ -576,25 +576,36 @@ function enter() {
    
 let startX = 0;
 let startY = 0;
+let isPinching = false;
 
 function setupSwipe() {
   const img = document.getElementById("slide-image");
   if (!img) return;
 
-  let startX = 0;
-  let startY = 0;
-
+  // reset listeners (safe)
   img.ontouchstart = null;
   img.ontouchend = null;
 
   img.addEventListener("touchstart", function (e) {
-    if (e.touches.length > 1) return;
+    // 👇 detect pinch (2 fingers = zoom)
+    if (e.touches.length > 1) {
+      isPinching = true;
+      return;
+    }
+
+    isPinching = false;
 
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
   });
 
   img.addEventListener("touchend", function (e) {
+    // ❌ ignore if user was zooming
+    if (isPinching) {
+      isPinching = false;
+      return;
+    }
+
     if (e.changedTouches.length > 1) return;
 
     let endX = e.changedTouches[0].clientX;
@@ -603,6 +614,7 @@ function setupSwipe() {
     let diffX = startX - endX;
     let diffY = startY - endY;
 
+    // only horizontal swipes
     if (Math.abs(diffX) > Math.abs(diffY)) {
       if (diffX > 50) nextSlide();
       if (diffX < -50) prevSlide();
