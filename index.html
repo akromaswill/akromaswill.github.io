@@ -572,30 +572,35 @@ glow.classList.add("active");
     }, 50);
 
 }, 1000);
-}
 let startX = 0;
+let startY = 0;
 
-document.getElementById("slide-image")
-.addEventListener("touchstart", function(e) {
+document.getElementById("slide-image").addEventListener("touchstart", function (e) {
+  if (e.touches.length > 1) return; // ignore zoom gestures
 
   startX = e.touches[0].clientX;
-
+  startY = e.touches[0].clientY;
 });
 
-document.getElementById("slide-image")
-.addEventListener("touchend", function(e) {
+document.getElementById("slide-image").addEventListener("touchend", function (e) {
+  if (e.changedTouches.length > 1) return;
 
   let endX = e.changedTouches[0].clientX;
+  let endY = e.changedTouches[0].clientY;
 
-  let diff = startX - endX;
+  let diffX = startX - endX;
+  let diffY = startY - endY;
 
-  if (diff > 50) {
-    nextSlide();
+  // IMPORTANT: only trigger swipe if horizontal movement is stronger than vertical
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+
+    if (diffX > 50) {
+      nextSlide();
+    }
+
+    if (diffX < -50) {
+      prevSlide();
+    }
   }
-
-  if (diff < -50) {
-    prevSlide();
-  }
-
 });
 </script>
