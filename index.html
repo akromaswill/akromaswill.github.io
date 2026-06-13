@@ -267,12 +267,21 @@ a:hover {
 
 .project-slide {
   width: 95vw;
-  max-width: 1200px;
+  max-width: 900px;
 
   height: auto;
 
   display: block;
   margin: 0 auto;
+}
+
+@media (orientation: landscape) {
+
+  .project-slide {
+    width: auto;
+    height: 70vh;
+  }
+
 }
 
 .slide-nav {
@@ -456,7 +465,7 @@ p {
     </span>
 
     <span id="slide-number">
-      1 / 26
+      1 / 24
     </span>
 
     <span onclick="nextSlide()">
