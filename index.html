@@ -573,5 +573,29 @@ glow.classList.add("active");
 
 }, 1000);
 }
+let startX = 0;
 
+document.getElementById("slide-image")
+.addEventListener("touchstart", function(e) {
+
+  startX = e.touches[0].clientX;
+
+});
+
+document.getElementById("slide-image")
+.addEventListener("touchend", function(e) {
+
+  let endX = e.changedTouches[0].clientX;
+
+  let diff = startX - endX;
+
+  if (diff > 50) {
+    nextSlide();
+  }
+
+  if (diff < -50) {
+    prevSlide();
+  }
+
+});
 </script>
