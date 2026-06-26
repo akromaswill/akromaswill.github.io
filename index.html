@@ -478,9 +478,11 @@ omSound.loop = true;
 // -------------------------
 function showSoundPopup() {
   const s = new Audio("sound_info_pop_up_audio.wav");
-  s.currentTime = 0.2;
+  s.currentTime = 0.1;
   s.play();
-  document.getElementById("sound-popup").style.display = "flex";
+  setTimeout(() => {
+    document.getElementById("sound-popup").style.display = "flex";
+  }, 300);
 }
 
 function dismissSoundPopup() {
