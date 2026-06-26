@@ -532,6 +532,9 @@ function updateSlide() {
 // ENTER HEAVEN
 // -------------------------
 function enter() {
+  const sound = new Audio("heaven_intro.wav");
+  sound.play();
+
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
   const glow = document.getElementById("heavenGlow");
