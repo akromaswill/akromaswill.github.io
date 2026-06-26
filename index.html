@@ -579,46 +579,41 @@ let startY = 0;
 let isPinching = false;
 
 function setupSwipe() {
-  const img = document.getElementById("slide-image");
-  if (!img) return;
+  const container = document.getElementById("project-page");
+  if (!container) return;
 
-  // reset listeners (safe)
-  img.ontouchstart = null;
-  img.ontouchend = null;
-
-  img.addEventListener("touchstart", function (e) {
-    // 👇 detect pinch (2 fingers = zoom)
+  container.addEventListener("touchstart", function (e) {
     if (e.touches.length > 1) {
       isPinching = true;
       return;
     }
-
     isPinching = false;
-
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
-  });
+  }, { passive: true });
 
-  img.addEventListener("touchend", function (e) {
-    // ❌ ignore if user was zooming
+  container.addEventListener("touchmove", function (e) {
+    if (e.touches.length > 1) {
+      isPinching = true;
+    }
+  }, { passive: true });
+
+  container.addEventListener("touchend", function (e) {
     if (isPinching) {
       isPinching = false;
       return;
     }
-
     if (e.changedTouches.length > 1) return;
 
     let endX = e.changedTouches[0].clientX;
     let endY = e.changedTouches[0].clientY;
-
     let diffX = startX - endX;
     let diffY = startY - endY;
 
-    // only horizontal swipes
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-      if (diffX > 50) nextSlide();
-      if (diffX < -50) prevSlide();
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      if (diffX > 0) nextSlide();
+      else prevSlide();
     }
-  });
+  }, { passive: true });
 }
 </script>
