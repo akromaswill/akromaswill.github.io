@@ -479,76 +479,51 @@ p {
 <script>
 
 let currentSlide = 1;
-
 const totalSlides = 24;
+let startX = 0;
+let startY = 0;
+let isPinching = false;
+let touchStartTime = 0;
 
 function showSection(section) {
-
   document.getElementById("project-page").style.display = "none";
-
   document.getElementById("gallery-content").style.display = "none";
   document.getElementById("about-content").style.display = "none";
   document.getElementById("contact-content").style.display = "none";
-
   document.getElementById("gallery-btn").classList.remove("menu-active");
   document.getElementById("about-btn").classList.remove("menu-active");
   document.getElementById("contact-btn").classList.remove("menu-active");
-
   document.getElementById(section + "-content").style.display = "block";
   document.getElementById(section + "-btn").classList.add("menu-active");
 }
-   
+
 function openProject() {
   document.getElementById("main").style.display = "none";
   document.getElementById("project-page").style.display = "flex";
-
-  setupSwipe();
-
 }
 
 function goHome() {
-
   document.getElementById("project-page").style.display = "none";
-
   document.getElementById("main").style.display = "flex";
-
   showSection("gallery");
-
 }
 
 function nextSlide() {
-
-  if (currentSlide < totalSlides) {
-    currentSlide++;
-  }
-
+  if (currentSlide < totalSlides) currentSlide++;
   updateSlide();
-
 }
 
 function prevSlide() {
-
-  if (currentSlide > 1) {
-    currentSlide--;
-  }
-
+  if (currentSlide > 1) currentSlide--;
   updateSlide();
-
 }
 
 function updateSlide() {
-
-  const number =
-    String(currentSlide).padStart(2, "0");
-
-  document.getElementById("slide-image").src =
-    "bookofom-" + number + ".webp";
-
-  document.getElementById("slide-number").innerText =
-    currentSlide + " / " + totalSlides;
-
+  const number = String(currentSlide).padStart(2, "0");
+  document.getElementById("slide-image").src = "bookofom-" + number + ".webp";
+  document.getElementById("slide-number").innerText = currentSlide + " / " + totalSlides;
 }
-   
+
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
@@ -558,29 +533,21 @@ function enter() {
   document.body.style.background = "#6a2a72";
 
   glow.classList.add("active");
-
   landing.classList.add("fade-out");
 
   setTimeout(() => {
     landing.style.display = "none";
     main.style.display = "flex";
-
     setTimeout(() => {
       main.style.opacity = "1";
       main.style.transform = "scale(1)";
-
     }, 50);
-
   }, 1000);
 }
-   
-let startX = 0;
-let startY = 0;
-let isPinching = false;
 
-function setupSwipe() {
+// Swipe — set up ONCE on page load
+document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("project-page");
-  if (!container) return;
 
   container.addEventListener("touchstart", function (e) {
     if (e.touches.length > 1) {
@@ -588,6 +555,7 @@ function setupSwipe() {
       return;
     }
     isPinching = false;
+    touchStartTime = Date.now();
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
   }, { passive: true });
@@ -605,15 +573,19 @@ function setupSwipe() {
     }
     if (e.changedTouches.length > 1) return;
 
-    let endX = e.changedTouches[0].clientX;
-    let endY = e.changedTouches[0].clientY;
-    let diffX = startX - endX;
-    let diffY = startY - endY;
+    // ignore if touch was too slow (likely a zoom gesture)
+    const elapsed = Date.now() - touchStartTime;
+    if (elapsed > 600) return;
+
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const diffX = startX - endX;
+    const diffY = startY - endY;
 
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
       if (diffX > 0) nextSlide();
       else prevSlide();
     }
   }, { passive: true });
-}
+});
 </script>
