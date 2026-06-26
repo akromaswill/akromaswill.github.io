@@ -470,6 +470,8 @@ let startY = 0;
 let isPinching = false;
 let touchStartTime = 0;
 let soundEnabled = false;
+const omSound = new Audio("bookofOM_soundtrack.mp3");
+omSound.loop = true;
 
 // -------------------------
 // SOUND POPUP
@@ -501,12 +503,18 @@ function showSection(section) {
 function openProject() {
   document.getElementById("main").style.display = "none";
   document.getElementById("project-page").style.display = "flex";
+  
+  omSound.currentTime = 0;
+  omSound.play();
 }
 
 function goHome() {
   document.getElementById("project-page").style.display = "none";
   document.getElementById("main").style.display = "flex";
   showSection("gallery");
+
+  omSound.pause();
+  omSound.currentTime = 0;
 }
 
 // -------------------------
