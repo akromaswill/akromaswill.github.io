@@ -25,15 +25,15 @@ body {
   background: #6a2a72 !important;
   background-color: #6a2a72 !important;
 }
-   body {
+body {
   min-height: 100dvh;
 }
 
-   body.flash {
+body.flash {
   animation: flashAnim 1.2s ease-out;
 }
 
-   #landing,
+#landing,
 #main {
   background: transparent;
 }
@@ -56,39 +56,32 @@ body {
   top: 50%;
   width: 120px;
   height: 120px;
-
   transform: translate(-50%, -50%);
   border-radius: 50%;
-
   background: white;
   opacity: 0;
-
   filter: blur(50px);
-
   pointer-events: none;
   z-index: 100;
 }
 #heavenGlow.active {
   animation: heavenGlow 1.8s ease-out;
 }
-   
+
 @keyframes heavenGlow {
   0% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.3);
   }
-
   40% {
     opacity: 0.8;
     transform: translate(-50%, -50%) scale(3);
   }
-
   100% {
     opacity: 0;
     transform: translate(-50%, -50%) scale(5);
   }
 }
-/* ENSURE ALL MAIN SECTIONS FILL SCREEN */
 
 /* =========================
    🧱 LAYOUT
@@ -98,9 +91,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   height: 100dvh;
-
   text-align: center;
   padding: 0;
 }
@@ -108,21 +99,17 @@ body {
 .home {
   height: 100%;
 }
-   
+
 #main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
   min-height: 100dvh;
   width: 100%;
-
   padding-top: 0px;
-
   opacity: 0;
   transform: scale(1.05);
-
   transition:
     opacity 1.2s ease,
     transform 1.2s ease;
@@ -139,18 +126,18 @@ body {
   margin: 0 auto 20px auto;
   transition: filter 1.8s ease;
 }
-   
+
 .fade-out img {
   filter: brightness(2);
 }
-   
+
 .title-image {
   width: 100%;
   max-width: 500px;
-
   display: block;
   margin: -45px auto 0 auto;
 }
+
 /* =========================
    💗 ENTER
 ========================= */
@@ -162,7 +149,7 @@ body {
   animation: glow 2s infinite;
 }
 
-   .enter:hover {
+.enter:hover {
   transform: scale(1.1);
 }
 
@@ -171,13 +158,11 @@ body {
   50% { opacity: 1; text-shadow: 0 0 20px #ff66cc; }
   100% { opacity: 0.6; }
 }
-   
+
 .menu {
   margin-top: -35px;
-
   display: flex;
   gap: 35px;
-
   font-size: 22px;
 }
 
@@ -202,53 +187,38 @@ a:hover {
 .content-section {
   width: 90%;
   max-width: 500px;
-
   margin-top: 40px;
-
   text-align: center;
-
   color: #ff9ae6;
-
   font-size: 18px;
   line-height: 1.6;
 }
-   
-/* PROJECT */
 
+/* PROJECT */
 .project-image {
   width: 50%;
   max-width: 250px;
-
   display: block;
-
   margin: 20px auto 0 auto;
 }
 
 .project-title {
   margin-top: 12px;
-
   color: #ff9ae6;
-
   font-size: 18px;
 }
 
 .project-year {
   margin-top: 0px;
-
   color: #ff9ae6;
-
   font-size: 18px;
 }
 
 .project-home {
   margin-top: 20px;
-
   color: #ff9ae6;
-
   font-size: 22px;
-
   cursor: pointer;
-
   text-align: center;
   width: 100%;
 }
@@ -256,11 +226,8 @@ a:hover {
 .project-heading {
   margin-top: 20px;
   margin-bottom: 20px;
-
   color: #ff9ae6;
-
   font-size: 18px;
-
   text-align: center;
   width: 100%;
 }
@@ -268,50 +235,101 @@ a:hover {
 .project-slide {
   width: 95vw;
   max-width: 900px;
-
   height: auto;
-
   display: block;
   margin: 0 auto;
 }
 
 @media (orientation: landscape) {
-
   .project-slide {
     width: auto;
     height: 70vh;
   }
-
 }
 
 .slide-nav {
   margin-top: 20px;
-
   display: flex;
   justify-content: center;
   gap: 40px;
-
   color: #ff9ae6;
-
   font-size: 18px;
 }
 
 .slide-nav span {
   cursor: pointer;
 }
-   
+
 #project-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
   min-height: 100dvh;
-
   color: #ff9ae6;
-
   padding-top: 40px;
 }
+
+/* =========================
+   🔊 SOUND POPUP
+========================= */
+#sound-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(60, 10, 70, 0.7);
+}
+
+#sound-popup .tablet-wrap {
+  position: relative;
+  width: 88vw;
+  max-width: 360px;
+}
+
+#sound-popup .tablet-wrap img {
+  width: 100%;
+  display: block;
+}
+
+/* inner recessed rectangle area: ~top 22% to 62%, left 10% to 90% */
+#sound-popup .tablet-text {
+  position: absolute;
+  top: 22%;
+  left: 10%;
+  right: 10%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ff9ae6;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* lower blank area: ~62% to 90% */
+#sound-popup .tablet-ok {
+  position: absolute;
+  top: 65%;
+  left: 0;
+  right: 0;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sound-popup .tablet-ok span {
+  color: #ff9ae6;
+  font-size: 17px;
+  text-decoration: underline;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
 /* =========================
    ⭐ STARS
 ========================= */
@@ -338,12 +356,8 @@ a:hover {
   z-index: 5;
 }
 
-.left {
-  left: 0;
-}
-.right {
-  right: 0;
-}
+.left { left: 0; }
+.right { right: 0; }
 
 /* =========================
    🧿 TEXT
@@ -371,8 +385,20 @@ p {
 <body>
 
 <div id="heavenGlow"></div>
-   
 <div id="bg"></div>
+
+<!-- 🔊 SOUND POPUP -->
+<div id="sound-popup" style="display:none;">
+  <div class="tablet-wrap">
+    <img src="sound_info_pop_up.png" alt="stone tablet">
+    <div class="tablet-text">
+      enable sound for<br>full experience
+    </div>
+    <div class="tablet-ok">
+      <span onclick="dismissSoundPopup()">ok</span>
+    </div>
+  </div>
+</div>
 
 <!-- 🌌 ENTRY -->
 <div id="landing" class="center" style="position: relative; z-index: 2;">
@@ -385,93 +411,52 @@ p {
 
   <img src="title jerome rafael.png" class="title-image">
 
- <div class="menu">
-  <span id="about-btn" onclick="showSection('about')">about</span>
-
-  <span id="gallery-btn"
-        class="menu-active"
-        onclick="showSection('gallery')">
-        gallery
-  </span>
-
-  <span id="contact-btn"
-        onclick="showSection('contact')">
-        contact
-  </span>
-</div>
-
-
-<div id="gallery-content" class="content-section">
-
-  <div onclick="openProject()">
-
-    <img src="bookofom.cover.png" class="project-image">
-
-    <div class="project-title">
-      the book of om
-    </div>
-
-    <div class="project-year">
-      (2026)
-    </div>
-
+  <div class="menu">
+    <span id="about-btn" onclick="showSection('about')">about</span>
+    <span id="gallery-btn" class="menu-active" onclick="showSection('gallery')">gallery</span>
+    <span id="contact-btn" onclick="showSection('contact')">contact</span>
   </div>
 
-</div>
+  <div id="gallery-content" class="content-section">
+    <div onclick="openProject()">
+      <img src="bookofom.cover.png" class="project-image">
+      <div class="project-title">the book of om</div>
+      <div class="project-year">(2026)</div>
+    </div>
+  </div>
 
-<div id="about-content" class="content-section" style="display:none;">
-  <p>
-   Jerome Rafael is an earth based human being. 
-   based in switzerland he is espressing himself 
-   through fashion and art. his works mainly focus 
-   is on a harmonic balance between nature and technology 
-   aswell as staying grounded while being connected 
-   to the inner core. 
-  </p>
-</div>
-<div id="contact-content" class="content-section" style="display:none;">
-  <p>
-    Instagram:<br>
+  <div id="about-content" class="content-section" style="display:none;">
+    <p>
+      Jerome Rafael is an earth based human being.
+      based in switzerland he is espressing himself
+      through fashion and art. his works mainly focus
+      is on a harmonic balance between nature and technology
+      aswell as staying grounded while being connected
+      to the inner core.
+    </p>
+  </div>
 
-<a href="https://instagram.com/jerome.rafael"
-   target="_blank">
-   @jerome.rafael
-</a>
+  <div id="contact-content" class="content-section" style="display:none;">
+    <p>
+      Instagram:<br>
+      <a href="https://instagram.com/jerome.rafael" target="_blank">@jerome.rafael</a>
+    </p>
+  </div>
 
-  </p>
-</div>
-   
 </div> <!-- END #main -->
 
 <div id="project-page" style="display:none;">
 
-  <div class="project-home" onclick="goHome()">
-    home
-  </div>
+  <div class="project-home" onclick="goHome()">home</div>
 
-  <div class="project-heading">
-    the book of om (2026)
-  </div>
+  <div class="project-heading">the book of om (2026)</div>
 
-  <img
-    id="slide-image"
-    src="bookofom-01.webp"
-    class="project-slide">
+  <img id="slide-image" src="bookofom-01.webp" class="project-slide">
 
   <div class="slide-nav">
-
-    <span onclick="prevSlide()">
-      previous
-    </span>
-
-    <span id="slide-number">
-      1 / 24
-    </span>
-
-    <span onclick="nextSlide()">
-      next
-    </span>
-
+    <span onclick="prevSlide()">previous</span>
+    <span id="slide-number">1 / 24</span>
+    <span onclick="nextSlide()">next</span>
   </div>
 
 </div>
@@ -484,7 +469,23 @@ let startX = 0;
 let startY = 0;
 let isPinching = false;
 let touchStartTime = 0;
+let soundEnabled = false;
 
+// -------------------------
+// SOUND POPUP
+// -------------------------
+function showSoundPopup() {
+  document.getElementById("sound-popup").style.display = "flex";
+}
+
+function dismissSoundPopup() {
+  soundEnabled = true;
+  document.getElementById("sound-popup").style.display = "none";
+}
+
+// -------------------------
+// NAVIGATION
+// -------------------------
 function showSection(section) {
   document.getElementById("project-page").style.display = "none";
   document.getElementById("gallery-content").style.display = "none";
@@ -508,6 +509,9 @@ function goHome() {
   showSection("gallery");
 }
 
+// -------------------------
+// SLIDESHOW
+// -------------------------
 function nextSlide() {
   if (currentSlide < totalSlides) currentSlide++;
   updateSlide();
@@ -524,6 +528,9 @@ function updateSlide() {
   document.getElementById("slide-number").innerText = currentSlide + " / " + totalSlides;
 }
 
+// -------------------------
+// ENTER HEAVEN
+// -------------------------
 function enter() {
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
@@ -538,14 +545,23 @@ function enter() {
   setTimeout(() => {
     landing.style.display = "none";
     main.style.display = "flex";
+
     setTimeout(() => {
       main.style.opacity = "1";
       main.style.transform = "scale(1)";
     }, 50);
+
+    // show sound popup after home page fades in
+    setTimeout(() => {
+      showSoundPopup();
+    }, 800);
+
   }, 1000);
 }
 
-// Swipe — set up ONCE on page load
+// -------------------------
+// SWIPE — set up ONCE on page load
+// -------------------------
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("project-page");
 
@@ -567,9 +583,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { passive: true });
 
   container.addEventListener("touchend", function (e) {
-    // if user is zoomed in, ignore swipe entirely
     if (window.visualViewport && window.visualViewport.scale > 1.05) return;
-
     if (isPinching) {
       isPinching = false;
       return;
@@ -590,4 +604,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, { passive: true });
 });
+
 </script>
+</body>
+</html>
