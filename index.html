@@ -567,13 +567,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { passive: true });
 
   container.addEventListener("touchend", function (e) {
+    // if user is zoomed in, ignore swipe entirely
+    if (window.visualViewport && window.visualViewport.scale > 1.05) return;
+
     if (isPinching) {
       isPinching = false;
       return;
     }
     if (e.changedTouches.length > 1) return;
 
-    // ignore if touch was too slow (likely a zoom gesture)
     const elapsed = Date.now() - touchStartTime;
     if (elapsed > 600) return;
 
