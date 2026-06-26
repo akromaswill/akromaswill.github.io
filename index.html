@@ -477,7 +477,9 @@ omSound.loop = true;
 // SOUND POPUP
 // -------------------------
 function showSoundPopup() {
-  new Audio("sound_info_pop_up_audio.wav").play();
+  const s = new Audio("sound_info_pop_up_audio.wav");
+  s.currentTime = 0.5;
+  s.play();
   document.getElementById("sound-popup").style.display = "flex";
 }
 
