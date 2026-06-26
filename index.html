@@ -270,6 +270,24 @@ a:hover {
   padding-top: 40px;
 }
 
+#blackhorse-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100dvh;
+  color: #ff9ae6;
+  padding-top: 40px;
+}
+
+.project-description {
+  margin-top: 16px;
+  color: #ff9ae6;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
 /* =========================
    🔊 SOUND POPUP
 ========================= */
@@ -294,7 +312,6 @@ a:hover {
   display: block;
 }
 
-/* inner recessed rectangle area: ~top 22% to 62%, left 10% to 90% */
 #sound-popup .tablet-text {
   position: absolute;
   top: 28%;
@@ -310,7 +327,6 @@ a:hover {
   line-height: 1.6;
 }
 
-/* lower blank area: ~62% to 90% */
 #sound-popup .tablet-ok {
   position: absolute;
   top: 65%;
@@ -418,11 +434,19 @@ p {
   </div>
 
   <div id="gallery-content" class="content-section">
+
     <div onclick="openProject()">
       <img src="bookofom.cover.png" class="project-image">
       <div class="project-title">the book of om</div>
       <div class="project-year">(2026)</div>
     </div>
+
+    <div onclick="openBlackHorse()" style="margin-top: 40px;">
+      <img src="black_horse_2025.jpg" class="project-image">
+      <div class="project-title">black horse</div>
+      <div class="project-year">(2025)</div>
+    </div>
+
   </div>
 
   <div id="about-content" class="content-section" style="display:none;">
@@ -445,6 +469,7 @@ p {
 
 </div> <!-- END #main -->
 
+<!-- 📖 BOOK OF OM PROJECT PAGE -->
 <div id="project-page" style="display:none;">
 
   <div class="project-home" onclick="goHome()">home</div>
@@ -457,6 +482,21 @@ p {
     <span onclick="prevSlide()">previous</span>
     <span id="slide-number">1 / 24</span>
     <span onclick="nextSlide()">next</span>
+  </div>
+
+</div>
+
+<!-- 🐴 BLACK HORSE PROJECT PAGE -->
+<div id="blackhorse-page" style="display:none;">
+
+  <div class="project-home" onclick="goHome()">home</div>
+
+  <div class="project-heading">black horse (2025)</div>
+
+  <img src="black_horse_2025.jpg" class="project-slide">
+
+  <div class="project-description">
+    acrylic on canvas
   </div>
 
 </div>
@@ -495,6 +535,7 @@ function dismissSoundPopup() {
 // -------------------------
 function showSection(section) {
   document.getElementById("project-page").style.display = "none";
+  document.getElementById("blackhorse-page").style.display = "none";
   document.getElementById("gallery-content").style.display = "none";
   document.getElementById("about-content").style.display = "none";
   document.getElementById("contact-content").style.display = "none";
@@ -508,16 +549,20 @@ function showSection(section) {
 function openProject() {
   document.getElementById("main").style.display = "none";
   document.getElementById("project-page").style.display = "flex";
-  
   omSound.currentTime = 0;
   omSound.play();
 }
 
+function openBlackHorse() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("blackhorse-page").style.display = "flex";
+}
+
 function goHome() {
   document.getElementById("project-page").style.display = "none";
+  document.getElementById("blackhorse-page").style.display = "none";
   document.getElementById("main").style.display = "flex";
   showSection("gallery");
-
   omSound.pause();
   omSound.currentTime = 0;
 }
@@ -567,7 +612,6 @@ function enter() {
       main.style.transform = "scale(1)";
     }, 50);
 
-    // show sound popup after home page fades in
     setTimeout(() => {
       showSoundPopup();
     }, 2300);
