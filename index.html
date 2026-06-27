@@ -591,6 +591,7 @@ function readAbout() {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 0.85;
   utterance.pitch = 0.8;
+  utterance.lang = 'en-US';
   speechSynthesis.speak(utterance);
 }
 
