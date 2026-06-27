@@ -449,6 +449,12 @@ p {
       <div class="project-title">black horse</div>
       <div class="project-year">(2025)</div>
     </div>
+     
+     <div onclick="openSoulPortrait()" style="margin-top: 40px;">
+      <img src="soul_portrait_2024.jpg" class="project-image">
+      <div class="project-title">soul portrait</div>
+      <div class="project-year">(2024)</div>
+    </div>
 
   </div>
 
@@ -507,7 +513,22 @@ p {
   </div>
 
 </div>
+   
+<!-- 🎨 SOUL PORTRAIT PROJECT PAGE -->
+<div id="soulportrait-page" style="display:none;">
 
+  <div class="project-home" onclick="goHome()">home</div>
+
+  <div class="project-heading">soul portrait (2024)</div>
+
+  <img src="soul_portrait_2024.jpg" class="project-slide">
+
+  <div class="project-description">
+    acrylic on canvas
+  </div>
+
+</div>
+   
 <script>
 
 let currentSlide = 1;
@@ -544,6 +565,7 @@ function showSection(section) {
   speechSynthesis.cancel();
   document.getElementById("project-page").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "none";
+  document.getElementById("soulportrait-page").style.display = "none";
   document.getElementById("gallery-content").style.display = "none";
   document.getElementById("about-content").style.display = "none";
   document.getElementById("contact-content").style.display = "none";
@@ -568,9 +590,16 @@ function openBlackHorse() {
   document.body.style.overflow = "hidden";
 }
    
+function openSoulPortrait() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("soulportrait-page").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+   
 function goHome() {
   document.getElementById("project-page").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "none";
+  document.getElementById("soulportrait-page").style.display = "none";
   document.getElementById("main").style.display = "flex";
   showSection("gallery");
   omSound.pause();
