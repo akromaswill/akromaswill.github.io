@@ -542,6 +542,7 @@ function dismissSoundPopup() {
 // NAVIGATION
 // -------------------------
 function showSection(section) {
+  speechSynthesis.cancel();
   document.getElementById("project-page").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "none";
   document.getElementById("gallery-content").style.display = "none";
@@ -582,11 +583,14 @@ function goHome() {
 // TTS READ ABOUT
 // -------------------------
 function readAbout() {
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+    return;
+  }
   const text = document.getElementById("about-text").innerText;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 0.85;
   utterance.pitch = 0.8;
-  speechSynthesis.cancel();
   speechSynthesis.speak(utterance);
 }
 
