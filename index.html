@@ -560,6 +560,8 @@ let touchStartTime = 0;
 let soundEnabled = false;
 const omSound = new Audio("bookofOM_soundtrack.mp3");
 omSound.loop = true;
+const blackHorseImg = new Image();
+blackHorseImg.src = "black_horse_2025.jpg";
 
 // -------------------------
 // SOUND POPUP
@@ -628,7 +630,6 @@ function goHome() {
   document.getElementById("soulportrait-page").style.display = "none";
   document.getElementById("main").style.display = "flex";
   showSection("gallery");
-  document.querySelector("#gallery-content img[src*='black_horse_2025']").src = "black_horse_2025.jpg?" + Date.now();
   omSound.pause();
   omSound.currentTime = 0;
   document.body.style.overflow = "";
