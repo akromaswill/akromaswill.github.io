@@ -568,8 +568,11 @@ let touchStartTime = 0;
 let soundEnabled = false;
 const omSound = new Audio("bookofOM_soundtrack.mp3");
 omSound.loop = true;
-const blackHorseImg = new Image();
-blackHorseImg.src = "black_horse_2025.jpg";
+const preloadedImages = [
+  "black_horse_2025.jpg",
+  "soul_portrait_2024.jpg",
+  "bookofom.cover.png"
+].map(src => { const img = new Image(); img.src = src; return img; });
 
 // -------------------------
 // SOUND POPUP
