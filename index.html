@@ -628,6 +628,7 @@ function goHome() {
   document.getElementById("soulportrait-page").style.display = "none";
   document.getElementById("main").style.display = "flex";
   showSection("gallery");
+  document.querySelector("#gallery-content img[src*='black_horse_2025']").src = "black_horse_2025.jpg?" + Date.now();
   omSound.pause();
   omSound.currentTime = 0;
   document.body.style.overflow = "";
