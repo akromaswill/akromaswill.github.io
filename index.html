@@ -454,15 +454,19 @@ p {
   </div>
 
   <div id="about-content" class="content-section" style="display:none;">
-    <p>
-      Jerome Rafael is an earth based human being.
-      based in switzerland he is espressing himself
-      through fashion and art. his works mainly focus
-      is on a harmonic balance between nature and technology
-      aswell as staying grounded while being connected
-      to the inner core.
-    </p>
-  </div>
+     <img 
+       src="voice_sound_button.png" 
+       onclick="readAbout()" 
+       style="width: 44px; height: 44px; cursor: pointer; display: block; margin: 0 auto 20px auto;">
+     <p id="about-text">
+       Jerome Rafael is an earth based human being. 
+       based in switzerland he is espressing himself 
+       through fashion and art. his works mainly focus 
+       is on a harmonic balance between nature and technology 
+       aswell as staying grounded while being connected 
+       to the inner core. 
+     </p>
+   </div>
 
   <div id="contact-content" class="content-section" style="display:none;">
     <p>
@@ -572,6 +576,18 @@ function goHome() {
   omSound.pause();
   omSound.currentTime = 0;
   document.body.style.overflow = "";
+}
+
+// -------------------------
+// TTS READ ABOUT
+// -------------------------
+function readAbout() {
+  const text = document.getElementById("about-text").innerText;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.85;
+  utterance.pitch = 0.8;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
 }
 
 // -------------------------
