@@ -614,6 +614,8 @@ function openSoulPortrait() {
   document.getElementById("main").style.display = "none";
   document.getElementById("soulportrait-page").style.display = "flex";
   document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
 }
    
 function goHome() {
@@ -625,6 +627,8 @@ function goHome() {
   omSound.pause();
   omSound.currentTime = 0;
   document.body.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.width = "";
 }
 
 // -------------------------
