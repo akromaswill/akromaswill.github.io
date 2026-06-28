@@ -694,10 +694,10 @@ function typewriterSecret(lineIndex, fullText) {
   // speak immediately when typing starts
   if (lineIndex === 0) {
    const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
-utterance.rate = 0.45;
+utterance.rate = 0.55;
 utterance.pitch = 0;
 utterance.volume = 1;
-utterance.lang = 'en-GB';
+utterance.lang = 'en-US';
 
 const voices = speechSynthesis.getVoices();
 const deep = voices.find(v => v.name.includes('Daniel') ||
