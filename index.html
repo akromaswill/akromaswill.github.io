@@ -687,14 +687,16 @@ function openSecret() {
 }
 
 function typewriterSecret(lineIndex, fullText) {
-  if (lineIndex >= secretLines.length) {
-    // speak the full text
-    const utterance = new SpeechSynthesisUtterance(fullText);
+  // speak immediately when typing starts
+  if (lineIndex === 0) {
+    const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
     utterance.rate = 0.7;
     utterance.pitch = 0.3;
     utterance.lang = 'en-GB';
     speechSynthesis.speak(utterance);
-    // show leave button
+  }
+
+  if (lineIndex >= secretLines.length) {
     setTimeout(() => {
       document.getElementById("secret-leave").classList.add("visible");
     }, 1000);
@@ -713,7 +715,7 @@ function typewriterSecret(lineIndex, fullText) {
       setTimeout(typeLine, 45);
     } else {
       setTimeout(() => {
-        typewriterSecret(lineIndex + 1, secretLines.slice(0, lineIndex + 1).join(" ") + " ");
+        typewriterSecret(lineIndex + 1, "");
       }, 400);
     }
   }
