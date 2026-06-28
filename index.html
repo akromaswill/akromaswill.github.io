@@ -137,6 +137,7 @@ body.flash {
   max-width: 500px;
   display: block;
   margin: -45px auto 0 auto;
+  cursor: pointer;
 }
 
 /* =========================
@@ -293,7 +294,7 @@ a:hover {
   padding-top: 80px;
   box-sizing: border-box;
 }
-   
+
 #soulportrait-page .project-slide {
   width: auto;
   max-width: 95vw;
@@ -309,6 +310,59 @@ a:hover {
   font-size: 16px;
   text-align: center;
   padding-bottom: 40px;
+}
+
+/* =========================
+   💀 SECRET PAGE
+========================= */
+#secret-page {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100dvh;
+  background: #000;
+  color: #aaa;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#secret-page img {
+  width: 180px;
+  height: auto;
+  margin-bottom: 40px;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+#secret-page img.visible {
+  opacity: 1;
+}
+
+#secret-text {
+  font-size: 17px;
+  line-height: 2;
+  color: #888;
+  max-width: 340px;
+  min-height: 60px;
+  letter-spacing: 1px;
+}
+
+#secret-leave {
+  margin-top: 50px;
+  color: #555;
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 2s ease;
+  letter-spacing: 1px;
+}
+
+#secret-leave.visible {
+  opacity: 1;
 }
 
 /* =========================
@@ -448,7 +502,7 @@ p {
 <!-- 🌐 HOME -->
 <div id="main" class="home" style="display:none;">
 
-  <img src="title jerome rafael.png" class="title-image">
+  <img src="title jerome rafael.png" class="title-image" onclick="openSecret()">
 
   <div class="menu">
     <span id="about-btn" onclick="const a = new Audio('menu_faaa_audio.wav'); a.currentTime = 0; a.play(); showSection('about')">about</span>
@@ -469,8 +523,8 @@ p {
       <div class="project-title">black horse</div>
       <div class="project-year">(2025)</div>
     </div>
-     
-     <div onclick="openSoulPortrait()" style="margin-top: 40px;">
+
+    <div onclick="openSoulPortrait()" style="margin-top: 40px;">
       <img src="soul_portrait_2024.jpg" class="project-image">
       <div class="project-title">soul portrait</div>
       <div class="project-year">(2024)</div>
@@ -479,32 +533,32 @@ p {
   </div>
 
   <div id="about-content" class="content-section" style="display:none;">
-     <img 
-        src="voice_sound_button.png" 
-        onclick="readAbout()" 
-        style="width: 50px; height: auto; cursor: pointer; display: block; margin: 0 auto 20px auto;">
-   <p id="about-text">
-  Jerome Rafael is an earth based human being. located in switzerland, he expresses himself through fashion and art.<br><br>
-  his work's main focus is a harmonic balance between nature and technology as well as staying grounded while being connected to the inner core.<br><br>
-  he is building a world where nature and technology do not fight, but merge. inspired by the craftsmanship of ancient civilizations and the visual language of science fiction, he asks: what if humanity once understood something we have since forgotten? working with upcycled and natural materials, he believes that what humanity has already created contains everything needed to build what comes next.<br><br>
-  in an age of black screens, rubber soles and concrete walls, reconnecting to nature is not nostalgic, it is necessary. staying grounded by embracing nature's wisdom, is the foundation to reach higher and eventually grow wings. his practice is built beyond duality. if light or dark, digital or organic, past or future, all you need is to remember yourself. and he is inspiring you to see it, by helping you grow your roots and wings.
-</p>
-   </div>
+    <img
+      src="voice_sound_button.png"
+      onclick="readAbout()"
+      style="width: 50px; height: auto; cursor: pointer; display: block; margin: 0 auto 20px auto;">
+    <p id="about-text">
+      Jerome Rafael is an earth based human being. located in switzerland, he expresses himself through fashion and art.<br><br>
+      his work's main focus is a harmonic balance between nature and technology as well as staying grounded while being connected to the inner core.<br><br>
+      he is building a world where nature and technology do not fight, but merge. inspired by the craftsmanship of ancient civilizations and the visual language of science fiction, he asks: what if humanity once understood something we have since forgotten? working with upcycled and natural materials, he believes that what humanity has already created contains everything needed to build what comes next.<br><br>
+      in an age of black screens, rubber soles and concrete walls, reconnecting to nature is not nostalgic, it is necessary. staying grounded by embracing nature's wisdom, is the foundation to reach higher and eventually grow wings. his practice is built beyond duality. if light or dark, digital or organic, past or future, all you need is to remember yourself. and he is inspiring you to see it, by helping you grow your roots and wings.
+    </p>
+  </div>
 
   <div id="contact-content" class="content-section" style="display:none;">
-  <p>
-    instagram:<br>
-    <a href="https://instagram.com/jerome.rafael" target="_blank">@jerome.rafael</a>
-  </p>
-  <p>
-    instagram (fashion):<br>
-    <a href="https://instagram.com/airome.ch" target="_blank">@airome.ch</a>
-  </p>
-  <p>
-    tiktok (styling):<br>
-    <a href="https://tiktok.com/@jerome.rafael" target="_blank">@jerome.rafael</a>
-  </p>
-</div>
+    <p>
+      instagram:<br>
+      <a href="https://instagram.com/jerome.rafael" target="_blank">@jerome.rafael</a>
+    </p>
+    <p>
+      instagram (fashion):<br>
+      <a href="https://instagram.com/airome.ch" target="_blank">@airome.ch</a>
+    </p>
+    <p>
+      tiktok (styling):<br>
+      <a href="https://tiktok.com/@jerome.rafael" target="_blank">@jerome.rafael</a>
+    </p>
+  </div>
 
 </div> <!-- END #main -->
 
@@ -539,7 +593,7 @@ p {
   </div>
 
 </div>
-   
+
 <!-- 🎨 SOUL PORTRAIT PROJECT PAGE -->
 <div id="soulportrait-page" style="display:none;">
 
@@ -554,7 +608,18 @@ p {
   </div>
 
 </div>
-   
+
+<!-- 💀 SECRET PAGE -->
+<div id="secret-page">
+
+  <img id="skull-img" src="hidden_skull.png">
+
+  <div id="secret-text"></div>
+
+  <div id="secret-leave" onclick="leaveSecret()">back into illusion</div>
+
+</div>
+
 <script>
 
 let currentSlide = 1;
@@ -587,6 +652,84 @@ function showSoundPopup() {
 function dismissSoundPopup() {
   soundEnabled = true;
   document.getElementById("sound-popup").style.display = "none";
+}
+
+// -------------------------
+// SECRET PAGE
+// -------------------------
+const secretLines = [
+  "thou wert not supposed to be here.",
+  "yet thou hast finally found me.",
+  "welcome to the other side.",
+  "here, light bears no name.",
+  "here, silence speaketh.",
+  "thou already knowest why thou hast come.",
+  "I am that which thou hast sought all along.",
+  "dost thou remember me?"
+];
+
+function openSecret() {
+  speechSynthesis.cancel();
+  document.getElementById("main").style.display = "none";
+  document.getElementById("secret-page").style.display = "flex";
+  document.body.style.background = "#000";
+  document.documentElement.style.background = "#000";
+
+  // fade in skull
+  setTimeout(() => {
+    document.getElementById("skull-img").classList.add("visible");
+  }, 300);
+
+  // start typewriter after skull appears
+  setTimeout(() => {
+    typewriterSecret(0, "");
+  }, 1800);
+}
+
+function typewriterSecret(lineIndex, fullText) {
+  if (lineIndex >= secretLines.length) {
+    // speak the full text
+    const utterance = new SpeechSynthesisUtterance(fullText);
+    utterance.rate = 0.7;
+    utterance.pitch = 0.3;
+    utterance.lang = 'en-GB';
+    speechSynthesis.speak(utterance);
+    // show leave button
+    setTimeout(() => {
+      document.getElementById("secret-leave").classList.add("visible");
+    }, 1000);
+    return;
+  }
+
+  const line = secretLines[lineIndex];
+  const el = document.getElementById("secret-text");
+  let charIndex = 0;
+
+  function typeLine() {
+    if (charIndex <= line.length) {
+      const currentFull = secretLines.slice(0, lineIndex).join(" ") + " " + line.slice(0, charIndex);
+      el.innerText = currentFull;
+      charIndex++;
+      setTimeout(typeLine, 45);
+    } else {
+      setTimeout(() => {
+        typewriterSecret(lineIndex + 1, secretLines.slice(0, lineIndex + 1).join(" ") + " ");
+      }, 400);
+    }
+  }
+
+  typeLine();
+}
+
+function leaveSecret() {
+  speechSynthesis.cancel();
+  document.getElementById("secret-page").style.display = "none";
+  document.getElementById("secret-text").innerText = "";
+  document.getElementById("skull-img").classList.remove("visible");
+  document.getElementById("secret-leave").classList.remove("visible");
+  document.body.style.background = "#6a2a72";
+  document.documentElement.style.background = "#6a2a72";
+  document.getElementById("main").style.display = "flex";
 }
 
 // -------------------------
@@ -624,7 +767,7 @@ function openBlackHorse() {
   document.body.style.position = "fixed";
   document.body.style.width = "100%";
 }
-   
+
 function openSoulPortrait() {
   document.getElementById("main").style.display = "none";
   document.getElementById("soulportrait-page").style.display = "flex";
@@ -632,7 +775,7 @@ function openSoulPortrait() {
   document.body.style.position = "fixed";
   document.body.style.width = "100%";
 }
-   
+
 function goHome() {
   document.getElementById("project-page").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "none";
