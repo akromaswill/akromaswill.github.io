@@ -694,19 +694,19 @@ function typewriterSecret(lineIndex, fullText) {
   // speak immediately when typing starts
   if (lineIndex === 0) {
    const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
-   utterance.rate = 0.55;
-   utterance.pitch = 0;
-   utterance.volume = 1;
-   utterance.lang = 'en-US';
+utterance.rate = 0.45;
+utterance.pitch = 0;
+utterance.volume = 1;
+utterance.lang = 'en-GB';
 
-   const voices = speechSynthesis.getVoices();
-   const deep = voices.find(v => v.name.includes('Daniel') || 
-     v.name.includes('Alex') || 
-     v.name.includes('Google UK English Male') ||
-     v.name.includes('Gordon') ||
-     v.name.includes('Fred') ||
-     (v.lang.includes('en') && v.name.toLowerCase().includes('male')));
-   if (deep) utterance.voice = deep;
+const voices = speechSynthesis.getVoices();
+const deep = voices.find(v => v.name.includes('Daniel') ||
+  v.name.includes('Google UK English Male') ||
+  v.name.includes('Gordon') ||
+  v.name.includes('Fred') ||
+  v.name.includes('Alex') ||
+  (v.lang.includes('en') && v.name.toLowerCase().includes('male')));
+if (deep) utterance.voice = deep;
 
    speechSynthesis.speak(utterance);
   }
