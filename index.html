@@ -667,20 +667,24 @@ const secretLines = [
   "I am that which thou hast sought all along.",
   "dost thou remember me?"
 ];
-
+   
 function openSecret() {
   speechSynthesis.cancel();
+
+  // unlock iOS speech immediately on tap
+  const unlock = new SpeechSynthesisUtterance(" ");
+  unlock.volume = 0;
+  speechSynthesis.speak(unlock);
+
   document.getElementById("main").style.display = "none";
   document.getElementById("secret-page").style.display = "flex";
   document.body.style.background = "#000";
   document.documentElement.style.background = "#000";
 
-  // fade in skull
   setTimeout(() => {
     document.getElementById("skull-img").classList.add("visible");
   }, 300);
 
-  // start typewriter after skull appears
   setTimeout(() => {
     typewriterSecret(0, "");
   }, 1800);
@@ -689,11 +693,18 @@ function openSecret() {
 function typewriterSecret(lineIndex, fullText) {
   // speak immediately when typing starts
   if (lineIndex === 0) {
-    const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
-    utterance.rate = 0.6;
-    utterance.pitch = 0;
-    utterance.lang = 'en-GB';
-    speechSynthesis.speak(utterance);
+   const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
+   utterance.rate = 0.55;
+   utterance.pitch = 0;
+   utterance.volume = 1;
+   utterance.lang = 'en-US';
+
+   // try to pick a deep male voice
+   const voices = speechSynthesis.getVoices();
+   const deep = voices.find(v => v.name.includes('Daniel') || v.name.includes('Alex') || v.name.includes('Google UK English Male'));
+   if (deep) utterance.voice = deep;
+
+   speechSynthesis.speak(utterance);
   }
 
   if (lineIndex >= secretLines.length) {
