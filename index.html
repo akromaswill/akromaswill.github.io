@@ -699,9 +699,13 @@ function typewriterSecret(lineIndex, fullText) {
    utterance.volume = 1;
    utterance.lang = 'en-US';
 
-   // try to pick a deep male voice
    const voices = speechSynthesis.getVoices();
-   const deep = voices.find(v => v.name.includes('Daniel') || v.name.includes('Alex') || v.name.includes('Google UK English Male'));
+   const deep = voices.find(v => v.name.includes('Daniel') || 
+     v.name.includes('Alex') || 
+     v.name.includes('Google UK English Male') ||
+     v.name.includes('Gordon') ||
+     v.name.includes('Fred') ||
+     (v.lang.includes('en') && v.name.toLowerCase().includes('male')));
    if (deep) utterance.voice = deep;
 
    speechSynthesis.speak(utterance);
@@ -723,11 +727,11 @@ function typewriterSecret(lineIndex, fullText) {
       const currentFull = secretLines.slice(0, lineIndex).join(" ") + " " + line.slice(0, charIndex);
       el.innerText = currentFull;
       charIndex++;
-      setTimeout(typeLine, 45);
+      setTimeout(typeLine, 80);
     } else {
       setTimeout(() => {
         typewriterSecret(lineIndex + 1, "");
-      }, 400);
+      }, 600);
     }
   }
 
