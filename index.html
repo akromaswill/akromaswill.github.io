@@ -690,8 +690,8 @@ function typewriterSecret(lineIndex, fullText) {
   // speak immediately when typing starts
   if (lineIndex === 0) {
     const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
-    utterance.rate = 0.7;
-    utterance.pitch = 0.3;
+    utterance.rate = 0.6;
+    utterance.pitch = 0;
     utterance.lang = 'en-GB';
     speechSynthesis.speak(utterance);
   }
