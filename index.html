@@ -505,9 +505,9 @@ p {
   <img src="title jerome rafael.png" class="title-image" onclick="openSecret()">
 
   <div class="menu">
-    <span id="about-btn" onclick="const a = new Audio('menu_faaa_audio.wav'); a.currentTime = 0; a.play(); showSection('about')">about</span>
+    <span id="about-btn" onclick="const a = new Audio('menu_faaa_audio.mp3'); a.currentTime = 0; a.play(); showSection('about')">about</span>
     <span id="gallery-btn" class="menu-active" onclick="const g = new Audio('menu_oioioi_audio-2.mp3'); g.currentTime = 0.3; g.volume = 1.0; g.play(); showSection('gallery')">gallery</span>
-    <span id="contact-btn" onclick="const c = new Audio('menu_fart_audio.wav'); c.currentTime = 0; c.play(); showSection('contact')">contact</span>
+    <span id="contact-btn" onclick="const c = new Audio('menu_fart_audio.mp3'); c.currentTime = 0; c.play(); showSection('contact')">contact</span>
   </div>
 
   <div id="gallery-content" class="content-section">
@@ -641,7 +641,7 @@ const preloadedImages = [
 // SOUND POPUP
 // -------------------------
 function showSoundPopup() {
-  const s = new Audio("sound_info_pop_up_audio.wav");
+  const s = new Audio("sound_info_pop_up_audio.mp3");
   s.currentTime = 0.1;
   s.play();
   setTimeout(() => {
@@ -845,7 +845,7 @@ function updateSlide() {
 // ENTER HEAVEN
 // -------------------------
 function enter() {
-  const sound = new Audio("heaven_intro.wav");
+  const sound = new Audio("heaven_intro.mp3");
   sound.play();
 
   const landing = document.getElementById("landing");
