@@ -554,6 +554,10 @@ function hideAll() {
 }
 
 window.addEventListener("popstate", function (e) {
+  if (document.getElementById("secret-page").style.display === "flex") {
+    history.pushState({ page: "secret-page" }, "", "");
+    return;
+  }
   const state = e.state;
   if (!state) return;
   hideAll();
