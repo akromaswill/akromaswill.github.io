@@ -30,19 +30,12 @@ body {
   overscroll-behavior: none;
 }
 
-body.flash {
-  animation: flashAnim 1.2s ease-out;
-}
+body.flash { animation: flashAnim 1.2s ease-out; }
 
-#landing,
-#main {
-  background: transparent;
-}
+#landing, #main { background: transparent; }
 
 #landing {
-  transition:
-    opacity 1.8s ease,
-    transform 1.8s ease;
+  transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
 .fade-out {
@@ -53,10 +46,8 @@ body.flash {
 
 #heavenGlow {
   position: fixed;
-  left: 50%;
-  top: 50%;
-  width: 120px;
-  height: 120px;
+  left: 50%; top: 50%;
+  width: 120px; height: 120px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: white;
@@ -65,9 +56,7 @@ body.flash {
   pointer-events: none;
   z-index: 100;
 }
-#heavenGlow.active {
-  animation: heavenGlow 1.8s ease-out;
-}
+#heavenGlow.active { animation: heavenGlow 1.8s ease-out; }
 
 @keyframes heavenGlow {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
@@ -171,6 +160,27 @@ a:hover { opacity: 0.8; }
 
 @media (min-width: 768px) {
   #gallery-content { padding-bottom: 40px; }
+}
+
+/* =========================
+   🗂 SUBCATEGORIES
+========================= */
+.subcategory-menu {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 16px;
+  font-size: 15px;
+}
+
+.subcategory-menu span {
+  color: #4a1a52;
+  cursor: pointer;
+}
+
+.subcategory-active {
+  animation: glow 2s infinite;
+  color: #4a1a52 !important;
 }
 
 /* PROJECT */
@@ -325,9 +335,7 @@ a:hover { opacity: 0.8; }
 
 #sound-popup .tablet-text {
   position: absolute;
-  top: 28%;
-  left: 10%;
-  right: 10%;
+  top: 28%; left: 10%; right: 10%;
   height: 40%;
   display: flex;
   align-items: center;
@@ -340,9 +348,7 @@ a:hover { opacity: 0.8; }
 
 #sound-popup .tablet-ok {
   position: absolute;
-  top: 65%;
-  left: 0;
-  right: 0;
+  top: 65%; left: 0; right: 0;
   height: 25%;
   display: flex;
   align-items: center;
@@ -363,18 +369,11 @@ a:hover { opacity: 0.8; }
 #stars { position: fixed; inset: 0; pointer-events: none; z-index: 5; display: none; }
 
 .stars {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 26px;
-  line-height: 1;
-  pointer-events: none;
-  z-index: 5;
+  position: fixed; top: 0; bottom: 0; width: 32px;
+  display: flex; flex-direction: column;
+  justify-content: space-around; align-items: center;
+  font-size: 26px; line-height: 1;
+  pointer-events: none; z-index: 5;
 }
 
 .left { left: 0; }
@@ -424,26 +423,48 @@ p { text-align: center; line-height: 1.6; }
   </div>
 
   <div id="gallery-content" class="content-section">
-    <div onclick="openProject()">
-      <img src="bookofom.cover.png" class="project-image">
-      <div class="project-title">the book of om</div>
-      <div class="project-year">(2026)</div>
+
+    <!-- subcategory tabs -->
+    <div class="subcategory-menu">
+      <span id="sub-creations-btn" class="subcategory-active" onclick="showSubcategory('creations')">creations</span>
+      <span id="sub-fashion-btn" onclick="showSubcategory('fashion')">fashion</span>
+      <span id="sub-styling-btn" onclick="showSubcategory('styling')">styling</span>
     </div>
-    <div onclick="openBlackHorse()" style="margin-top: 40px;">
-      <img src="black_horse_2025.jpg" class="project-image" style="width: 70%; max-width: 320px;">
-      <div class="project-title">black horse</div>
-      <div class="project-year">(2025)</div>
+
+    <!-- creations -->
+    <div id="sub-creations">
+      <div onclick="openProject()">
+        <img src="bookofom.cover.png" class="project-image">
+        <div class="project-title">the book of om</div>
+        <div class="project-year">(2026)</div>
+      </div>
+      <div onclick="openBlackHorse()" style="margin-top: 40px;">
+        <img src="black_horse_2025.jpg" class="project-image" style="width: 70%; max-width: 320px;">
+        <div class="project-title">black horse</div>
+        <div class="project-year">(2025)</div>
+      </div>
+      <div onclick="openSoulPortrait()" style="margin-top: 40px;">
+        <img src="soul_portrait_2024.jpg" class="project-image">
+        <div class="project-title">soul portrait</div>
+        <div class="project-year">(2024)</div>
+      </div>
+      <div onclick="openLearning2Fly()" style="margin-top: 40px;">
+        <img src="learning2fly_doku_cover.png" class="project-image">
+        <div class="project-title">learning 2 fly; documentation</div>
+        <div class="project-year">(2023)</div>
+      </div>
     </div>
-    <div onclick="openSoulPortrait()" style="margin-top: 40px;">
-      <img src="soul_portrait_2024.jpg" class="project-image">
-      <div class="project-title">soul portrait</div>
-      <div class="project-year">(2024)</div>
+
+    <!-- fashion (empty for now) -->
+    <div id="sub-fashion" style="display:none;">
+      <p style="margin-top: 40px; color: #ff9ae6; font-size: 16px; opacity: 0.5;">coming soon</p>
     </div>
-    <div onclick="openLearning2Fly()" style="margin-top: 40px;">
-      <img src="learning2fly_doku_cover.png" class="project-image">
-      <div class="project-title">learning 2 fly; documentation</div>
-      <div class="project-year">(2023)</div>
+
+    <!-- styling (empty for now) -->
+    <div id="sub-styling" style="display:none;">
+      <p style="margin-top: 40px; color: #ff9ae6; font-size: 16px; opacity: 0.5;">coming soon</p>
     </div>
+
   </div>
 
   <div id="about-content" class="content-section" style="display:none;">
@@ -528,6 +549,20 @@ const preloadedImages = [
   "bookofom.cover.png",
   "learning2fly_doku_cover.png"
 ].map(src => { const img = new Image(); img.src = src; return img; });
+
+// -------------------------
+// SUBCATEGORIES
+// -------------------------
+function showSubcategory(cat) {
+  document.getElementById("sub-creations").style.display = "none";
+  document.getElementById("sub-fashion").style.display = "none";
+  document.getElementById("sub-styling").style.display = "none";
+  document.getElementById("sub-creations-btn").classList.remove("subcategory-active");
+  document.getElementById("sub-fashion-btn").classList.remove("subcategory-active");
+  document.getElementById("sub-styling-btn").classList.remove("subcategory-active");
+  document.getElementById("sub-" + cat).style.display = "block";
+  document.getElementById("sub-" + cat + "-btn").classList.add("subcategory-active");
+}
 
 // -------------------------
 // HISTORY / BACK BUTTON
@@ -634,12 +669,8 @@ function openSecret() {
   document.documentElement.style.background = "#000";
   pushState("secret-page");
 
-  setTimeout(() => {
-    document.getElementById("skull-img").classList.add("visible");
-  }, 300);
-  setTimeout(() => {
-    typewriterSecret(0, "");
-  }, 1800);
+  setTimeout(() => { document.getElementById("skull-img").classList.add("visible"); }, 300);
+  setTimeout(() => { typewriterSecret(0, ""); }, 1800);
 }
 
 function typewriterSecret(lineIndex, fullText) {
@@ -661,9 +692,7 @@ function typewriterSecret(lineIndex, fullText) {
   }
 
   if (lineIndex >= secretLines.length) {
-    setTimeout(() => {
-      document.getElementById("secret-leave").classList.add("visible");
-    }, 1000);
+    setTimeout(() => { document.getElementById("secret-leave").classList.add("visible"); }, 1000);
     return;
   }
 
