@@ -160,7 +160,7 @@ body.flash {
   50% { opacity: 1; text-shadow: 0 0 20px #ff66cc; }
   100% { opacity: 0.6; }
 }
-   
+
 .menu {
   margin-top: 25px;
   display: flex;
@@ -302,6 +302,17 @@ a:hover {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+#learning2fly-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+  color: #ff9ae6;
+  padding-top: 80px;
+  box-sizing: border-box;
 }
 
 .project-description {
@@ -530,6 +541,12 @@ p {
       <div class="project-year">(2024)</div>
     </div>
 
+    <div onclick="openLearning2Fly()" style="margin-top: 40px;">
+      <img src="learning2fly_doku_cover.png" class="project-image">
+      <div class="project-title">learning 2 fly documentation</div>
+      <div class="project-year">(2023)</div>
+    </div>
+
   </div>
 
   <div id="about-content" class="content-section" style="display:none;">
@@ -609,6 +626,27 @@ p {
 
 </div>
 
+<!-- 🪽 LEARNING 2 FLY DOCUMENTATION PROJECT PAGE -->
+<div id="learning2fly-page" style="display:none;">
+
+  <div class="project-home" onclick="goHome()">home</div>
+
+  <div class="project-heading">learning 2 fly documentation (2023)</div>
+
+  <img id="l2f-slide-image" src="learning2fly_doku_01.jpg" class="project-slide">
+
+  <div class="slide-nav">
+    <span onclick="prevL2FSlide()">previous</span>
+    <span id="l2f-slide-number">1 / 46</span>
+    <span onclick="nextL2FSlide()">next</span>
+  </div>
+
+  <div class="project-description">
+    description
+  </div>
+
+</div>
+
 <!-- 💀 SECRET PAGE -->
 <div id="secret-page">
 
@@ -624,6 +662,8 @@ p {
 
 let currentSlide = 1;
 const totalSlides = 24;
+let l2fCurrentSlide = 1;
+const l2fTotalSlides = 46;
 let startX = 0;
 let startY = 0;
 let isPinching = false;
@@ -634,7 +674,8 @@ omSound.loop = true;
 const preloadedImages = [
   "black_horse_2025.jpg",
   "soul_portrait_2024.jpg",
-  "bookofom.cover.png"
+  "bookofom.cover.png",
+  "learning2fly_doku_cover.png"
 ].map(src => { const img = new Image(); img.src = src; return img; });
 
 // -------------------------
@@ -667,11 +708,10 @@ const secretLines = [
   "I am that which thou hast sought all along.",
   "dost thou remember me?"
 ];
-   
+
 function openSecret() {
   speechSynthesis.cancel();
 
-  // unlock iOS speech immediately on tap
   const unlock = new SpeechSynthesisUtterance(" ");
   unlock.volume = 0;
   speechSynthesis.speak(unlock);
@@ -691,24 +731,23 @@ function openSecret() {
 }
 
 function typewriterSecret(lineIndex, fullText) {
-  // speak immediately when typing starts
   if (lineIndex === 0) {
-   const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
-utterance.rate = 0.55;
-utterance.pitch = 0;
-utterance.volume = 1;
-utterance.lang = 'en-US';
+    const utterance = new SpeechSynthesisUtterance(secretLines.join(" "));
+    utterance.rate = 0.55;
+    utterance.pitch = 0;
+    utterance.volume = 1;
+    utterance.lang = 'en-US';
 
-const voices = speechSynthesis.getVoices();
-const deep = voices.find(v => v.name.includes('Daniel') ||
-  v.name.includes('Google UK English Male') ||
-  v.name.includes('Gordon') ||
-  v.name.includes('Fred') ||
-  v.name.includes('Alex') ||
-  (v.lang.includes('en') && v.name.toLowerCase().includes('male')));
-if (deep) utterance.voice = deep;
+    const voices = speechSynthesis.getVoices();
+    const deep = voices.find(v => v.name.includes('Daniel') ||
+      v.name.includes('Google UK English Male') ||
+      v.name.includes('Gordon') ||
+      v.name.includes('Fred') ||
+      v.name.includes('Alex') ||
+      (v.lang.includes('en') && v.name.toLowerCase().includes('male')));
+    if (deep) utterance.voice = deep;
 
-   speechSynthesis.speak(utterance);
+    speechSynthesis.speak(utterance);
   }
 
   if (lineIndex >= secretLines.length) {
@@ -757,6 +796,7 @@ function showSection(section) {
   document.getElementById("project-page").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "none";
   document.getElementById("soulportrait-page").style.display = "none";
+  document.getElementById("learning2fly-page").style.display = "none";
   document.getElementById("gallery-content").style.display = "none";
   document.getElementById("about-content").style.display = "none";
   document.getElementById("contact-content").style.display = "none";
@@ -793,10 +833,19 @@ function openSoulPortrait() {
   document.body.style.width = "100%";
 }
 
+function openLearning2Fly() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("learning2fly-page").style.display = "flex";
+  document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
+}
+
 function goHome() {
   document.getElementById("project-page").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "none";
   document.getElementById("soulportrait-page").style.display = "none";
+  document.getElementById("learning2fly-page").style.display = "none";
   document.getElementById("main").style.display = "flex";
   showSection("gallery");
   omSound.pause();
@@ -823,7 +872,7 @@ function readAbout() {
 }
 
 // -------------------------
-// SLIDESHOW
+// SLIDESHOW — book of om
 // -------------------------
 function nextSlide() {
   if (currentSlide < totalSlides) currentSlide++;
@@ -839,6 +888,25 @@ function updateSlide() {
   const number = String(currentSlide).padStart(2, "0");
   document.getElementById("slide-image").src = "bookofom-" + number + ".webp";
   document.getElementById("slide-number").innerText = currentSlide + " / " + totalSlides;
+}
+
+// -------------------------
+// SLIDESHOW — learning 2 fly
+// -------------------------
+function nextL2FSlide() {
+  if (l2fCurrentSlide < l2fTotalSlides) l2fCurrentSlide++;
+  updateL2FSlide();
+}
+
+function prevL2FSlide() {
+  if (l2fCurrentSlide > 1) l2fCurrentSlide--;
+  updateL2FSlide();
+}
+
+function updateL2FSlide() {
+  const number = String(l2fCurrentSlide).padStart(2, "0");
+  document.getElementById("l2f-slide-image").src = "learning2fly_doku_" + number + ".jpg";
+  document.getElementById("l2f-slide-number").innerText = l2fCurrentSlide + " / " + l2fTotalSlides;
 }
 
 // -------------------------
@@ -879,45 +947,53 @@ function enter() {
 // -------------------------
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("project-page");
+  const l2fContainer = document.getElementById("learning2fly-page");
 
-  container.addEventListener("touchstart", function (e) {
-    if (e.touches.length > 1) {
-      isPinching = true;
-      return;
-    }
-    isPinching = false;
-    touchStartTime = Date.now();
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  }, { passive: true });
+  function setupSwipeFor(container, nextFn, prevFn) {
+    let sx = 0, sy = 0, pinching = false, startTime = 0;
 
-  container.addEventListener("touchmove", function (e) {
-    if (e.touches.length > 1) {
-      isPinching = true;
-    }
-  }, { passive: true });
+    container.addEventListener("touchstart", function (e) {
+      if (e.touches.length > 1) {
+        pinching = true;
+        return;
+      }
+      pinching = false;
+      startTime = Date.now();
+      sx = e.touches[0].clientX;
+      sy = e.touches[0].clientY;
+    }, { passive: true });
 
-  container.addEventListener("touchend", function (e) {
-    if (window.visualViewport && window.visualViewport.scale > 1.05) return;
-    if (isPinching) {
-      isPinching = false;
-      return;
-    }
-    if (e.changedTouches.length > 1) return;
+    container.addEventListener("touchmove", function (e) {
+      if (e.touches.length > 1) {
+        pinching = true;
+      }
+    }, { passive: true });
 
-    const elapsed = Date.now() - touchStartTime;
-    if (elapsed > 600) return;
+    container.addEventListener("touchend", function (e) {
+      if (window.visualViewport && window.visualViewport.scale > 1.05) return;
+      if (pinching) {
+        pinching = false;
+        return;
+      }
+      if (e.changedTouches.length > 1) return;
 
-    const endX = e.changedTouches[0].clientX;
-    const endY = e.changedTouches[0].clientY;
-    const diffX = startX - endX;
-    const diffY = startY - endY;
+      const elapsed = Date.now() - startTime;
+      if (elapsed > 600) return;
 
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-      if (diffX > 0) nextSlide();
-      else prevSlide();
-    }
-  }, { passive: true });
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+      const diffX = sx - endX;
+      const diffY = sy - endY;
+
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        if (diffX > 0) nextFn();
+        else prevFn();
+      }
+    }, { passive: true });
+  }
+
+  setupSwipeFor(container, nextSlide, prevSlide);
+  setupSwipeFor(l2fContainer, nextL2FSlide, prevL2FSlide);
 });
 
 </script>
