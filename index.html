@@ -70,18 +70,9 @@ body.flash {
 }
 
 @keyframes heavenGlow {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.3);
-  }
-  40% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(3);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(5);
-  }
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+  40% { opacity: 0.8; transform: translate(-50%, -50%) scale(3); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(5); }
 }
 
 /* =========================
@@ -97,9 +88,7 @@ body.flash {
   padding: 0;
 }
 
-.home {
-  height: 100%;
-}
+.home { height: 100%; }
 
 #main {
   display: flex;
@@ -111,9 +100,7 @@ body.flash {
   padding-top: 0px;
   opacity: 0;
   transform: scale(1.05);
-  transition:
-    opacity 1.2s ease,
-    transform 1.2s ease;
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 /* =========================
@@ -128,9 +115,7 @@ body.flash {
   transition: filter 1.8s ease;
 }
 
-.fade-out img {
-  filter: brightness(2);
-}
+.fade-out img { filter: brightness(2); }
 
 .title-image {
   width: 100%;
@@ -151,9 +136,7 @@ body.flash {
   animation: glow 2s infinite;
 }
 
-.enter:hover {
-  transform: scale(1.1);
-}
+.enter:hover { transform: scale(1.1); }
 
 @keyframes glow {
   0% { opacity: 0.6; }
@@ -168,23 +151,11 @@ body.flash {
   font-size: 22px;
 }
 
-.menu span {
-  color: #ff9ae6;
-  cursor: pointer;
-}
+.menu span { color: #ff9ae6; cursor: pointer; }
+.menu-active { animation: glow 2s infinite; }
 
-.menu-active {
-  animation: glow 2s infinite;
-}
-
-a {
-  color: #ff9ae6;
-  text-decoration: none;
-}
-
-a:hover {
-  opacity: 0.8;
-}
+a { color: #ff9ae6; text-decoration: none; }
+a:hover { opacity: 0.8; }
 
 .content-section {
   width: 90%;
@@ -196,14 +167,10 @@ a:hover {
   line-height: 1.6;
 }
 
-#gallery-content {
-  padding-bottom: 20px;
-}
+#gallery-content { padding-bottom: 20px; }
 
 @media (min-width: 768px) {
-  #gallery-content {
-    padding-bottom: 40px;
-  }
+  #gallery-content { padding-bottom: 40px; }
 }
 
 /* PROJECT */
@@ -214,17 +181,8 @@ a:hover {
   margin: 20px auto 0 auto;
 }
 
-.project-title {
-  margin-top: 12px;
-  color: #ff9ae6;
-  font-size: 18px;
-}
-
-.project-year {
-  margin-top: 0px;
-  color: #ff9ae6;
-  font-size: 18px;
-}
+.project-title { margin-top: 12px; color: #ff9ae6; font-size: 18px; }
+.project-year { margin-top: 0px; color: #ff9ae6; font-size: 18px; }
 
 .project-home {
   margin-top: 20px;
@@ -253,10 +211,7 @@ a:hover {
 }
 
 @media (orientation: landscape) {
-  .project-slide {
-    width: auto;
-    height: 70vh;
-  }
+  .project-slide { width: auto; height: 70vh; }
 }
 
 .slide-nav {
@@ -268,33 +223,9 @@ a:hover {
   font-size: 18px;
 }
 
-.slide-nav span {
-  cursor: pointer;
-}
+.slide-nav span { cursor: pointer; }
 
-#project-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100dvh;
-  color: #ff9ae6;
-  padding-top: 80px;
-  box-sizing: border-box;
-}
-
-#blackhorse-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100dvh;
-  color: #ff9ae6;
-  padding-top: 80px;
-  box-sizing: border-box;
-}
-
-#soulportrait-page {
+#project-page, #blackhorse-page, #soulportrait-page, #learning2fly-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -312,17 +243,6 @@ a:hover {
   height: auto;
   display: block;
   margin: 0 auto;
-}
-
-#learning2fly-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100dvh;
-  color: #ff9ae6;
-  padding-top: 80px;
-  box-sizing: border-box;
 }
 
 .project-description {
@@ -358,9 +278,7 @@ a:hover {
   transition: opacity 2s ease;
 }
 
-#secret-page img.visible {
-  opacity: 1;
-}
+#secret-page img.visible { opacity: 1; }
 
 #secret-text {
   font-size: 17px;
@@ -382,9 +300,7 @@ a:hover {
   letter-spacing: 1px;
 }
 
-#secret-leave.visible {
-  opacity: 1;
-}
+#secret-leave.visible { opacity: 1; }
 
 /* =========================
    🔊 SOUND POPUP
@@ -405,10 +321,7 @@ a:hover {
   max-width: 360px;
 }
 
-#sound-popup .tablet-wrap img {
-  width: 100%;
-  display: block;
-}
+#sound-popup .tablet-wrap img { width: 100%; display: block; }
 
 #sound-popup .tablet-text {
   position: absolute;
@@ -447,13 +360,7 @@ a:hover {
 /* =========================
    ⭐ STARS
 ========================= */
-#stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-  display: none;
-}
+#stars { position: fixed; inset: 0; pointer-events: none; z-index: 5; display: none; }
 
 .stars {
   position: fixed;
@@ -476,22 +383,9 @@ a:hover {
 /* =========================
    🧿 TEXT
 ========================= */
-h1 {
-  color: black;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.symbol {
-  font-size: 24px;
-  color: #ff9ae6;
-  margin: 20px 0;
-}
-
-p {
-  text-align: center;
-  line-height: 1.6;
-}
+h1 { color: black; font-weight: bold; margin: 10px 0; }
+.symbol { font-size: 24px; color: #ff9ae6; margin: 20px 0; }
+p { text-align: center; line-height: 1.6; }
 
 </style>
 </head>
@@ -505,9 +399,7 @@ p {
 <div id="sound-popup" style="display:none;">
   <div class="tablet-wrap">
     <img src="sound_info_pop_up.png" alt="stone tablet">
-    <div class="tablet-text">
-      enable sound for<br>full experience
-    </div>
+    <div class="tablet-text">enable sound for<br>full experience</div>
     <div class="tablet-ok">
       <span onclick="dismissSoundPopup()">ok</span>
     </div>
@@ -532,37 +424,30 @@ p {
   </div>
 
   <div id="gallery-content" class="content-section">
-
     <div onclick="openProject()">
       <img src="bookofom.cover.png" class="project-image">
       <div class="project-title">the book of om</div>
       <div class="project-year">(2026)</div>
     </div>
-
     <div onclick="openBlackHorse()" style="margin-top: 40px;">
-     <img src="black_horse_2025.jpg" class="project-image" style="width: 70%; max-width: 320px;">
-     <div class="project-title">black horse</div>
-     <div class="project-year">(2025)</div>
-   </div>
-
+      <img src="black_horse_2025.jpg" class="project-image" style="width: 70%; max-width: 320px;">
+      <div class="project-title">black horse</div>
+      <div class="project-year">(2025)</div>
+    </div>
     <div onclick="openSoulPortrait()" style="margin-top: 40px;">
       <img src="soul_portrait_2024.jpg" class="project-image">
       <div class="project-title">soul portrait</div>
       <div class="project-year">(2024)</div>
     </div>
-
     <div onclick="openLearning2Fly()" style="margin-top: 40px;">
       <img src="learning2fly_doku_cover.png" class="project-image">
       <div class="project-title">learning 2 fly; documentation</div>
       <div class="project-year">(2023)</div>
     </div>
-
   </div>
 
   <div id="about-content" class="content-section" style="display:none;">
-    <img
-      src="voice_sound_button.png"
-      onclick="readAbout()"
+    <img src="voice_sound_button.png" onclick="readAbout()"
       style="width: 50px; height: auto; cursor: pointer; display: block; margin: 0 auto 20px auto;">
     <p id="about-text">
       Jerome Rafael is an earth based human being. located in switzerland, he expresses himself through fashion and art.<br><br>
@@ -573,99 +458,59 @@ p {
   </div>
 
   <div id="contact-content" class="content-section" style="display:none;">
-    <p>
-      instagram:<br>
-      <a href="https://instagram.com/jerome.rafael" target="_blank">@jerome.rafael</a>
-    </p>
-    <p>
-      instagram (fashion):<br>
-      <a href="https://instagram.com/airome.ch" target="_blank">@airome.ch</a>
-    </p>
-    <p>
-      tiktok (styling):<br>
-      <a href="https://tiktok.com/@jerome.rafael" target="_blank">@jerome.rafael</a>
-    </p>
+    <p>instagram:<br><a href="https://instagram.com/jerome.rafael" target="_blank">@jerome.rafael</a></p>
+    <p>instagram (fashion):<br><a href="https://instagram.com/airome.ch" target="_blank">@airome.ch</a></p>
+    <p>tiktok (styling):<br><a href="https://tiktok.com/@jerome.rafael" target="_blank">@jerome.rafael</a></p>
   </div>
 
 </div> <!-- END #main -->
 
-<!-- 📖 BOOK OF OM PROJECT PAGE -->
+<!-- 📖 BOOK OF OM -->
 <div id="project-page" style="display:none;">
-
   <div class="project-home" onclick="goHome()">home</div>
-
   <div class="project-heading">the book of om (2026)</div>
-
   <img id="slide-image" src="bookofom-01.webp" class="project-slide">
-
   <div class="slide-nav">
     <span onclick="prevSlide()">previous</span>
     <span id="slide-number">1 / 24</span>
     <span onclick="nextSlide()">next</span>
   </div>
-
 </div>
 
-<!-- 🐴 BLACK HORSE PROJECT PAGE -->
+<!-- 🐴 BLACK HORSE -->
 <div id="blackhorse-page" style="display:none;">
-
   <div class="project-home" onclick="goHome()">home</div>
-
   <div class="project-heading">black horse (2025)</div>
-
   <img src="black_horse_2025.jpg" class="project-slide">
-
-  <div class="project-description">
-    acrylic on canvas
-  </div>
-
+  <div class="project-description">acrylic on canvas</div>
 </div>
 
-<!-- 🎨 SOUL PORTRAIT PROJECT PAGE -->
+<!-- 🎨 SOUL PORTRAIT -->
 <div id="soulportrait-page" style="display:none;">
-
   <div class="project-home" onclick="goHome()">home</div>
-
   <div class="project-heading">soul portrait (2024)</div>
-
   <img src="soul_portrait_2024.jpg" class="project-slide">
-
-  <div class="project-description">
-    acrylic on canvas
-  </div>
-
+  <div class="project-description">acrylic on canvas</div>
 </div>
 
-<!-- 🪽 LEARNING 2 FLY DOCUMENTATION PROJECT PAGE -->
+<!-- 🪽 LEARNING 2 FLY -->
 <div id="learning2fly-page" style="display:none;">
-
   <div class="project-home" onclick="goHome()">home</div>
-
   <div class="project-heading">learning 2 fly; documentation (2023)</div>
-
   <img id="l2f-slide-image" src="learning2fly_doku_01.jpg" class="project-slide">
-
   <div class="slide-nav">
     <span onclick="prevL2FSlide()">previous</span>
     <span id="l2f-slide-number">1 / 46</span>
     <span onclick="nextL2FSlide()">next</span>
   </div>
-
-  <div class="project-description">
-    description
-  </div>
-
+  <div class="project-description">description</div>
 </div>
 
 <!-- 💀 SECRET PAGE -->
 <div id="secret-page">
-
   <img id="skull-img" src="hidden_skull.png">
-
   <div id="secret-text"></div>
-
   <div id="secret-leave" onclick="leaveSecret()">back into illusion</div>
-
 </div>
 
 <script>
@@ -674,10 +519,6 @@ let currentSlide = 1;
 const totalSlides = 24;
 let l2fCurrentSlide = 1;
 const l2fTotalSlides = 46;
-let startX = 0;
-let startY = 0;
-let isPinching = false;
-let touchStartTime = 0;
 let soundEnabled = false;
 const omSound = new Audio("bookofOM_soundtrack.mp3");
 omSound.loop = true;
@@ -687,6 +528,64 @@ const preloadedImages = [
   "bookofom.cover.png",
   "learning2fly_doku_cover.png"
 ].map(src => { const img = new Image(); img.src = src; return img; });
+
+// -------------------------
+// HISTORY / BACK BUTTON
+// -------------------------
+function pushState(page) {
+  history.pushState({ page }, "", "");
+}
+
+function hideAll() {
+  document.getElementById("project-page").style.display = "none";
+  document.getElementById("blackhorse-page").style.display = "none";
+  document.getElementById("soulportrait-page").style.display = "none";
+  document.getElementById("learning2fly-page").style.display = "none";
+  document.getElementById("secret-page").style.display = "none";
+  document.getElementById("main").style.display = "none";
+  document.body.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.width = "";
+  document.body.style.background = "#6a2a72";
+  document.documentElement.style.background = "#6a2a72";
+  omSound.pause();
+  omSound.currentTime = 0;
+  speechSynthesis.cancel();
+}
+
+window.addEventListener("popstate", function (e) {
+  const state = e.state;
+  if (!state) return;
+  hideAll();
+
+  const p = state.page;
+  if (p === "main-gallery" || p === "main-about" || p === "main-contact") {
+    document.getElementById("main").style.display = "flex";
+    showSection(p.replace("main-", ""));
+  } else if (p === "project-page") {
+    document.getElementById("project-page").style.display = "flex";
+    lockBody();
+  } else if (p === "blackhorse-page") {
+    document.getElementById("blackhorse-page").style.display = "flex";
+    lockBody();
+  } else if (p === "soulportrait-page") {
+    document.getElementById("soulportrait-page").style.display = "flex";
+    lockBody();
+  } else if (p === "learning2fly-page") {
+    document.getElementById("learning2fly-page").style.display = "flex";
+    lockBody();
+  } else if (p === "secret-page") {
+    document.getElementById("secret-page").style.display = "flex";
+    document.body.style.background = "#000";
+    document.documentElement.style.background = "#000";
+  }
+});
+
+function lockBody() {
+  document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
+}
 
 // -------------------------
 // SOUND POPUP
@@ -721,7 +620,6 @@ const secretLines = [
 
 function openSecret() {
   speechSynthesis.cancel();
-
   const unlock = new SpeechSynthesisUtterance(" ");
   unlock.volume = 0;
   speechSynthesis.speak(unlock);
@@ -730,11 +628,11 @@ function openSecret() {
   document.getElementById("secret-page").style.display = "flex";
   document.body.style.background = "#000";
   document.documentElement.style.background = "#000";
+  pushState("secret-page");
 
   setTimeout(() => {
     document.getElementById("skull-img").classList.add("visible");
   }, 300);
-
   setTimeout(() => {
     typewriterSecret(0, "");
   }, 1800);
@@ -747,7 +645,6 @@ function typewriterSecret(lineIndex, fullText) {
     utterance.pitch = 0;
     utterance.volume = 1;
     utterance.lang = 'en-US';
-
     const voices = speechSynthesis.getVoices();
     const deep = voices.find(v => v.name.includes('Daniel') ||
       v.name.includes('Google UK English Male') ||
@@ -756,7 +653,6 @@ function typewriterSecret(lineIndex, fullText) {
       v.name.includes('Alex') ||
       (v.lang.includes('en') && v.name.toLowerCase().includes('male')));
     if (deep) utterance.voice = deep;
-
     speechSynthesis.speak(utterance);
   }
 
@@ -778,12 +674,9 @@ function typewriterSecret(lineIndex, fullText) {
       charIndex++;
       setTimeout(typeLine, 80);
     } else {
-      setTimeout(() => {
-        typewriterSecret(lineIndex + 1, "");
-      }, 600);
+      setTimeout(() => { typewriterSecret(lineIndex + 1, ""); }, 600);
     }
   }
-
   typeLine();
 }
 
@@ -796,6 +689,7 @@ function leaveSecret() {
   document.body.style.background = "#6a2a72";
   document.documentElement.style.background = "#6a2a72";
   document.getElementById("main").style.display = "flex";
+  history.back();
 }
 
 // -------------------------
@@ -815,64 +709,50 @@ function showSection(section) {
   document.getElementById("contact-btn").classList.remove("menu-active");
   document.getElementById(section + "-content").style.display = "block";
   document.getElementById(section + "-btn").classList.add("menu-active");
+  pushState("main-" + section);
 }
 
 function openProject() {
   document.getElementById("main").style.display = "none";
   document.getElementById("project-page").style.display = "flex";
-  document.body.style.overflow = "hidden";
-  document.body.style.position = "fixed";
-  document.body.style.width = "100%";
+  lockBody();
   omSound.currentTime = 0;
   omSound.play();
+  pushState("project-page");
 }
 
 function openBlackHorse() {
   document.getElementById("main").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "flex";
-  document.body.style.overflow = "hidden";
-  document.body.style.position = "fixed";
-  document.body.style.width = "100%";
+  lockBody();
+  pushState("blackhorse-page");
 }
 
 function openSoulPortrait() {
   document.getElementById("main").style.display = "none";
   document.getElementById("soulportrait-page").style.display = "flex";
-  document.body.style.overflow = "hidden";
-  document.body.style.position = "fixed";
-  document.body.style.width = "100%";
+  lockBody();
+  pushState("soulportrait-page");
 }
 
 function openLearning2Fly() {
   document.getElementById("main").style.display = "none";
   document.getElementById("learning2fly-page").style.display = "flex";
-  document.body.style.overflow = "hidden";
-  document.body.style.position = "fixed";
-  document.body.style.width = "100%";
+  lockBody();
+  pushState("learning2fly-page");
 }
 
 function goHome() {
-  document.getElementById("project-page").style.display = "none";
-  document.getElementById("blackhorse-page").style.display = "none";
-  document.getElementById("soulportrait-page").style.display = "none";
-  document.getElementById("learning2fly-page").style.display = "none";
+  hideAll();
   document.getElementById("main").style.display = "flex";
   showSection("gallery");
-  omSound.pause();
-  omSound.currentTime = 0;
-  document.body.style.overflow = "";
-  document.body.style.position = "";
-  document.body.style.width = "";
 }
 
 // -------------------------
 // TTS READ ABOUT
 // -------------------------
 function readAbout() {
-  if (speechSynthesis.speaking) {
-    speechSynthesis.cancel();
-    return;
-  }
+  if (speechSynthesis.speaking) { speechSynthesis.cancel(); return; }
   const text = document.getElementById("about-text").innerText;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 0.85;
@@ -884,16 +764,8 @@ function readAbout() {
 // -------------------------
 // SLIDESHOW — book of om
 // -------------------------
-function nextSlide() {
-  if (currentSlide < totalSlides) currentSlide++;
-  updateSlide();
-}
-
-function prevSlide() {
-  if (currentSlide > 1) currentSlide--;
-  updateSlide();
-}
-
+function nextSlide() { if (currentSlide < totalSlides) currentSlide++; updateSlide(); }
+function prevSlide() { if (currentSlide > 1) currentSlide--; updateSlide(); }
 function updateSlide() {
   const number = String(currentSlide).padStart(2, "0");
   document.getElementById("slide-image").src = "bookofom-" + number + ".webp";
@@ -903,16 +775,8 @@ function updateSlide() {
 // -------------------------
 // SLIDESHOW — learning 2 fly
 // -------------------------
-function nextL2FSlide() {
-  if (l2fCurrentSlide < l2fTotalSlides) l2fCurrentSlide++;
-  updateL2FSlide();
-}
-
-function prevL2FSlide() {
-  if (l2fCurrentSlide > 1) l2fCurrentSlide--;
-  updateL2FSlide();
-}
-
+function nextL2FSlide() { if (l2fCurrentSlide < l2fTotalSlides) l2fCurrentSlide++; updateL2FSlide(); }
+function prevL2FSlide() { if (l2fCurrentSlide > 1) l2fCurrentSlide--; updateL2FSlide(); }
 function updateL2FSlide() {
   const number = String(l2fCurrentSlide).padStart(2, "0");
   document.getElementById("l2f-slide-image").src = "learning2fly_doku_" + number + ".jpg";
@@ -932,41 +796,32 @@ function enter() {
 
   document.documentElement.style.background = "#6a2a72";
   document.body.style.background = "#6a2a72";
-
   glow.classList.add("active");
   landing.classList.add("fade-out");
 
   setTimeout(() => {
     landing.style.display = "none";
     main.style.display = "flex";
+    pushState("main-gallery");
 
     setTimeout(() => {
       main.style.opacity = "1";
       main.style.transform = "scale(1)";
     }, 50);
 
-    setTimeout(() => {
-      showSoundPopup();
-    }, 2300);
-
+    setTimeout(() => { showSoundPopup(); }, 2300);
   }, 1000);
 }
 
 // -------------------------
-// SWIPE — set up ONCE on page load
+// SWIPE
 // -------------------------
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("project-page");
-  const l2fContainer = document.getElementById("learning2fly-page");
-
   function setupSwipeFor(container, nextFn, prevFn) {
     let sx = 0, sy = 0, pinching = false, startTime = 0;
 
     container.addEventListener("touchstart", function (e) {
-      if (e.touches.length > 1) {
-        pinching = true;
-        return;
-      }
+      if (e.touches.length > 1) { pinching = true; return; }
       pinching = false;
       startTime = Date.now();
       sx = e.touches[0].clientX;
@@ -974,36 +829,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { passive: true });
 
     container.addEventListener("touchmove", function (e) {
-      if (e.touches.length > 1) {
-        pinching = true;
-      }
+      if (e.touches.length > 1) pinching = true;
     }, { passive: true });
 
     container.addEventListener("touchend", function (e) {
       if (window.visualViewport && window.visualViewport.scale > 1.05) return;
-      if (pinching) {
-        pinching = false;
-        return;
-      }
+      if (pinching) { pinching = false; return; }
       if (e.changedTouches.length > 1) return;
+      if (Date.now() - startTime > 600) return;
 
-      const elapsed = Date.now() - startTime;
-      if (elapsed > 600) return;
-
-      const endX = e.changedTouches[0].clientX;
-      const endY = e.changedTouches[0].clientY;
-      const diffX = sx - endX;
-      const diffY = sy - endY;
+      const diffX = sx - e.changedTouches[0].clientX;
+      const diffY = sy - e.changedTouches[0].clientY;
 
       if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-        if (diffX > 0) nextFn();
-        else prevFn();
+        if (diffX > 0) nextFn(); else prevFn();
       }
     }, { passive: true });
   }
 
-  setupSwipeFor(container, nextSlide, prevSlide);
-  setupSwipeFor(l2fContainer, nextL2FSlide, prevL2FSlide);
+  setupSwipeFor(document.getElementById("project-page"), nextSlide, prevSlide);
+  setupSwipeFor(document.getElementById("learning2fly-page"), nextL2FSlide, prevL2FSlide);
 });
 
 </script>
