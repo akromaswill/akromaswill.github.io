@@ -364,6 +364,60 @@ a:hover { opacity: 0.8; }
 }
 
 /* =========================
+   📢 AD POPUP
+========================= */
+#ad-popup {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  width: 88vw;
+  max-width: 360px;
+  z-index: 998;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#ad-popup.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+#ad-popup .ad-wrap {
+  position: relative;
+}
+
+#ad-popup .ad-wrap img.ad-stone {
+  width: 100%;
+  display: block;
+}
+
+#ad-popup .ad-coin {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#ad-popup .ad-text {
+  position: absolute;
+  bottom: 12%;
+  left: 8%;
+  right: 8%;
+  text-align: center;
+  color: #ff9ae6;
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+#ad-popup .ad-text a {
+  color: #ff9ae6;
+  text-decoration: underline;
+}
+
+/* =========================
    ⭐ STARS
 ========================= */
 #stars { position: fixed; inset: 0; pointer-events: none; z-index: 5; display: none; }
@@ -405,6 +459,20 @@ p { text-align: center; line-height: 1.6; }
   </div>
 </div>
 
+<!-- 📢 AD POPUP -->
+<div id="ad-popup">
+  <div class="ad-wrap">
+    <img src="free_dopamine_pop_up.png" class="ad-stone">
+    <img src="coin_X.png" class="ad-coin" onclick="closeAdPopup()">
+    <div class="ad-text">
+      you've been chosen to receive FREE dopamine!<br>
+      <a href="https://www.youtube.com/watch?v=PLACEHOLDER" target="_blank">
+        click Here to claim your FREE dopamine!
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- 🌌 ENTRY -->
 <div id="landing" class="center" style="position: relative; z-index: 2;">
   <img src="landingpage_crystal.png">
@@ -424,14 +492,12 @@ p { text-align: center; line-height: 1.6; }
 
   <div id="gallery-content" class="content-section">
 
-    <!-- subcategory tabs -->
-    <div class="subcategory-menu" style="border-top: 1px solid #ff9ae6; padding-top: 15px; margin-top: -20px; width: 220px; margin-left: auto; margin-right: auto;">
+    <div class="subcategory-menu" style="border-top: 1px solid #ff9ae6; padding-top: 16px; margin-top: -20px; width: 220px; margin-left: auto; margin-right: auto;">
       <span id="sub-creations-btn" class="subcategory-active" onclick="showSubcategory('creations')">creations</span>
       <span id="sub-fashion-btn" onclick="showSubcategory('fashion')">fashion</span>
       <span id="sub-styling-btn" onclick="showSubcategory('styling')">styling</span>
     </div>
 
-    <!-- creations -->
     <div id="sub-creations">
       <div onclick="openProject()">
         <img src="bookofom.cover.png" class="project-image">
@@ -455,12 +521,10 @@ p { text-align: center; line-height: 1.6; }
       </div>
     </div>
 
-    <!-- fashion (empty for now) -->
     <div id="sub-fashion" style="display:none;">
       <p style="margin-top: 40px; color: #ff9ae6; font-size: 16px; opacity: 0.5;">coming soon</p>
     </div>
 
-    <!-- styling (empty for now) -->
     <div id="sub-styling" style="display:none;">
       <p style="margin-top: 40px; color: #ff9ae6; font-size: 16px; opacity: 0.5;">coming soon</p>
     </div>
@@ -562,6 +626,17 @@ function showSubcategory(cat) {
   document.getElementById("sub-styling-btn").classList.remove("subcategory-active");
   document.getElementById("sub-" + cat).style.display = "block";
   document.getElementById("sub-" + cat + "-btn").classList.add("subcategory-active");
+}
+
+// -------------------------
+// AD POPUP
+// -------------------------
+function showAdPopup() {
+  document.getElementById("ad-popup").classList.add("visible");
+}
+
+function closeAdPopup() {
+  document.getElementById("ad-popup").classList.remove("visible");
 }
 
 // -------------------------
@@ -843,6 +918,8 @@ function enter() {
     }, 50);
 
     setTimeout(() => { showSoundPopup(); }, 2300);
+    setTimeout(() => { showAdPopup(); }, 30000);
+
   }, 1000);
 }
 
