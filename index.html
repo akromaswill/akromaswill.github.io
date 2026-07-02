@@ -763,11 +763,16 @@ setTimeout(() => { document.getElementById("skull-img").classList.add("visible")
 setTimeout(() => {
   const skullAudio = new Audio("hidden_skull_audio.mp3");
   skullAudio.play();
-  typewriterSecret(0, "");
+  const audioDuration = 26;
+  const totalChars = secretLines.join(" ").length;
+  const totalPauses = (secretLines.length - 1) * 600;
+  const availableMs = (audioDuration * 1000) - totalPauses - 1000;
+  const msPerChar = Math.floor(availableMs / totalChars);
+  typewriterSecret(0, "", msPerChar);
 }, 1800);
 }
 
-function typewriterSecret(lineIndex, fullText) {
+function typewriterSecret(lineIndex, fullText, msPerChar) {
 
   if (lineIndex >= secretLines.length) {
     setTimeout(() => { document.getElementById("secret-leave").classList.add("visible"); }, 1000);
@@ -783,9 +788,9 @@ function typewriterSecret(lineIndex, fullText) {
       const currentFull = secretLines.slice(0, lineIndex).join(" ") + " " + line.slice(0, charIndex);
       el.innerText = currentFull;
       charIndex++;
-      setTimeout(typeLine, 80);
+      setTimeout(typeLine, msPerChar);
     } else {
-      setTimeout(() => { typewriterSecret(lineIndex + 1, ""); }, 600);
+      setTimeout(() => { typewriterSecret(lineIndex + 1, "", msPerChar); }, 600);
     }
   }
   typeLine();
