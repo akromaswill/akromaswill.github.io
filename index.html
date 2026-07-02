@@ -903,6 +903,11 @@ function updateL2FSlide() {
 // ENTER HEAVEN
 // -------------------------
 function enter() {
+  // unlock ad popup sound for iOS
+  const adSoundUnlock = new Audio("free_dopamine_pop_up_audio.mp3");
+  adSoundUnlock.volume = 0;
+  adSoundUnlock.play().then(() => { adSoundUnlock.pause(); adSoundUnlock.currentTime = 0; });
+
   const sound = new Audio("heaven_intro.mp3");
   sound.play();
 
