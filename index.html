@@ -888,10 +888,15 @@ function updateL2FSlide() {
 // ENTER HEAVEN
 // -------------------------
 function enter() {
-  // unlock ad popup sound for iOS
-  const adSoundUnlock = new Audio("free_dopamine_pop_up_audio.mp3");
-  adSoundUnlock.volume = 0;
-  adSoundUnlock.play().then(() => { adSoundUnlock.pause(); adSoundUnlock.currentTime = 0; });
+  // unlock all audio for iOS on user tap
+  const unlockAudio = (src) => {
+    const a = new Audio(src);
+    a.volume = 0;
+    a.play().catch(() => {});
+    setTimeout(() => { a.pause(); a.src = ""; }, 100);
+  };
+  unlockAudio("free_dopamine_pop_up_audio.mp3");
+  unlockAudio("hidden_skull_audio.mp3");
 
   const sound = new Audio("heaven_intro.mp3");
   sound.play();
