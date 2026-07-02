@@ -742,9 +742,6 @@ const secretLines = [
 
 function openSecret() {
   speechSynthesis.cancel();
-  const unlock = new SpeechSynthesisUtterance(" ");
-  unlock.volume = 0;
-  speechSynthesis.speak(unlock);
 
   document.getElementById("main").style.display = "none";
   document.getElementById("secret-page").style.display = "flex";
