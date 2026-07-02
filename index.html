@@ -380,7 +380,13 @@ a:hover { opacity: 0.8; }
 #ad-popup.visible {
   transform: translateX(-50%) translateY(0);
 }
-
+   
+@media (max-width: 767px) {
+  #ad-popup.visible {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+   
 #ad-popup .ad-wrap {
   position: relative;
 }
@@ -392,7 +398,7 @@ a:hover { opacity: 0.8; }
 
 #ad-popup .ad-coin {
   position: absolute;
-  top: -8px;
+  top: 8px;
   right: 4px;
   width: 44px;
   height: 44px;
