@@ -762,13 +762,15 @@ function openSecret() {
 setTimeout(() => { document.getElementById("skull-img").classList.add("visible"); }, 300);
 setTimeout(() => {
   const skullAudio = new Audio("hidden_skull_audio.mp3");
+  skullAudio.addEventListener("loadedmetadata", () => {
+    const audioDuration = skullAudio.duration;
+    const totalChars = secretLines.join(" ").length;
+    const totalPauses = (secretLines.length - 1) * 600;
+    const availableMs = (audioDuration * 1000) - totalPauses - 1000;
+    const msPerChar = Math.floor(availableMs / totalChars);
+    typewriterSecret(0, "", msPerChar);
+  });
   skullAudio.play();
-  const audioDuration = 26;
-  const totalChars = secretLines.join(" ").length;
-  const totalPauses = (secretLines.length - 1) * 600;
-  const availableMs = (audioDuration * 1000) - totalPauses - 1000;
-  const msPerChar = Math.floor(availableMs / totalChars);
-  typewriterSecret(0, "", msPerChar);
 }, 1800);
 }
 
