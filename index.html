@@ -752,8 +752,12 @@ function openSecret() {
   document.documentElement.style.background = "#000";
   pushState("secret-page");
 
-  setTimeout(() => { document.getElementById("skull-img").classList.add("visible"); }, 300);
-  setTimeout(() => { typewriterSecret(0, ""); }, 1800);
+setTimeout(() => { document.getElementById("skull-img").classList.add("visible"); }, 300);
+setTimeout(() => {
+  const skullAudio = new Audio("hidden_skull_audio.mp3");
+  skullAudio.play();
+  typewriterSecret(0, "");
+}, 1800);
 }
 
 function typewriterSecret(lineIndex, fullText) {
