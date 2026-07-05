@@ -235,7 +235,8 @@ a:hover { opacity: 0.8; }
 
 .slide-nav span { cursor: pointer; }
 
-#project-page, #blackhorse-page, #soulportrait-page, #learning2fly-page {
+#project-page, #blackhorse-page, #soulportrait-page, #learning2fly-page,
+#look1-page, #look2-page, #look3-page, #look45-page, #look6-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -380,21 +381,15 @@ a:hover { opacity: 0.8; }
 #ad-popup.visible {
   transform: translateX(-50%) translateY(0);
 }
-   
+
 @media (max-width: 767px) {
   #ad-popup.visible {
     transform: translateX(-50%) translateY(10px);
   }
 }
-   
-#ad-popup .ad-wrap {
-  position: relative;
-}
 
-#ad-popup .ad-wrap img.ad-stone {
-  width: 100%;
-  display: block;
-}
+#ad-popup .ad-wrap { position: relative; }
+#ad-popup .ad-wrap img.ad-stone { width: 100%; display: block; }
 
 #ad-popup .ad-coin {
   position: absolute;
@@ -471,12 +466,12 @@ p { text-align: center; line-height: 1.6; }
     <img src="free_dopamine_pop_up.png" class="ad-stone">
     <img src="coin_X.png" class="ad-coin" onclick="closeAdPopup()">
     <div class="ad-text">
-     you've been chosen to receive<br>
-     FREE dopamine!<br>
-     <a href="https://www.youtube.com/watch?v=fgLZWpugtZk" target="_blank">
-       click here to claim your FREE dopamine!
-     </a>
-   </div>
+      you've been chosen to receive<br>
+      FREE dopamine!<br>
+      <a href="https://www.youtube.com/watch?v=fgLZWpugtZk" target="_blank">
+        click here to claim your FREE dopamine!
+      </a>
+    </div>
   </div>
 </div>
 
@@ -500,11 +495,12 @@ p { text-align: center; line-height: 1.6; }
   <div id="gallery-content" class="content-section">
 
     <div class="subcategory-menu" style="border-top: 1px solid #ff9ae6; padding-top: 16px; margin-top: -20px; width: 220px; margin-left: auto; margin-right: auto;">
-     <span id="sub-creations-btn" class="subcategory-active" onclick="new Audio('submenu_click.mp3').play(); showSubcategory('creations')">creations</span>
-     <span id="sub-fashion-btn" onclick="new Audio('submenu_click.mp3').play(); showSubcategory('fashion')">fashion</span>
-     <span id="sub-styling-btn" onclick="new Audio('submenu_click.mp3').play(); showSubcategory('styling')">styling</span>
-   </div>
+      <span id="sub-creations-btn" class="subcategory-active" onclick="new Audio('submenu_click.mp3').play(); showSubcategory('creations')">creations</span>
+      <span id="sub-fashion-btn" onclick="new Audio('submenu_click.mp3').play(); showSubcategory('fashion')">fashion</span>
+      <span id="sub-styling-btn" onclick="new Audio('submenu_click.mp3').play(); showSubcategory('styling')">styling</span>
+    </div>
 
+    <!-- CREATIONS -->
     <div id="sub-creations">
       <div onclick="openProject()">
         <img src="bookofom.cover.png" class="project-image">
@@ -528,10 +524,36 @@ p { text-align: center; line-height: 1.6; }
       </div>
     </div>
 
+    <!-- FASHION -->
     <div id="sub-fashion" style="display:none;">
-      <p style="margin-top: 40px; color: #ff9ae6; font-size: 16px; opacity: 0.5;">coming soon</p>
+      <div onclick="openLook6()" >
+        <img src="l2f_look6_04.webp" class="project-image">
+        <div class="project-title">learning 2 fly, look 6</div>
+        <div class="project-year">(2023)</div>
+      </div>
+      <div onclick="openLook45()" style="margin-top: 40px;">
+        <img src="l2f_look4-5_04.webp" class="project-image">
+        <div class="project-title">learning 2 fly, look 4/5</div>
+        <div class="project-year">(2023)</div>
+      </div>
+      <div onclick="openLook3()" style="margin-top: 40px;">
+        <img src="l2f_look3_01.webp" class="project-image">
+        <div class="project-title">learning 2 fly, look 3</div>
+        <div class="project-year">(2023)</div>
+      </div>
+      <div onclick="openLook2()" style="margin-top: 40px;">
+        <img src="l2f_look2_02.webp" class="project-image">
+        <div class="project-title">learning 2 fly, look 2</div>
+        <div class="project-year">(2023)</div>
+      </div>
+      <div onclick="openLook1()" style="margin-top: 40px;">
+        <img src="l2f_look1_07.webp" class="project-image">
+        <div class="project-title">learning 2 fly, look 1</div>
+        <div class="project-year">(2023)</div>
+      </div>
     </div>
 
+    <!-- STYLING -->
     <div id="sub-styling" style="display:none;">
       <p style="margin-top: 40px; color: #ff9ae6; font-size: 16px; opacity: 0.5;">coming soon</p>
     </div>
@@ -585,7 +607,7 @@ p { text-align: center; line-height: 1.6; }
   <div class="project-description">acrylic on canvas</div>
 </div>
 
-<!-- 🪽 LEARNING 2 FLY -->
+<!-- 🪽 LEARNING 2 FLY DOKU -->
 <div id="learning2fly-page" style="display:none;">
   <div class="project-home" onclick="goHome()">home</div>
   <div class="project-heading">learning 2 fly; documentation (2023)</div>
@@ -596,6 +618,66 @@ p { text-align: center; line-height: 1.6; }
     <span onclick="nextL2FSlide()">next</span>
   </div>
   <div class="project-description">description</div>
+</div>
+
+<!-- 👗 LOOK 6 -->
+<div id="look6-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">learning 2 fly, look 6 (2023)</div>
+  <img id="look6-slide-image" src="l2f_look6_01.webp" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevLook6Slide()">previous</span>
+    <span id="look6-slide-number">1 / 10</span>
+    <span onclick="nextLook6Slide()">next</span>
+  </div>
+</div>
+
+<!-- 👗 LOOK 4/5 -->
+<div id="look45-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">learning 2 fly, look 4/5 (2023)</div>
+  <img id="look45-slide-image" src="l2f_look4-5_01.webp" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevLook45Slide()">previous</span>
+    <span id="look45-slide-number">1 / 9</span>
+    <span onclick="nextLook45Slide()">next</span>
+  </div>
+</div>
+
+<!-- 👗 LOOK 3 -->
+<div id="look3-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">learning 2 fly, look 3 (2023)</div>
+  <img id="look3-slide-image" src="l2f_look3_01.webp" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevLook3Slide()">previous</span>
+    <span id="look3-slide-number">1 / 6</span>
+    <span onclick="nextLook3Slide()">next</span>
+  </div>
+</div>
+
+<!-- 👗 LOOK 2 -->
+<div id="look2-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">learning 2 fly, look 2 (2023)</div>
+  <img id="look2-slide-image" src="l2f_look2_01.webp" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevLook2Slide()">previous</span>
+    <span id="look2-slide-number">1 / 9</span>
+    <span onclick="nextLook2Slide()">next</span>
+  </div>
+</div>
+
+<!-- 👗 LOOK 1 -->
+<div id="look1-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">learning 2 fly, look 1 (2023)</div>
+  <img id="look1-slide-image" src="l2f_look1_01.webp" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevLook1Slide()">previous</span>
+    <span id="look1-slide-number">1 / 7</span>
+    <span onclick="nextLook1Slide()">next</span>
+  </div>
 </div>
 
 <!-- 💀 SECRET PAGE -->
@@ -611,6 +693,11 @@ let currentSlide = 1;
 const totalSlides = 24;
 let l2fCurrentSlide = 1;
 const l2fTotalSlides = 46;
+let look6Slide = 1; const look6Total = 10;
+let look45Slide = 1; const look45Total = 9;
+let look3Slide = 1; const look3Total = 6;
+let look2Slide = 1; const look2Total = 9;
+let look1Slide = 1; const look1Total = 7;
 let soundEnabled = false;
 const omSound = new Audio("bookofOM_soundtrack.mp3");
 omSound.loop = true;
@@ -655,12 +742,11 @@ function pushState(page) {
 }
 
 function hideAll() {
-  document.getElementById("project-page").style.display = "none";
-  document.getElementById("blackhorse-page").style.display = "none";
-  document.getElementById("soulportrait-page").style.display = "none";
-  document.getElementById("learning2fly-page").style.display = "none";
-  document.getElementById("secret-page").style.display = "none";
-  document.getElementById("main").style.display = "none";
+  ["project-page","blackhorse-page","soulportrait-page","learning2fly-page",
+   "look6-page","look45-page","look3-page","look2-page","look1-page",
+   "secret-page","main"].forEach(id => {
+    document.getElementById(id).style.display = "none";
+  });
   document.body.style.overflow = "";
   document.body.style.position = "";
   document.body.style.width = "";
@@ -684,19 +770,16 @@ window.addEventListener("popstate", function (e) {
   if (p === "main-gallery" || p === "main-about" || p === "main-contact") {
     document.getElementById("main").style.display = "flex";
     showSection(p.replace("main-", ""));
-  } else if (p === "project-page") {
-    document.getElementById("project-page").style.display = "flex";
-    lockBody();
-  } else if (p === "blackhorse-page") {
-    document.getElementById("blackhorse-page").style.display = "flex";
-    lockBody();
-  } else if (p === "soulportrait-page") {
-    document.getElementById("soulportrait-page").style.display = "flex";
-    lockBody();
-  } else if (p === "learning2fly-page") {
-    document.getElementById("learning2fly-page").style.display = "flex";
-    lockBody();
-  } else if (p === "secret-page") {
+  } else if (p === "project-page") { document.getElementById("project-page").style.display = "flex"; lockBody(); }
+  else if (p === "blackhorse-page") { document.getElementById("blackhorse-page").style.display = "flex"; lockBody(); }
+  else if (p === "soulportrait-page") { document.getElementById("soulportrait-page").style.display = "flex"; lockBody(); }
+  else if (p === "learning2fly-page") { document.getElementById("learning2fly-page").style.display = "flex"; lockBody(); }
+  else if (p === "look6-page") { document.getElementById("look6-page").style.display = "flex"; lockBody(); }
+  else if (p === "look45-page") { document.getElementById("look45-page").style.display = "flex"; lockBody(); }
+  else if (p === "look3-page") { document.getElementById("look3-page").style.display = "flex"; lockBody(); }
+  else if (p === "look2-page") { document.getElementById("look2-page").style.display = "flex"; lockBody(); }
+  else if (p === "look1-page") { document.getElementById("look1-page").style.display = "flex"; lockBody(); }
+  else if (p === "secret-page") {
     document.getElementById("secret-page").style.display = "flex";
     document.body.style.background = "#000";
     document.documentElement.style.background = "#000";
@@ -724,8 +807,6 @@ function showSoundPopup() {
 function dismissSoundPopup() {
   soundEnabled = true;
   document.getElementById("sound-popup").style.display = "none";
-
-  // unlock delayed audio for iOS
   const unlockAudio = (src) => {
     const a = new Audio(src);
     a.volume = 0;
@@ -752,40 +833,36 @@ const secretLines = [
 
 function openSecret() {
   speechSynthesis.cancel();
-
   document.getElementById("main").style.display = "none";
   document.getElementById("secret-page").style.display = "flex";
   document.body.style.background = "#000";
   document.documentElement.style.background = "#000";
   pushState("secret-page");
 
-setTimeout(() => { document.getElementById("skull-img").classList.add("visible"); }, 300);
-setTimeout(() => {
-  const skullAudio = new Audio("hidden_skull_audio.mp3");
-  skullAudio.addEventListener("loadedmetadata", () => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const audioDuration = isMobile ? 26 : 27.5;
-    const totalChars = secretLines.join(" ").length;
-    const totalPauses = (secretLines.length - 1) * 600;
-    const availableMs = (audioDuration * 1000) - totalPauses - 1000;
-    const msPerChar = Math.floor(availableMs / totalChars);
-    typewriterSecret(0, "", msPerChar);
-  });
-  skullAudio.play();
-}, 1800);
+  setTimeout(() => { document.getElementById("skull-img").classList.add("visible"); }, 300);
+  setTimeout(() => {
+    const skullAudio = new Audio("hidden_skull_audio.mp3");
+    skullAudio.addEventListener("loadedmetadata", () => {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const audioDuration = isMobile ? 26 : 27.5;
+      const totalChars = secretLines.join(" ").length;
+      const totalPauses = (secretLines.length - 1) * 600;
+      const availableMs = (audioDuration * 1000) - totalPauses - 1000;
+      const msPerChar = Math.floor(availableMs / totalChars);
+      typewriterSecret(0, "", msPerChar);
+    });
+    skullAudio.play();
+  }, 1800);
 }
 
 function typewriterSecret(lineIndex, fullText, msPerChar) {
-
   if (lineIndex >= secretLines.length) {
     setTimeout(() => { document.getElementById("secret-leave").classList.add("visible"); }, 1000);
     return;
   }
-
   const line = secretLines[lineIndex];
   const el = document.getElementById("secret-text");
   let charIndex = 0;
-
   function typeLine() {
     if (charIndex <= line.length) {
       const currentFull = secretLines.slice(0, lineIndex).join(" ") + " " + line.slice(0, charIndex);
@@ -816,10 +893,10 @@ function leaveSecret() {
 // -------------------------
 function showSection(section) {
   speechSynthesis.cancel();
-  document.getElementById("project-page").style.display = "none";
-  document.getElementById("blackhorse-page").style.display = "none";
-  document.getElementById("soulportrait-page").style.display = "none";
-  document.getElementById("learning2fly-page").style.display = "none";
+  ["project-page","blackhorse-page","soulportrait-page","learning2fly-page",
+   "look6-page","look45-page","look3-page","look2-page","look1-page"].forEach(id => {
+    document.getElementById(id).style.display = "none";
+  });
   document.getElementById("gallery-content").style.display = "none";
   document.getElementById("about-content").style.display = "none";
   document.getElementById("contact-content").style.display = "none";
@@ -834,31 +911,56 @@ function showSection(section) {
 function openProject() {
   document.getElementById("main").style.display = "none";
   document.getElementById("project-page").style.display = "flex";
-  lockBody();
-  omSound.currentTime = 0;
-  omSound.play();
+  lockBody(); omSound.currentTime = 0; omSound.play();
   pushState("project-page");
 }
 
 function openBlackHorse() {
   document.getElementById("main").style.display = "none";
   document.getElementById("blackhorse-page").style.display = "flex";
-  lockBody();
-  pushState("blackhorse-page");
+  lockBody(); pushState("blackhorse-page");
 }
 
 function openSoulPortrait() {
   document.getElementById("main").style.display = "none";
   document.getElementById("soulportrait-page").style.display = "flex";
-  lockBody();
-  pushState("soulportrait-page");
+  lockBody(); pushState("soulportrait-page");
 }
 
 function openLearning2Fly() {
   document.getElementById("main").style.display = "none";
   document.getElementById("learning2fly-page").style.display = "flex";
-  lockBody();
-  pushState("learning2fly-page");
+  lockBody(); pushState("learning2fly-page");
+}
+
+function openLook6() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("look6-page").style.display = "flex";
+  lockBody(); pushState("look6-page");
+}
+
+function openLook45() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("look45-page").style.display = "flex";
+  lockBody(); pushState("look45-page");
+}
+
+function openLook3() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("look3-page").style.display = "flex";
+  lockBody(); pushState("look3-page");
+}
+
+function openLook2() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("look2-page").style.display = "flex";
+  lockBody(); pushState("look2-page");
+}
+
+function openLook1() {
+  document.getElementById("main").style.display = "none";
+  document.getElementById("look1-page").style.display = "flex";
+  lockBody(); pushState("look1-page");
 }
 
 function goHome() {
@@ -874,9 +976,7 @@ function readAbout() {
   if (speechSynthesis.speaking) { speechSynthesis.cancel(); return; }
   const text = document.getElementById("about-text").innerText;
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = 0.85;
-  utterance.pitch = 0.8;
-  utterance.lang = 'en-US';
+  utterance.rate = 0.85; utterance.pitch = 0.8; utterance.lang = 'en-US';
   speechSynthesis.speak(utterance);
 }
 
@@ -886,20 +986,63 @@ function readAbout() {
 function nextSlide() { if (currentSlide < totalSlides) currentSlide++; updateSlide(); }
 function prevSlide() { if (currentSlide > 1) currentSlide--; updateSlide(); }
 function updateSlide() {
-  const number = String(currentSlide).padStart(2, "0");
-  document.getElementById("slide-image").src = "bookofom-" + number + ".webp";
+  const n = String(currentSlide).padStart(2, "0");
+  document.getElementById("slide-image").src = "bookofom-" + n + ".webp";
   document.getElementById("slide-number").innerText = currentSlide + " / " + totalSlides;
 }
 
 // -------------------------
-// SLIDESHOW — learning 2 fly
+// SLIDESHOW — learning 2 fly doku
 // -------------------------
 function nextL2FSlide() { if (l2fCurrentSlide < l2fTotalSlides) l2fCurrentSlide++; updateL2FSlide(); }
 function prevL2FSlide() { if (l2fCurrentSlide > 1) l2fCurrentSlide--; updateL2FSlide(); }
 function updateL2FSlide() {
-  const number = String(l2fCurrentSlide).padStart(2, "0");
-  document.getElementById("l2f-slide-image").src = "learning2fly_doku_" + number + ".jpg";
+  const n = String(l2fCurrentSlide).padStart(2, "0");
+  document.getElementById("l2f-slide-image").src = "learning2fly_doku_" + n + ".jpg";
   document.getElementById("l2f-slide-number").innerText = l2fCurrentSlide + " / " + l2fTotalSlides;
+}
+
+// -------------------------
+// SLIDESHOWS — fashion looks
+// -------------------------
+function nextLook6Slide() { if (look6Slide < look6Total) look6Slide++; updateLook6(); }
+function prevLook6Slide() { if (look6Slide > 1) look6Slide--; updateLook6(); }
+function updateLook6() {
+  const n = String(look6Slide).padStart(2, "0");
+  document.getElementById("look6-slide-image").src = "l2f_look6_" + n + ".webp";
+  document.getElementById("look6-slide-number").innerText = look6Slide + " / " + look6Total;
+}
+
+function nextLook45Slide() { if (look45Slide < look45Total) look45Slide++; updateLook45(); }
+function prevLook45Slide() { if (look45Slide > 1) look45Slide--; updateLook45(); }
+function updateLook45() {
+  const n = String(look45Slide).padStart(2, "0");
+  document.getElementById("look45-slide-image").src = "l2f_look4-5_" + n + ".webp";
+  document.getElementById("look45-slide-number").innerText = look45Slide + " / " + look45Total;
+}
+
+function nextLook3Slide() { if (look3Slide < look3Total) look3Slide++; updateLook3(); }
+function prevLook3Slide() { if (look3Slide > 1) look3Slide--; updateLook3(); }
+function updateLook3() {
+  const n = String(look3Slide).padStart(2, "0");
+  document.getElementById("look3-slide-image").src = "l2f_look3_" + n + ".webp";
+  document.getElementById("look3-slide-number").innerText = look3Slide + " / " + look3Total;
+}
+
+function nextLook2Slide() { if (look2Slide < look2Total) look2Slide++; updateLook2(); }
+function prevLook2Slide() { if (look2Slide > 1) look2Slide--; updateLook2(); }
+function updateLook2() {
+  const n = String(look2Slide).padStart(2, "0");
+  document.getElementById("look2-slide-image").src = "l2f_look2_" + n + ".webp";
+  document.getElementById("look2-slide-number").innerText = look2Slide + " / " + look2Total;
+}
+
+function nextLook1Slide() { if (look1Slide < look1Total) look1Slide++; updateLook1(); }
+function prevLook1Slide() { if (look1Slide > 1) look1Slide--; updateLook1(); }
+function updateLook1() {
+  const n = String(look1Slide).padStart(2, "0");
+  document.getElementById("look1-slide-image").src = "l2f_look1_" + n + ".webp";
+  document.getElementById("look1-slide-number").innerText = look1Slide + " / " + look1Total;
 }
 
 // -------------------------
@@ -930,7 +1073,6 @@ function enter() {
 
     setTimeout(() => { showSoundPopup(); }, 2300);
     setTimeout(() => { showAdPopup(); }, 17300);
-
   }, 1000);
 }
 
@@ -940,28 +1082,21 @@ function enter() {
 document.addEventListener("DOMContentLoaded", function () {
   function setupSwipeFor(container, nextFn, prevFn) {
     let sx = 0, sy = 0, pinching = false, startTime = 0;
-
     container.addEventListener("touchstart", function (e) {
       if (e.touches.length > 1) { pinching = true; return; }
-      pinching = false;
-      startTime = Date.now();
-      sx = e.touches[0].clientX;
-      sy = e.touches[0].clientY;
+      pinching = false; startTime = Date.now();
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY;
     }, { passive: true });
-
     container.addEventListener("touchmove", function (e) {
       if (e.touches.length > 1) pinching = true;
     }, { passive: true });
-
     container.addEventListener("touchend", function (e) {
       if (window.visualViewport && window.visualViewport.scale > 1.05) return;
       if (pinching) { pinching = false; return; }
       if (e.changedTouches.length > 1) return;
       if (Date.now() - startTime > 600) return;
-
       const diffX = sx - e.changedTouches[0].clientX;
       const diffY = sy - e.changedTouches[0].clientY;
-
       if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
         if (diffX > 0) nextFn(); else prevFn();
       }
@@ -970,6 +1105,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setupSwipeFor(document.getElementById("project-page"), nextSlide, prevSlide);
   setupSwipeFor(document.getElementById("learning2fly-page"), nextL2FSlide, prevL2FSlide);
+  setupSwipeFor(document.getElementById("look6-page"), nextLook6Slide, prevLook6Slide);
+  setupSwipeFor(document.getElementById("look45-page"), nextLook45Slide, prevLook45Slide);
+  setupSwipeFor(document.getElementById("look3-page"), nextLook3Slide, prevLook3Slide);
+  setupSwipeFor(document.getElementById("look2-page"), nextLook2Slide, prevLook2Slide);
+  setupSwipeFor(document.getElementById("look1-page"), nextLook1Slide, prevLook1Slide);
 });
 
 </script>
