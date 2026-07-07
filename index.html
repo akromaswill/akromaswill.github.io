@@ -34,9 +34,7 @@ body.flash { animation: flashAnim 1.2s ease-out; }
 
 #landing, #main { background: transparent; }
 
-#landing {
-  transition: opacity 1.8s ease, transform 1.8s ease;
-}
+#landing { transition: opacity 1.8s ease, transform 1.8s ease; }
 
 .fade-out {
   opacity: 0;
@@ -173,10 +171,7 @@ a:hover { opacity: 0.8; }
   font-size: 18px;
 }
 
-.subcategory-menu span {
-  color: #ff9ae6;
-  cursor: pointer;
-}
+.subcategory-menu span { color: #ff9ae6; cursor: pointer; }
 
 .subcategory-active {
   animation: glow 2s infinite;
@@ -236,7 +231,8 @@ a:hover { opacity: 0.8; }
 .slide-nav span { cursor: pointer; }
 
 #project-page, #blackhorse-page, #soulportrait-page, #learning2fly-page,
-#look1-page, #look2-page, #look3-page, #look45-page, #look6-page {
+#look1-page, #look2-page, #look3-page, #look45-page, #look6-page,
+#styling0405-page, #stylingcdb-page, #styling0812-page, #styling07-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,14 +252,6 @@ a:hover { opacity: 0.8; }
   margin: 0 auto;
 }
 
-.project-description {
-  margin-top: 16px;
-  color: #ff9ae6;
-  font-size: 16px;
-  text-align: center;
-  padding-bottom: 40px;
-}
-
 #look1-page .project-slide,
 #look2-page .project-slide,
 #look6-page .project-slide {
@@ -273,6 +261,14 @@ a:hover { opacity: 0.8; }
   height: auto !important;
   display: block;
   margin: 0 auto;
+}
+
+.project-description {
+  margin-top: 16px;
+  color: #ff9ae6;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 40px;
 }
 
 /* =========================
@@ -389,14 +385,10 @@ a:hover { opacity: 0.8; }
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-#ad-popup.visible {
-  transform: translateX(-50%) translateY(0);
-}
+#ad-popup.visible { transform: translateX(-50%) translateY(0); }
 
 @media (max-width: 767px) {
-  #ad-popup.visible {
-    transform: translateX(-50%) translateY(10px);
-  }
+  #ad-popup.visible { transform: translateX(-50%) translateY(10px); }
 }
 
 #ad-popup .ad-wrap { position: relative; }
@@ -415,8 +407,7 @@ a:hover { opacity: 0.8; }
 #ad-popup .ad-text {
   position: absolute;
   bottom: 32%;
-  left: 8%;
-  right: 8%;
+  left: 8%; right: 8%;
   text-align: center;
   color: #ff9ae6;
   font-size: 13px;
@@ -424,10 +415,7 @@ a:hover { opacity: 0.8; }
   cursor: pointer;
 }
 
-#ad-popup .ad-text a {
-  color: #ff9ae6;
-  text-decoration: underline;
-}
+#ad-popup .ad-text a { color: #ff9ae6; text-decoration: underline; }
 
 /* =========================
    ⭐ STARS
@@ -537,7 +525,7 @@ p { text-align: center; line-height: 1.6; }
 
     <!-- FASHION -->
     <div id="sub-fashion" style="display:none;">
-      <div onclick="openLook6()" >
+      <div onclick="openLook6()">
         <img src="l2f_look6_04.webp" class="project-image">
         <div class="project-title">learning 2 fly, look 6</div>
         <div class="project-year">(2023)</div>
@@ -566,7 +554,26 @@ p { text-align: center; line-height: 1.6; }
 
     <!-- STYLING -->
     <div id="sub-styling" style="display:none;">
-      <p style="margin-top: 40px; color: #ff9ae6; font-size: 16px; opacity: 0.5;">coming soon</p>
+      <div onclick="openStyling0405()">
+        <img src="2026_04-05_cover.jpg" class="project-image">
+        <div class="project-title">04-05</div>
+        <div class="project-year">(2026)</div>
+      </div>
+      <div onclick="openStylingCdb()" style="margin-top: 40px;">
+        <img src="2026_cdb_cover.jpg" class="project-image">
+        <div class="project-title">chambre de bonne</div>
+        <div class="project-year">(2026)</div>
+      </div>
+      <div onclick="openStyling0812()" style="margin-top: 40px;">
+        <img src="2025_08-12_cover.jpg" class="project-image">
+        <div class="project-title">08-12</div>
+        <div class="project-year">(2025)</div>
+      </div>
+      <div onclick="openStyling07()" style="margin-top: 40px;">
+        <img src="2025_07_cover.jpg" class="project-image">
+        <div class="project-title">07</div>
+        <div class="project-year">(2025)</div>
+      </div>
     </div>
 
   </div>
@@ -696,6 +703,54 @@ p { text-align: center; line-height: 1.6; }
   <div class="project-description">photography<br>by manuel richiusa</div>
 </div>
 
+<!-- 🎨 STYLING 04-05 2026 -->
+<div id="styling0405-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">04-05 (2026)</div>
+  <img id="styling0405-slide-image" src="2026_04-05_01.jpg" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevStyling0405Slide()">previous</span>
+    <span id="styling0405-slide-number">1 / 7</span>
+    <span onclick="nextStyling0405Slide()">next</span>
+  </div>
+</div>
+
+<!-- 🎨 STYLING CHAMBRE DE BONNE 2026 -->
+<div id="stylingcdb-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">chambre de bonne (2026)</div>
+  <img id="stylingcdb-slide-image" src="2026_cdb_01.webp" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevStylingCdbSlide()">previous</span>
+    <span id="stylingcdb-slide-number">1 / 11</span>
+    <span onclick="nextStylingCdbSlide()">next</span>
+  </div>
+</div>
+
+<!-- 🎨 STYLING 08-12 2025 -->
+<div id="styling0812-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">08-12 (2025)</div>
+  <img id="styling0812-slide-image" src="2025_08-12_01.webp" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevStyling0812Slide()">previous</span>
+    <span id="styling0812-slide-number">1 / 18</span>
+    <span onclick="nextStyling0812Slide()">next</span>
+  </div>
+</div>
+
+<!-- 🎨 STYLING 07 2025 -->
+<div id="styling07-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">07 (2025)</div>
+  <img id="styling07-slide-image" src="2025_07_01.jpg" class="project-slide">
+  <div class="slide-nav">
+    <span onclick="prevStyling07Slide()">previous</span>
+    <span id="styling07-slide-number">1 / 15</span>
+    <span onclick="nextStyling07Slide()">next</span>
+  </div>
+</div>
+
 <!-- 💀 SECRET PAGE -->
 <div id="secret-page">
   <img id="skull-img" src="hidden_skull.png">
@@ -705,35 +760,33 @@ p { text-align: center; line-height: 1.6; }
 
 <script>
 
-let currentSlide = 1;
-const totalSlides = 24;
-let l2fCurrentSlide = 1;
-const l2fTotalSlides = 46;
+let currentSlide = 1; const totalSlides = 24;
+let l2fCurrentSlide = 1; const l2fTotalSlides = 46;
 let look6Slide = 1; const look6Total = 10;
 let look45Slide = 1; const look45Total = 9;
 let look3Slide = 1; const look3Total = 6;
 let look2Slide = 1; const look2Total = 9;
 let look1Slide = 1; const look1Total = 7;
+let styling0405Slide = 1; const styling0405Total = 7;
+let stylingCdbSlide = 1; const stylingCdbTotal = 11;
+let styling0812Slide = 1; const styling0812Total = 18;
+let styling07Slide = 1; const styling07Total = 15;
 let soundEnabled = false;
 const omSound = new Audio("bookofOM_soundtrack.mp3");
 omSound.loop = true;
 const preloadedImages = [
-  "black_horse_2025.jpg",
-  "soul_portrait_2024.jpg",
-  "bookofom.cover.png",
-  "learning2fly_doku_cover.png"
+  "black_horse_2025.jpg","soul_portrait_2024.jpg",
+  "bookofom.cover.png","learning2fly_doku_cover.png"
 ].map(src => { const img = new Image(); img.src = src; return img; });
 
 // -------------------------
 // SUBCATEGORIES
 // -------------------------
 function showSubcategory(cat) {
-  document.getElementById("sub-creations").style.display = "none";
-  document.getElementById("sub-fashion").style.display = "none";
-  document.getElementById("sub-styling").style.display = "none";
-  document.getElementById("sub-creations-btn").classList.remove("subcategory-active");
-  document.getElementById("sub-fashion-btn").classList.remove("subcategory-active");
-  document.getElementById("sub-styling-btn").classList.remove("subcategory-active");
+  ["creations","fashion","styling"].forEach(c => {
+    document.getElementById("sub-" + c).style.display = "none";
+    document.getElementById("sub-" + c + "-btn").classList.remove("subcategory-active");
+  });
   document.getElementById("sub-" + cat).style.display = "block";
   document.getElementById("sub-" + cat + "-btn").classList.add("subcategory-active");
 }
@@ -753,16 +806,17 @@ function closeAdPopup() {
 // -------------------------
 // HISTORY / BACK BUTTON
 // -------------------------
-function pushState(page) {
-  history.pushState({ page }, "", "");
-}
+function pushState(page) { history.pushState({ page }, "", ""); }
+
+const allPages = [
+  "project-page","blackhorse-page","soulportrait-page","learning2fly-page",
+  "look6-page","look45-page","look3-page","look2-page","look1-page",
+  "styling0405-page","stylingcdb-page","styling0812-page","styling07-page",
+  "secret-page","main"
+];
 
 function hideAll() {
-  ["project-page","blackhorse-page","soulportrait-page","learning2fly-page",
-   "look6-page","look45-page","look3-page","look2-page","look1-page",
-   "secret-page","main"].forEach(id => {
-    document.getElementById(id).style.display = "none";
-  });
+  allPages.forEach(id => { document.getElementById(id).style.display = "none"; });
   document.body.style.overflow = "";
   document.body.style.position = "";
   document.body.style.width = "";
@@ -781,24 +835,17 @@ window.addEventListener("popstate", function (e) {
   const state = e.state;
   if (!state) return;
   hideAll();
-
   const p = state.page;
   if (p === "main-gallery" || p === "main-about" || p === "main-contact") {
     document.getElementById("main").style.display = "flex";
     showSection(p.replace("main-", ""));
-  } else if (p === "project-page") { document.getElementById("project-page").style.display = "flex"; lockBody(); }
-  else if (p === "blackhorse-page") { document.getElementById("blackhorse-page").style.display = "flex"; lockBody(); }
-  else if (p === "soulportrait-page") { document.getElementById("soulportrait-page").style.display = "flex"; lockBody(); }
-  else if (p === "learning2fly-page") { document.getElementById("learning2fly-page").style.display = "flex"; lockBody(); }
-  else if (p === "look6-page") { document.getElementById("look6-page").style.display = "flex"; lockBody(); }
-  else if (p === "look45-page") { document.getElementById("look45-page").style.display = "flex"; lockBody(); }
-  else if (p === "look3-page") { document.getElementById("look3-page").style.display = "flex"; lockBody(); }
-  else if (p === "look2-page") { document.getElementById("look2-page").style.display = "flex"; lockBody(); }
-  else if (p === "look1-page") { document.getElementById("look1-page").style.display = "flex"; lockBody(); }
-  else if (p === "secret-page") {
+  } else if (p === "secret-page") {
     document.getElementById("secret-page").style.display = "flex";
     document.body.style.background = "#000";
     document.documentElement.style.background = "#000";
+  } else {
+    const el = document.getElementById(p);
+    if (el) { el.style.display = "flex"; lockBody(); }
   }
 });
 
@@ -815,9 +862,7 @@ function showSoundPopup() {
   const s = new Audio("sound_info_pop_up_audio.mp3");
   s.currentTime = 0.1;
   s.play();
-  setTimeout(() => {
-    document.getElementById("sound-popup").style.display = "flex";
-  }, 300);
+  setTimeout(() => { document.getElementById("sound-popup").style.display = "flex"; }, 300);
 }
 
 function dismissSoundPopup() {
@@ -854,7 +899,6 @@ function openSecret() {
   document.body.style.background = "#000";
   document.documentElement.style.background = "#000";
   pushState("secret-page");
-
   setTimeout(() => { document.getElementById("skull-img").classList.add("visible"); }, 300);
   setTimeout(() => {
     const skullAudio = new Audio("hidden_skull_audio.mp3");
@@ -909,75 +953,41 @@ function leaveSecret() {
 // -------------------------
 function showSection(section) {
   speechSynthesis.cancel();
-  ["project-page","blackhorse-page","soulportrait-page","learning2fly-page",
-   "look6-page","look45-page","look3-page","look2-page","look1-page"].forEach(id => {
+  allPages.filter(p => p !== "main" && p !== "secret-page").forEach(id => {
     document.getElementById(id).style.display = "none";
   });
   document.getElementById("gallery-content").style.display = "none";
   document.getElementById("about-content").style.display = "none";
   document.getElementById("contact-content").style.display = "none";
-  document.getElementById("gallery-btn").classList.remove("menu-active");
-  document.getElementById("about-btn").classList.remove("menu-active");
-  document.getElementById("contact-btn").classList.remove("menu-active");
+  ["gallery","about","contact"].forEach(b => {
+    document.getElementById(b + "-btn").classList.remove("menu-active");
+  });
   document.getElementById(section + "-content").style.display = "block";
   document.getElementById(section + "-btn").classList.add("menu-active");
   pushState("main-" + section);
 }
 
-function openProject() {
+function openPage(id, sound) {
   document.getElementById("main").style.display = "none";
-  document.getElementById("project-page").style.display = "flex";
-  lockBody(); omSound.currentTime = 0; omSound.play();
-  pushState("project-page");
+  document.getElementById(id).style.display = "flex";
+  lockBody();
+  if (sound) { omSound.currentTime = 0; omSound.play(); }
+  pushState(id);
 }
 
-function openBlackHorse() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("blackhorse-page").style.display = "flex";
-  lockBody(); pushState("blackhorse-page");
-}
-
-function openSoulPortrait() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("soulportrait-page").style.display = "flex";
-  lockBody(); pushState("soulportrait-page");
-}
-
-function openLearning2Fly() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("learning2fly-page").style.display = "flex";
-  lockBody(); pushState("learning2fly-page");
-}
-
-function openLook6() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("look6-page").style.display = "flex";
-  lockBody(); pushState("look6-page");
-}
-
-function openLook45() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("look45-page").style.display = "flex";
-  lockBody(); pushState("look45-page");
-}
-
-function openLook3() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("look3-page").style.display = "flex";
-  lockBody(); pushState("look3-page");
-}
-
-function openLook2() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("look2-page").style.display = "flex";
-  lockBody(); pushState("look2-page");
-}
-
-function openLook1() {
-  document.getElementById("main").style.display = "none";
-  document.getElementById("look1-page").style.display = "flex";
-  lockBody(); pushState("look1-page");
-}
+function openProject() { openPage("project-page", true); }
+function openBlackHorse() { openPage("blackhorse-page", false); }
+function openSoulPortrait() { openPage("soulportrait-page", false); }
+function openLearning2Fly() { openPage("learning2fly-page", false); }
+function openLook6() { openPage("look6-page", false); }
+function openLook45() { openPage("look45-page", false); }
+function openLook3() { openPage("look3-page", false); }
+function openLook2() { openPage("look2-page", false); }
+function openLook1() { openPage("look1-page", false); }
+function openStyling0405() { openPage("styling0405-page", false); }
+function openStylingCdb() { openPage("stylingcdb-page", false); }
+function openStyling0812() { openPage("styling0812-page", false); }
+function openStyling07() { openPage("styling07-page", false); }
 
 function goHome() {
   hideAll();
@@ -997,8 +1007,20 @@ function readAbout() {
 }
 
 // -------------------------
-// SLIDESHOW — book of om
+// SLIDESHOWS
 // -------------------------
+function makeSlideshow(getSlide, setSlide, total, imgId, numberId, prefix, ext) {
+  return {
+    next() { if (getSlide() < total) setSlide(getSlide() + 1); this.update(); },
+    prev() { if (getSlide() > 1) setSlide(getSlide() - 1); this.update(); },
+    update() {
+      const n = String(getSlide()).padStart(2, "0");
+      document.getElementById(imgId).src = prefix + n + ext;
+      document.getElementById(numberId).innerText = getSlide() + " / " + total;
+    }
+  };
+}
+
 function nextSlide() { if (currentSlide < totalSlides) currentSlide++; updateSlide(); }
 function prevSlide() { if (currentSlide > 1) currentSlide--; updateSlide(); }
 function updateSlide() {
@@ -1007,9 +1029,6 @@ function updateSlide() {
   document.getElementById("slide-number").innerText = currentSlide + " / " + totalSlides;
 }
 
-// -------------------------
-// SLIDESHOW — learning 2 fly doku
-// -------------------------
 function nextL2FSlide() { if (l2fCurrentSlide < l2fTotalSlides) l2fCurrentSlide++; updateL2FSlide(); }
 function prevL2FSlide() { if (l2fCurrentSlide > 1) l2fCurrentSlide--; updateL2FSlide(); }
 function updateL2FSlide() {
@@ -1018,48 +1037,41 @@ function updateL2FSlide() {
   document.getElementById("l2f-slide-number").innerText = l2fCurrentSlide + " / " + l2fTotalSlides;
 }
 
-// -------------------------
-// SLIDESHOWS — fashion looks
-// -------------------------
 function nextLook6Slide() { if (look6Slide < look6Total) look6Slide++; updateLook6(); }
 function prevLook6Slide() { if (look6Slide > 1) look6Slide--; updateLook6(); }
-function updateLook6() {
-  const n = String(look6Slide).padStart(2, "0");
-  document.getElementById("look6-slide-image").src = "l2f_look6_" + n + ".webp";
-  document.getElementById("look6-slide-number").innerText = look6Slide + " / " + look6Total;
-}
+function updateLook6() { const n = String(look6Slide).padStart(2,"0"); document.getElementById("look6-slide-image").src = "l2f_look6_"+n+".webp"; document.getElementById("look6-slide-number").innerText = look6Slide+" / "+look6Total; }
 
 function nextLook45Slide() { if (look45Slide < look45Total) look45Slide++; updateLook45(); }
 function prevLook45Slide() { if (look45Slide > 1) look45Slide--; updateLook45(); }
-function updateLook45() {
-  const n = String(look45Slide).padStart(2, "0");
-  document.getElementById("look45-slide-image").src = "l2f_look4-5_" + n + ".webp";
-  document.getElementById("look45-slide-number").innerText = look45Slide + " / " + look45Total;
-}
+function updateLook45() { const n = String(look45Slide).padStart(2,"0"); document.getElementById("look45-slide-image").src = "l2f_look4-5_"+n+".webp"; document.getElementById("look45-slide-number").innerText = look45Slide+" / "+look45Total; }
 
 function nextLook3Slide() { if (look3Slide < look3Total) look3Slide++; updateLook3(); }
 function prevLook3Slide() { if (look3Slide > 1) look3Slide--; updateLook3(); }
-function updateLook3() {
-  const n = String(look3Slide).padStart(2, "0");
-  document.getElementById("look3-slide-image").src = "l2f_look3_" + n + ".webp";
-  document.getElementById("look3-slide-number").innerText = look3Slide + " / " + look3Total;
-}
+function updateLook3() { const n = String(look3Slide).padStart(2,"0"); document.getElementById("look3-slide-image").src = "l2f_look3_"+n+".webp"; document.getElementById("look3-slide-number").innerText = look3Slide+" / "+look3Total; }
 
 function nextLook2Slide() { if (look2Slide < look2Total) look2Slide++; updateLook2(); }
 function prevLook2Slide() { if (look2Slide > 1) look2Slide--; updateLook2(); }
-function updateLook2() {
-  const n = String(look2Slide).padStart(2, "0");
-  document.getElementById("look2-slide-image").src = "l2f_look2_" + n + ".webp";
-  document.getElementById("look2-slide-number").innerText = look2Slide + " / " + look2Total;
-}
+function updateLook2() { const n = String(look2Slide).padStart(2,"0"); document.getElementById("look2-slide-image").src = "l2f_look2_"+n+".webp"; document.getElementById("look2-slide-number").innerText = look2Slide+" / "+look2Total; }
 
 function nextLook1Slide() { if (look1Slide < look1Total) look1Slide++; updateLook1(); }
 function prevLook1Slide() { if (look1Slide > 1) look1Slide--; updateLook1(); }
-function updateLook1() {
-  const n = String(look1Slide).padStart(2, "0");
-  document.getElementById("look1-slide-image").src = "l2f_look1_" + n + ".webp";
-  document.getElementById("look1-slide-number").innerText = look1Slide + " / " + look1Total;
-}
+function updateLook1() { const n = String(look1Slide).padStart(2,"0"); document.getElementById("look1-slide-image").src = "l2f_look1_"+n+".webp"; document.getElementById("look1-slide-number").innerText = look1Slide+" / "+look1Total; }
+
+function nextStyling0405Slide() { if (styling0405Slide < styling0405Total) styling0405Slide++; updateStyling0405(); }
+function prevStyling0405Slide() { if (styling0405Slide > 1) styling0405Slide--; updateStyling0405(); }
+function updateStyling0405() { const n = String(styling0405Slide).padStart(2,"0"); document.getElementById("styling0405-slide-image").src = "2026_04-05_"+n+".jpg"; document.getElementById("styling0405-slide-number").innerText = styling0405Slide+" / "+styling0405Total; }
+
+function nextStylingCdbSlide() { if (stylingCdbSlide < stylingCdbTotal) stylingCdbSlide++; updateStylingCdb(); }
+function prevStylingCdbSlide() { if (stylingCdbSlide > 1) stylingCdbSlide--; updateStylingCdb(); }
+function updateStylingCdb() { const n = String(stylingCdbSlide).padStart(2,"0"); document.getElementById("stylingcdb-slide-image").src = "2026_cdb_"+n+".webp"; document.getElementById("stylingcdb-slide-number").innerText = stylingCdbSlide+" / "+stylingCdbTotal; }
+
+function nextStyling0812Slide() { if (styling0812Slide < styling0812Total) styling0812Slide++; updateStyling0812(); }
+function prevStyling0812Slide() { if (styling0812Slide > 1) styling0812Slide--; updateStyling0812(); }
+function updateStyling0812() { const n = String(styling0812Slide).padStart(2,"0"); document.getElementById("styling0812-slide-image").src = "2025_08-12_"+n+".webp"; document.getElementById("styling0812-slide-number").innerText = styling0812Slide+" / "+styling0812Total; }
+
+function nextStyling07Slide() { if (styling07Slide < styling07Total) styling07Slide++; updateStyling07(); }
+function prevStyling07Slide() { if (styling07Slide > 1) styling07Slide--; updateStyling07(); }
+function updateStyling07() { const n = String(styling07Slide).padStart(2,"0"); document.getElementById("styling07-slide-image").src = "2025_07_"+n+".jpg"; document.getElementById("styling07-slide-number").innerText = styling07Slide+" / "+styling07Total; }
 
 // -------------------------
 // ENTER HEAVEN
@@ -1067,26 +1079,18 @@ function updateLook1() {
 function enter() {
   const sound = new Audio("heaven_intro.mp3");
   sound.play();
-
   const landing = document.getElementById("landing");
   const main = document.getElementById("main");
   const glow = document.getElementById("heavenGlow");
-
   document.documentElement.style.background = "#6a2a72";
   document.body.style.background = "#6a2a72";
   glow.classList.add("active");
   landing.classList.add("fade-out");
-
   setTimeout(() => {
     landing.style.display = "none";
     main.style.display = "flex";
     pushState("main-gallery");
-
-    setTimeout(() => {
-      main.style.opacity = "1";
-      main.style.transform = "scale(1)";
-    }, 50);
-
+    setTimeout(() => { main.style.opacity = "1"; main.style.transform = "scale(1)"; }, 50);
     setTimeout(() => { showSoundPopup(); }, 2300);
     setTimeout(() => { showAdPopup(); }, 17300);
   }, 1000);
@@ -1096,7 +1100,8 @@ function enter() {
 // SWIPE
 // -------------------------
 document.addEventListener("DOMContentLoaded", function () {
-  function setupSwipeFor(container, nextFn, prevFn) {
+  function setupSwipeFor(containerId, nextFn, prevFn) {
+    const container = document.getElementById(containerId);
     let sx = 0, sy = 0, pinching = false, startTime = 0;
     container.addEventListener("touchstart", function (e) {
       if (e.touches.length > 1) { pinching = true; return; }
@@ -1119,13 +1124,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { passive: true });
   }
 
-  setupSwipeFor(document.getElementById("project-page"), nextSlide, prevSlide);
-  setupSwipeFor(document.getElementById("learning2fly-page"), nextL2FSlide, prevL2FSlide);
-  setupSwipeFor(document.getElementById("look6-page"), nextLook6Slide, prevLook6Slide);
-  setupSwipeFor(document.getElementById("look45-page"), nextLook45Slide, prevLook45Slide);
-  setupSwipeFor(document.getElementById("look3-page"), nextLook3Slide, prevLook3Slide);
-  setupSwipeFor(document.getElementById("look2-page"), nextLook2Slide, prevLook2Slide);
-  setupSwipeFor(document.getElementById("look1-page"), nextLook1Slide, prevLook1Slide);
+  setupSwipeFor("project-page", nextSlide, prevSlide);
+  setupSwipeFor("learning2fly-page", nextL2FSlide, prevL2FSlide);
+  setupSwipeFor("look6-page", nextLook6Slide, prevLook6Slide);
+  setupSwipeFor("look45-page", nextLook45Slide, prevLook45Slide);
+  setupSwipeFor("look3-page", nextLook3Slide, prevLook3Slide);
+  setupSwipeFor("look2-page", nextLook2Slide, prevLook2Slide);
+  setupSwipeFor("look1-page", nextLook1Slide, prevLook1Slide);
+  setupSwipeFor("styling0405-page", nextStyling0405Slide, prevStyling0405Slide);
+  setupSwipeFor("stylingcdb-page", nextStylingCdbSlide, prevStylingCdbSlide);
+  setupSwipeFor("styling0812-page", nextStyling0812Slide, prevStyling0812Slide);
+  setupSwipeFor("styling07-page", nextStyling07Slide, prevStyling07Slide);
 });
 
 </script>
