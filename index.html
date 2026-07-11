@@ -1021,7 +1021,7 @@ function openLook3() { openPage("look3-page", false); }
 function openLook2() { openPage("look2-page", false); }
 function openLook1() { openPage("look1-page", false); }
 function openStylingPage(id) {
-  document.getElementById("main").style.display = "none";
+  hideAll();
   document.getElementById(id).style.display = "flex";
   document.body.style.overflow = "";
   document.body.style.position = "";
