@@ -6,7 +6,7 @@
 <style>
 
 /* =========================
-   🟣 FULL BACKGROUND (SAFE)
+   🟣 FULL BACKGROUND
 ========================= */
 html {
   margin: 0;
@@ -20,17 +20,12 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100%;
+  min-height: 100dvh;
   background: #6a2a72 !important;
   background-color: #6a2a72 !important;
-}
-body {
-  min-height: 100dvh;
   overflow-x: hidden;
   overscroll-behavior: none;
 }
-
-body.flash { animation: flashAnim 1.2s ease-out; }
 
 #landing, #main { background: transparent; }
 
@@ -72,7 +67,6 @@ body.flash { animation: flashAnim 1.2s ease-out; }
   justify-content: center;
   height: 100dvh;
   text-align: center;
-  padding: 0;
 }
 
 .home { height: 100%; }
@@ -84,14 +78,13 @@ body.flash { animation: flashAnim 1.2s ease-out; }
   align-items: center;
   min-height: 100dvh;
   width: 100%;
-  padding-top: 0px;
   opacity: 0;
   transform: scale(1.05);
   transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 /* =========================
-   🌌 IMAGE
+   🌌 LANDING IMAGE
 ========================= */
 #landing img {
   width: 100%;
@@ -113,7 +106,7 @@ body.flash { animation: flashAnim 1.2s ease-out; }
 }
 
 /* =========================
-   💗 ENTER
+   💗 ENTER & GLOW
 ========================= */
 .enter {
   font-size: 22px;
@@ -123,14 +116,15 @@ body.flash { animation: flashAnim 1.2s ease-out; }
   animation: glow 2s infinite;
 }
 
-.enter:hover { transform: scale(1.1); }
-
 @keyframes glow {
   0% { opacity: 0.6; }
   50% { opacity: 1; text-shadow: 0 0 20px #ff66cc; }
   100% { opacity: 0.6; }
 }
 
+/* =========================
+   🗂 MENU
+========================= */
 .menu {
   margin-top: 25px;
   display: flex;
@@ -178,7 +172,9 @@ a:hover { opacity: 0.8; }
   color: #ff9ae6 !important;
 }
 
-/* PROJECT */
+/* =========================
+   🖼 PROJECT GALLERY
+========================= */
 .project-image {
   width: 50%;
   max-width: 250px;
@@ -187,8 +183,11 @@ a:hover { opacity: 0.8; }
 }
 
 .project-title { margin-top: 12px; color: #ff9ae6; font-size: 18px; }
-.project-year { margin-top: 0px; color: #ff9ae6; font-size: 18px; }
+.project-year { margin-top: 0; color: #ff9ae6; font-size: 18px; }
 
+/* =========================
+   📄 PROJECT DETAIL PAGES
+========================= */
 .project-home {
   margin-top: 20px;
   color: #ff9ae6;
@@ -238,6 +237,15 @@ a:hover { opacity: 0.8; }
   text-decoration: none;
 }
 
+.project-description {
+  margin-top: 16px;
+  color: #ff9ae6;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+/* creations + fashion pages */
 #project-page, #blackhorse-page, #soulportrait-page, #learning2fly-page,
 #look1-page, #look2-page, #look3-page, #look45-page, #look6-page {
   display: flex;
@@ -250,6 +258,7 @@ a:hover { opacity: 0.8; }
   box-sizing: border-box;
 }
 
+/* styling pages */
 #styling0405-page, #stylingcdb-page, #styling0812-page, #styling07-page {
   display: flex;
   flex-direction: column;
@@ -280,7 +289,7 @@ a:hover { opacity: 0.8; }
   display: block;
   margin: 0 auto;
 }
-   
+
 #styling0405-page .project-slide,
 #stylingcdb-page .project-slide,
 #styling0812-page .project-slide,
@@ -291,14 +300,6 @@ a:hover { opacity: 0.8; }
   height: auto !important;
   display: block;
   margin: 0 auto;
-}
-   
-.project-description {
-  margin-top: 16px;
-  color: #ff9ae6;
-  font-size: 16px;
-  text-align: center;
-  padding-bottom: 40px;
 }
 
 /* =========================
@@ -426,10 +427,8 @@ a:hover { opacity: 0.8; }
 
 #ad-popup .ad-coin {
   position: absolute;
-  top: -2px;
-  right: 4px;
-  width: 44px;
-  height: 44px;
+  top: -2px; right: 4px;
+  width: 44px; height: 44px;
   cursor: pointer;
   z-index: 2;
 }
@@ -448,26 +447,8 @@ a:hover { opacity: 0.8; }
 #ad-popup .ad-text a { color: #ff9ae6; text-decoration: underline; }
 
 /* =========================
-   ⭐ STARS
+   🧿 GENERAL
 ========================= */
-#stars { position: fixed; inset: 0; pointer-events: none; z-index: 5; display: none; }
-
-.stars {
-  position: fixed; top: 0; bottom: 0; width: 32px;
-  display: flex; flex-direction: column;
-  justify-content: space-around; align-items: center;
-  font-size: 26px; line-height: 1;
-  pointer-events: none; z-index: 5;
-}
-
-.left { left: 0; }
-.right { right: 0; }
-
-/* =========================
-   🧿 TEXT
-========================= */
-h1 { color: black; font-weight: bold; margin: 10px 0; }
-.symbol { font-size: 24px; color: #ff9ae6; margin: 20px 0; }
 p { text-align: center; line-height: 1.6; }
 
 </style>
@@ -476,7 +457,6 @@ p { text-align: center; line-height: 1.6; }
 <body>
 
 <div id="heavenGlow"></div>
-<div id="bg"></div>
 
 <!-- 🔊 SOUND POPUP -->
 <div id="sound-popup" style="display:none;">
@@ -584,7 +564,7 @@ p { text-align: center; line-height: 1.6; }
 
     <!-- STYLING -->
     <div id="sub-styling" style="display:none;">
-     <div onclick="openStyling0405()">
+      <div onclick="openStyling0405()">
         <img src="2026_04-05_cover.jpg" class="project-image">
         <div class="project-title">04-05</div>
         <div class="project-year">(2026)</div>
@@ -625,7 +605,7 @@ p { text-align: center; line-height: 1.6; }
     <p>tiktok (styling):<br><a href="https://tiktok.com/@jerome.rafael" target="_blank">@jerome.rafael</a></p>
   </div>
 
-</div> <!-- END #main -->
+</div>
 
 <!-- 📖 BOOK OF OM -->
 <div id="project-page" style="display:none;">
@@ -733,7 +713,7 @@ p { text-align: center; line-height: 1.6; }
   <div class="project-description">photography<br>by manuel richiusa</div>
 </div>
 
-<!-- 🎨 STYLING 04-05 2026 -->
+<!-- 🎨 STYLING 04-05 -->
 <div id="styling0405-page" style="display:none;">
   <div class="project-home" onclick="goHome()">home</div>
   <div class="project-heading">04-05 (2026)</div>
@@ -745,7 +725,7 @@ p { text-align: center; line-height: 1.6; }
   </div>
 </div>
 
-<!-- 🎨 STYLING CHAMBRE DE BONNE 2026 -->
+<!-- 🎨 STYLING CHAMBRE DE BONNE -->
 <div id="stylingcdb-page" style="display:none;">
   <div class="project-home" onclick="goHome()">home</div>
   <div class="project-heading">chambre de bonne (2026)</div>
@@ -758,7 +738,7 @@ p { text-align: center; line-height: 1.6; }
   <div class="project-description">using the wardrobe of 'chambre de bonne'<br>to create the looks for their side project 'the subrental'.</div>
 </div>
 
-<!-- 🎨 STYLING 08-12 2025 -->
+<!-- 🎨 STYLING 08-12 -->
 <div id="styling0812-page" style="display:none;">
   <div class="project-home" onclick="goHome()">home</div>
   <div class="project-heading">08-12 (2025)</div>
@@ -770,7 +750,7 @@ p { text-align: center; line-height: 1.6; }
   </div>
 </div>
 
-<!-- 🎨 STYLING 07 2025 -->
+<!-- 🎨 STYLING 07 -->
 <div id="styling07-page" style="display:none;">
   <div class="project-home" onclick="goHome()">home</div>
   <div class="project-heading">07 (2025)</div>
@@ -998,11 +978,11 @@ function showSection(section) {
   pushState("main-" + section);
 }
 
-function openPage(id, sound) {
+function openPage(id, withSound) {
   document.getElementById("main").style.display = "none";
   document.getElementById(id).style.display = "flex";
   lockBody();
-  if (sound) { omSound.currentTime = 0; omSound.play(); }
+  if (withSound) { omSound.currentTime = 0; omSound.play(); }
   pushState(id);
 }
 
@@ -1040,69 +1020,57 @@ function readAbout() {
 // -------------------------
 // SLIDESHOWS
 // -------------------------
-function makeSlideshow(getSlide, setSlide, total, imgId, numberId, prefix, ext) {
-  return {
-    next() { if (getSlide() < total) setSlide(getSlide() + 1); this.update(); },
-    prev() { if (getSlide() > 1) setSlide(getSlide() - 1); this.update(); },
-    update() {
-      const n = String(getSlide()).padStart(2, "0");
-      document.getElementById(imgId).src = prefix + n + ext;
-      document.getElementById(numberId).innerText = getSlide() + " / " + total;
-    }
-  };
-}
-
 function nextSlide() { if (currentSlide < totalSlides) currentSlide++; updateSlide(); }
 function prevSlide() { if (currentSlide > 1) currentSlide--; updateSlide(); }
 function updateSlide() {
-  const n = String(currentSlide).padStart(2, "0");
-  document.getElementById("slide-image").src = "bookofom-" + n + ".webp";
-  document.getElementById("slide-number").innerText = currentSlide + " / " + totalSlides;
+  const n = String(currentSlide).padStart(2,"0");
+  document.getElementById("slide-image").src = "bookofom-"+n+".webp";
+  document.getElementById("slide-number").innerText = currentSlide+" / "+totalSlides;
 }
 
 function nextL2FSlide() { if (l2fCurrentSlide < l2fTotalSlides) l2fCurrentSlide++; updateL2FSlide(); }
 function prevL2FSlide() { if (l2fCurrentSlide > 1) l2fCurrentSlide--; updateL2FSlide(); }
 function updateL2FSlide() {
-  const n = String(l2fCurrentSlide).padStart(2, "0");
-  document.getElementById("l2f-slide-image").src = "learning2fly_doku_" + n + ".jpg";
-  document.getElementById("l2f-slide-number").innerText = l2fCurrentSlide + " / " + l2fTotalSlides;
+  const n = String(l2fCurrentSlide).padStart(2,"0");
+  document.getElementById("l2f-slide-image").src = "learning2fly_doku_"+n+".jpg";
+  document.getElementById("l2f-slide-number").innerText = l2fCurrentSlide+" / "+l2fTotalSlides;
 }
 
 function nextLook6Slide() { if (look6Slide < look6Total) look6Slide++; updateLook6(); }
 function prevLook6Slide() { if (look6Slide > 1) look6Slide--; updateLook6(); }
-function updateLook6() { const n = String(look6Slide).padStart(2,"0"); document.getElementById("look6-slide-image").src = "l2f_look6_"+n+".webp"; document.getElementById("look6-slide-number").innerText = look6Slide+" / "+look6Total; }
+function updateLook6() { const n=String(look6Slide).padStart(2,"0"); document.getElementById("look6-slide-image").src="l2f_look6_"+n+".webp"; document.getElementById("look6-slide-number").innerText=look6Slide+" / "+look6Total; }
 
 function nextLook45Slide() { if (look45Slide < look45Total) look45Slide++; updateLook45(); }
 function prevLook45Slide() { if (look45Slide > 1) look45Slide--; updateLook45(); }
-function updateLook45() { const n = String(look45Slide).padStart(2,"0"); document.getElementById("look45-slide-image").src = "l2f_look4-5_"+n+".webp"; document.getElementById("look45-slide-number").innerText = look45Slide+" / "+look45Total; }
+function updateLook45() { const n=String(look45Slide).padStart(2,"0"); document.getElementById("look45-slide-image").src="l2f_look4-5_"+n+".webp"; document.getElementById("look45-slide-number").innerText=look45Slide+" / "+look45Total; }
 
 function nextLook3Slide() { if (look3Slide < look3Total) look3Slide++; updateLook3(); }
 function prevLook3Slide() { if (look3Slide > 1) look3Slide--; updateLook3(); }
-function updateLook3() { const n = String(look3Slide).padStart(2,"0"); document.getElementById("look3-slide-image").src = "l2f_look3_"+n+".webp"; document.getElementById("look3-slide-number").innerText = look3Slide+" / "+look3Total; }
+function updateLook3() { const n=String(look3Slide).padStart(2,"0"); document.getElementById("look3-slide-image").src="l2f_look3_"+n+".webp"; document.getElementById("look3-slide-number").innerText=look3Slide+" / "+look3Total; }
 
 function nextLook2Slide() { if (look2Slide < look2Total) look2Slide++; updateLook2(); }
 function prevLook2Slide() { if (look2Slide > 1) look2Slide--; updateLook2(); }
-function updateLook2() { const n = String(look2Slide).padStart(2,"0"); document.getElementById("look2-slide-image").src = "l2f_look2_"+n+".webp"; document.getElementById("look2-slide-number").innerText = look2Slide+" / "+look2Total; }
+function updateLook2() { const n=String(look2Slide).padStart(2,"0"); document.getElementById("look2-slide-image").src="l2f_look2_"+n+".webp"; document.getElementById("look2-slide-number").innerText=look2Slide+" / "+look2Total; }
 
 function nextLook1Slide() { if (look1Slide < look1Total) look1Slide++; updateLook1(); }
 function prevLook1Slide() { if (look1Slide > 1) look1Slide--; updateLook1(); }
-function updateLook1() { const n = String(look1Slide).padStart(2,"0"); document.getElementById("look1-slide-image").src = "l2f_look1_"+n+".webp"; document.getElementById("look1-slide-number").innerText = look1Slide+" / "+look1Total; }
+function updateLook1() { const n=String(look1Slide).padStart(2,"0"); document.getElementById("look1-slide-image").src="l2f_look1_"+n+".webp"; document.getElementById("look1-slide-number").innerText=look1Slide+" / "+look1Total; }
 
 function nextStyling0405Slide() { if (styling0405Slide < styling0405Total) styling0405Slide++; updateStyling0405(); }
 function prevStyling0405Slide() { if (styling0405Slide > 1) styling0405Slide--; updateStyling0405(); }
-function updateStyling0405() { const n = String(styling0405Slide).padStart(2,"0"); document.getElementById("styling0405-slide-image").src = "2026_04-05_"+n+".jpg"; document.getElementById("styling0405-slide-number").innerText = styling0405Slide+" / "+styling0405Total; }
+function updateStyling0405() { const n=String(styling0405Slide).padStart(2,"0"); document.getElementById("styling0405-slide-image").src="2026_04-05_"+n+".jpg"; document.getElementById("styling0405-slide-number").innerText=styling0405Slide+" / "+styling0405Total; }
 
 function nextStylingCdbSlide() { if (stylingCdbSlide < stylingCdbTotal) stylingCdbSlide++; updateStylingCdb(); }
 function prevStylingCdbSlide() { if (stylingCdbSlide > 1) stylingCdbSlide--; updateStylingCdb(); }
-function updateStylingCdb() { const n = String(stylingCdbSlide).padStart(2,"0"); document.getElementById("stylingcdb-slide-image").src = "2026_cdb_"+n+".webp"; document.getElementById("stylingcdb-slide-number").innerText = stylingCdbSlide+" / "+stylingCdbTotal; }
+function updateStylingCdb() { const n=String(stylingCdbSlide).padStart(2,"0"); document.getElementById("stylingcdb-slide-image").src="2026_cdb_"+n+".webp"; document.getElementById("stylingcdb-slide-number").innerText=stylingCdbSlide+" / "+stylingCdbTotal; }
 
 function nextStyling0812Slide() { if (styling0812Slide < styling0812Total) styling0812Slide++; updateStyling0812(); }
 function prevStyling0812Slide() { if (styling0812Slide > 1) styling0812Slide--; updateStyling0812(); }
-function updateStyling0812() { const n = String(styling0812Slide).padStart(2,"0"); document.getElementById("styling0812-slide-image").src = "2025_08-12_"+n+".webp"; document.getElementById("styling0812-slide-number").innerText = styling0812Slide+" / "+styling0812Total; }
+function updateStyling0812() { const n=String(styling0812Slide).padStart(2,"0"); document.getElementById("styling0812-slide-image").src="2025_08-12_"+n+".webp"; document.getElementById("styling0812-slide-number").innerText=styling0812Slide+" / "+styling0812Total; }
 
 function nextStyling07Slide() { if (styling07Slide < styling07Total) styling07Slide++; updateStyling07(); }
 function prevStyling07Slide() { if (styling07Slide > 1) styling07Slide--; updateStyling07(); }
-function updateStyling07() { const n = String(styling07Slide).padStart(2,"0"); document.getElementById("styling07-slide-image").src = "2025_07_"+n+".jpg"; document.getElementById("styling07-slide-number").innerText = styling07Slide+" / "+styling07Total; }
+function updateStyling07() { const n=String(styling07Slide).padStart(2,"0"); document.getElementById("styling07-slide-image").src="2025_07_"+n+".jpg"; document.getElementById("styling07-slide-number").innerText=styling07Slide+" / "+styling07Total; }
 
 // -------------------------
 // ENTER HEAVEN
