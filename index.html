@@ -1045,11 +1045,23 @@ function openProject() { openPage("project-page", true); }
 function openBlackHorse() { openPage("blackhorse-page", false); }
 function openSoulPortrait() { openPage("soulportrait-page", false); }
 function openLearning2Fly() { openPage("learning2fly-page", false); }
-function openLook6() { openPage("look6-page", false); }
-function openLook45() { openPage("look45-page", false); }
-function openLook3() { openPage("look3-page", false); }
-function openLook2() { openPage("look2-page", false); }
-function openLook1() { openPage("look1-page", false); }
+function openFashionPage(id) {
+  hideAll();
+  document.body.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.width = "";
+  document.body.style.height = "";
+  document.getElementById(id).style.display = "flex";
+  document.getElementById(id).scrollTop = 0;
+  window.scrollTo(0, 0);
+  pushState(id);
+}
+
+function openLook6() { openFashionPage("look6-page"); }
+function openLook45() { openFashionPage("look45-page"); }
+function openLook3() { openFashionPage("look3-page"); }
+function openLook2() { openFashionPage("look2-page"); }
+function openLook1() { openFashionPage("look1-page"); }
 function openStylingPage(id) {
   hideAll();
   document.body.style.overflow = "";
