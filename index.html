@@ -255,7 +255,7 @@ a:hover { opacity: 0.8; }
 }
 
 /* creations pages */
-#project-page, #blackhorse-page, #soulportrait-page, #learning2fly-page {
+#project-page, #blackhorse-page, #soulportrait-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,7 +266,7 @@ a:hover { opacity: 0.8; }
   box-sizing: border-box;
 }
 
-#look1-page, #look2-page, #look3-page, #look45-page, #look6-page {
+#look1-page, #look2-page, #look3-page, #look45-page, #look6-page, #learning2fly-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1044,7 +1044,7 @@ function openPage(id, withSound) {
 function openProject() { openPage("project-page", true); }
 function openBlackHorse() { openPage("blackhorse-page", false); }
 function openSoulPortrait() { openPage("soulportrait-page", false); }
-function openLearning2Fly() { openPage("learning2fly-page", false); }
+function openLearning2Fly() { openFashionPage("learning2fly-page"); }
 function openFashionPage(id) {
   hideAll();
   document.body.style.overflow = "";
