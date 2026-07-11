@@ -264,9 +264,10 @@ a:hover { opacity: 0.8; }
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100dvh;
+  min-height: 100dvh;
   color: #ff9ae6;
   padding-top: 40px;
+  padding-bottom: 40px;
   box-sizing: border-box;
 }
 
@@ -1011,10 +1012,18 @@ function openLook45() { openPage("look45-page", false); }
 function openLook3() { openPage("look3-page", false); }
 function openLook2() { openPage("look2-page", false); }
 function openLook1() { openPage("look1-page", false); }
-function openStyling0405() { openPage("styling0405-page", false); }
-function openStylingCdb() { openPage("stylingcdb-page", false); }
-function openStyling0812() { openPage("styling0812-page", false); }
-function openStyling07() { openPage("styling07-page", false); }
+function openStylingPage(id) {
+  document.getElementById("main").style.display = "none";
+  document.getElementById(id).style.display = "flex";
+  document.body.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.width = "";
+  pushState(id);
+}
+function openStyling0405() { openStylingPage("styling0405-page"); }
+function openStylingCdb() { openStylingPage("stylingcdb-page"); }
+function openStyling0812() { openStylingPage("styling0812-page"); }
+function openStyling07() { openStylingPage("styling07-page"); }
 
 function goHome() {
   hideAll();
