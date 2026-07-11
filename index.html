@@ -876,6 +876,9 @@ window.addEventListener("popstate", function (e) {
     document.getElementById("secret-page").style.display = "flex";
     document.body.style.background = "#000";
     document.documentElement.style.background = "#000";
+  } else if (p === "styling0405-page" || p === "stylingcdb-page" || p === "styling0812-page" || p === "styling07-page") {
+    const el = document.getElementById(p);
+    if (el) { el.style.display = "flex"; }
   } else {
     const el = document.getElementById(p);
     if (el) { el.style.display = "flex"; lockBody(); }
