@@ -1027,10 +1027,9 @@ function openStylingPage(id) {
   document.body.style.position = "";
   document.body.style.width = "";
   document.body.style.height = "";
-  document.documentElement.style.overflow = "";
-  document.documentElement.style.position = "";
-  document.documentElement.style.width = "";
   document.getElementById(id).style.display = "flex";
+  document.getElementById(id).scrollTop = 0;
+  window.scrollTo(0, 0);
   pushState(id);
 }
 function openStyling0405() { openStylingPage("styling0405-page"); }
