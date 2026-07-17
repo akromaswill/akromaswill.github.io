@@ -249,7 +249,7 @@ a:hover { opacity: 0.8; }
   padding-left: 20px;
   padding-right: 20px;
 }
-   
+
 .project-description a {
   text-decoration: underline;
 }
@@ -266,6 +266,7 @@ a:hover { opacity: 0.8; }
   box-sizing: border-box;
 }
 
+/* fashion + docu pages */
 #look1-page, #look2-page, #look3-page, #look45-page, #look6-page, #learning2fly-page {
   display: flex;
   flex-direction: column;
@@ -277,9 +278,9 @@ a:hover { opacity: 0.8; }
   padding-bottom: 40px;
   box-sizing: border-box;
 }
-   
+
 #learning2fly-page {
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 @media (min-width: 768px) {
@@ -296,7 +297,20 @@ a:hover { opacity: 0.8; }
   width: 100%;
   min-height: 100dvh;
   color: #ff9ae6;
-  padding-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+
+/* links page */
+#links-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100dvh;
+  color: #ff9ae6;
+  padding-top: 40px;
   padding-bottom: 40px;
   box-sizing: border-box;
 }
@@ -645,11 +659,11 @@ p { text-align: center; line-height: 1.6; }
   </div>
 
   <div id="contact-content" class="content-section" style="display:none;">
-     <p>instagram:<br><a href="https://instagram.com/jerome.rafael" target="_blank" style="text-decoration: underline;">@jerome.rafael</a></p>
-     <p>instagram (fashion):<br><a href="https://instagram.com/airome.ch" target="_blank" style="text-decoration: underline;">@airome.ch</a></p>
-     <p>tiktok (styling):<br><a href="https://tiktok.com/@jerome.rafael" target="_blank" style="text-decoration: underline;">@jerome.rafael</a></p>
-     <img src="more_links_button.webp" onclick="openLinks()" style="width: 90px; height: auto; cursor: pointer; display: block; margin: 40px auto 0 auto;">
-   </div>
+    <p>instagram:<br><a href="https://instagram.com/jerome.rafael" target="_blank" style="text-decoration: underline;">@jerome.rafael</a></p>
+    <p>instagram (fashion):<br><a href="https://instagram.com/airome.ch" target="_blank" style="text-decoration: underline;">@airome.ch</a></p>
+    <p>tiktok (styling):<br><a href="https://tiktok.com/@jerome.rafael" target="_blank" style="text-decoration: underline;">@jerome.rafael</a></p>
+    <img src="more_links_button.webp" onclick="openLinks()" style="width: 90px; height: auto; cursor: pointer; display: block; margin: 40px auto 0 auto;">
+  </div>
 
 </div>
 
@@ -786,13 +800,13 @@ p { text-align: center; line-height: 1.6; }
     <span onclick="nextStylingCdbSlide()">next</span>
   </div>
   <div class="project-description">
-  using the wardrobe of<br>
-  <a href="https://chambredebonne.ch" target="_blank">chambre de bonne</a><br>
-  to create the looks for their<br>
-  side project 'the subrental'.
+    using the wardrobe of<br>
+    <a href="https://chambredebonne.ch" target="_blank">chambre de bonne</a><br>
+    to create the looks for their<br>
+    side project 'the subrental'.
+  </div>
 </div>
-</div>
-   
+
 <!-- 🎨 STYLING 08-12 -->
 <div id="styling0812-page" style="display:none;">
   <div class="project-home" onclick="goHome()">home</div>
@@ -818,11 +832,17 @@ p { text-align: center; line-height: 1.6; }
     <span onclick="prevStyling07Slide()">previous</span>
     <span id="styling07-slide-number">1 / 15</span>
     <span onclick="nextStyling07Slide()">next</span>
- </div>
+  </div>
   <div class="project-description">
     explorations in shape, color and character. each look is an investigation into how clothing and accessories define and transform, how they shape the way a person is perceived and the identity they project.<br><br>
     drawn from the visual languages of subcultural communities and the ghosts of aesthetics past, this series exists as both personal research and cultural exchange. documented and released into the spaces that birthed them, these looks can also be explored with sound and in video format on tiktok <a href="https://tiktok.com/@jerome.rafael" target="_blank">@jerome.rafael</a>
   </div>
+</div>
+
+<!-- 🔗 LINKS PAGE -->
+<div id="links-page" style="display:none;">
+  <div class="project-home" onclick="goHome()">home</div>
+  <div class="project-heading">links</div>
 </div>
 
 <!-- 💀 SECRET PAGE -->
@@ -886,7 +906,7 @@ const allPages = [
   "project-page","blackhorse-page","soulportrait-page","learning2fly-page",
   "look6-page","look45-page","look3-page","look2-page","look1-page",
   "styling0405-page","stylingcdb-page","styling0812-page","styling07-page",
-  "secret-page","main"
+  "links-page","secret-page","main"
 ];
 
 function hideAll() {
@@ -917,7 +937,7 @@ window.addEventListener("popstate", function (e) {
     document.getElementById("secret-page").style.display = "flex";
     document.body.style.background = "#000";
     document.documentElement.style.background = "#000";
-  } else if (p === "styling0405-page" || p === "stylingcdb-page" || p === "styling0812-page" || p === "styling07-page") {
+  } else if (p === "styling0405-page" || p === "stylingcdb-page" || p === "styling0812-page" || p === "styling07-page" || p === "links-page" || p === "look6-page" || p === "look45-page" || p === "look3-page" || p === "look2-page" || p === "look1-page" || p === "learning2fly-page") {
     const el = document.getElementById(p);
     if (el) { el.style.display = "flex"; }
   } else {
@@ -1052,10 +1072,6 @@ function openPage(id, withSound) {
   pushState(id);
 }
 
-function openProject() { openPage("project-page", true); }
-function openBlackHorse() { openPage("blackhorse-page", false); }
-function openSoulPortrait() { openPage("soulportrait-page", false); }
-function openLearning2Fly() { openFashionPage("learning2fly-page"); }
 function openFashionPage(id) {
   hideAll();
   document.body.style.overflow = "";
@@ -1068,11 +1084,6 @@ function openFashionPage(id) {
   pushState(id);
 }
 
-function openLook6() { openFashionPage("look6-page"); }
-function openLook45() { openFashionPage("look45-page"); }
-function openLook3() { openFashionPage("look3-page"); }
-function openLook2() { openFashionPage("look2-page"); }
-function openLook1() { openFashionPage("look1-page"); }
 function openStylingPage(id) {
   hideAll();
   document.body.style.overflow = "";
@@ -1084,10 +1095,30 @@ function openStylingPage(id) {
   window.scrollTo(0, 0);
   pushState(id);
 }
+
+function openProject() { openPage("project-page", true); }
+function openBlackHorse() { openPage("blackhorse-page", false); }
+function openSoulPortrait() { openPage("soulportrait-page", false); }
+function openLearning2Fly() { openFashionPage("learning2fly-page"); }
+function openLook6() { openFashionPage("look6-page"); }
+function openLook45() { openFashionPage("look45-page"); }
+function openLook3() { openFashionPage("look3-page"); }
+function openLook2() { openFashionPage("look2-page"); }
+function openLook1() { openFashionPage("look1-page"); }
 function openStyling0405() { openStylingPage("styling0405-page"); }
 function openStylingCdb() { openStylingPage("stylingcdb-page"); }
 function openStyling0812() { openStylingPage("styling0812-page"); }
 function openStyling07() { openStylingPage("styling07-page"); }
+
+function openLinks() {
+  hideAll();
+  document.body.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.width = "";
+  document.body.style.height = "";
+  document.getElementById("links-page").style.display = "flex";
+  pushState("links-page");
+}
 
 function goHome() {
   hideAll();
